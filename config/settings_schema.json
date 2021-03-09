@@ -1,10 +1,45 @@
 [
   {
-    "name": "Camellia Rd Theme",
+    "name": "theme_info",
     "theme_name": "Camellia Theme",
-    "theme_version": "1.0.0",
     "theme_author": "Jeanette Yue",
-    "theme_documentation_url": "",
-    "theme_support_url": ""
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/using-themes\/themes-by-shopify\/debut",
+    "theme_support_url": "https:\/\/support.shopify.com\/"
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+      "type": "header",
+      "content": "Typography"
+      },
+    
+      {
+      "type": "font_picker",
+      "label": "Heading Font",
+      "id": "font__heading",
+      "default": "helvetica_n4"
+      },
+    
+      {
+      "type": "font_picker",
+      "label": "Body Font",
+      "id": "font__body",
+      "default": "helvetica_n4"
+      },
+
+      {
+        "type": "range",
+        "id": "font__size",
+        "min": 10,
+        "max": 50,
+        "step": 2,
+        "unit": "px",
+        "label": "Body text size",
+        "default": 16
+    }
+
+    ]
   }
 ]
