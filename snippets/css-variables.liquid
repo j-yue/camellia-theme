@@ -1,0 +1,18 @@
+{% comment %}
+  This is used to create CSS custom variables with Liquid references
+  The file variables.scss is referring these CSS custom variables as Sass variables
+  to use throughout the stylesheet
+{% endcomment %}
+
+{% style %}
+
+
+    :root {
+
+        --font__heading: {{settings.font__heading.fallback_families}};
+        --font__body: {{settings.font__body.fallback_families}};
+        --font__size: {{settings.font__size}}px;
+        
+    }
+    
+{% endstyle %}
