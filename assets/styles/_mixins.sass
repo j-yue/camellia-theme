@@ -1,0 +1,37 @@
+@use 'functions'
+
+//typography
+@mixin type-scale
+    $levels: 1, 2, 3, 4, 5, 6
+    @each $level in $levels
+     h#{$level}
+        font-size: functions.heading-size($level) * 1rem
+        line-height: 1
+        margin: 0
+        padding: 0
+        font-weight: 800
+        font-family: var(--font-heading)
+
+@mixin flex($flex-flow, $justify, $align)
+    display: flex
+    flex-flow: $flex-flow
+    justify-content: $justify
+    align-items: $align
+
+@mixin flex-center
+    @include flex(row nowrap, center, center)
+
+@mixin remove-space
+    margin: 0
+    padding: 0
+
+@mixin reset-anchor
+    text-decoration: none
+
+//set position of block 
+//optionally set coordinates of block
+//$coords-map is a map
+@mixin position($position, $coords-map: ())
+    position: $position
+    @each $prop, $val in $coords-map
+        #{$prop}: $val

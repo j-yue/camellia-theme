@@ -1,0 +1,16 @@
+@use 'sass:list'
+
+// calculate exponent
+@function pow($base, $exp)
+    $result: 1
+    @for $i from 1 through $exp
+        $result: $result * $base
+    @return $result
+
+// calculate heading size based on its level using perfect fourth scale    
+@function heading-size($level)
+    //h1 is 1.333^6 bigger than h6
+    //h2 is 1.333^5 bigger than h6, etc
+    $exponents: 6, 5, 4, 3, 2, 1
+    $power: list.nth($exponents, $level)
+    @return pow(1.333, $power)

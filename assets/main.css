@@ -1,0 +1,69 @@
+html {
+  font-size: var(--font__size);
+}
+
+h1 {
+  font-size: 5.6102329749rem;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  font-weight: 800;
+  font-family: var(--font-heading);
+}
+
+h2 {
+  font-size: 4.2087269129rem;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  font-weight: 800;
+  font-family: var(--font-heading);
+}
+
+h3 {
+  font-size: 3.1573345183rem;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  font-weight: 800;
+  font-family: var(--font-heading);
+}
+
+h4 {
+  font-size: 2.368593037rem;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  font-weight: 800;
+  font-family: var(--font-heading);
+}
+
+h5 {
+  font-size: 1.776889rem;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  font-weight: 800;
+  font-family: var(--font-heading);
+}
+
+h6 {
+  font-size: 1.333rem;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  font-weight: 800;
+  font-family: var(--font-heading);
+}
+
+.body-text {
+  font-size: 1rem;
+  font-weight: 300;
+  font-family: var(--font__body);
+}
+
+* {
+  font-family: var(--font__heading);
+}
+
+/*# sourceMappingURL=main.css.map */
