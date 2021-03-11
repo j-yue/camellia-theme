@@ -17,6 +17,12 @@
   {{ 'application.scss.css' | asset_url | stylesheet_tag }}
   {{ 'main.css' | | asset_url | | stylesheet_tag }}
   {{ 'application.js' | asset_url | script_tag }}
+
+<style>
+  {{ settings.font__heading | font_face }}
+  {{ settings.font__body | font_face }}
+</style>
+
 </head>
 <body>
 
