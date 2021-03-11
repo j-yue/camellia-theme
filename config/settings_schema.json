@@ -7,6 +7,38 @@
     "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/using-themes\/themes-by-shopify\/debut",
     "theme_support_url": "https:\/\/support.shopify.com\/"
   },
+
+  {
+    "name": "Colors",
+    "settings": [
+      {
+      "type": "header",
+      "content": "Colors"
+      },
+    
+      {
+      "type": "color",
+      "label": "Primary Color",
+      "id": "color__primary",
+      "default": "#465C42"
+      },
+    
+      {
+      "type": "color",
+      "label": "Secondary Color",
+      "id": "color__secondary",
+      "default": "#ffffff"
+      },
+    
+      {
+      "type": "color",
+      "label": "Text Color",
+      "id": "color__text",
+      "default": "#000000"
+      }
+    ]
+  },
+
   {
     "name": "Typography",
     "settings": [
