@@ -1,0 +1,64 @@
+@use '../mixins'
+
+.nav
+
+    &__header
+        @include mixins.small
+            position: absolute
+            top: 0
+            padding: var(--padding)
+            animation: slide-out
+            animation-duration: .75s
+            animation-fill-mode: forwards
+            border: 10px solid pink
+            height: 100%
+        @include mixins.medium
+            left: 0
+            border: 10px solid purple
+
+        &--desktop
+            display: none
+            @include mixins.medium
+                display: flex
+
+        &--mobile
+            // background: pink
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+            padding: var(--padding)
+
+        &--collapsed
+            left: -100vw
+            animation: slide-out
+            animation-duration: .75s
+            animation-fill-mode: forwards
+
+        &--expanded
+            width: 100%
+            height: 100%
+            background: #fff
+            padding: var(--padding)
+            animation: slide-in
+            animation-duration: .75s
+            animation-fill-mode: forwards
+
+    &__list
+        margin: 0
+        padding: 0
+        @include mixins.medium
+            @include mixins.flex(row nowrap, center, center)
+
+    &__item
+        list-style-type: none
+
+    &__link
+        text-decoration: none
+        color: #000
+        @include mixins.small
+            font-size: var(--font-size-nav-mobile)
+        @include mixins.medium
+            font-size: var(--font-size-nav-desktop)
+            padding: 0 .2rem

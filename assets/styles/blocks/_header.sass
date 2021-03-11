@@ -1,0 +1,37 @@
+@use '../mixins'
+
+.header
+    width: 100%
+    padding: var(--padding)
+    min-width: 320px
+    @include mixins.flex(row wrap, space-between, center)
+
+    &__wrapper
+        width: 100%
+        @include mixins.flex(row nowrap, space-between, center)
+
+    &__logo
+        height: 1.6rem
+        padding: 0 .8rem
+        @include mixins.medium
+            padding: 0
+
+    &__toggle
+        @include mixins.square-icons(1.6rem)
+        @include mixins.medium
+            display: none
+
+    &__search
+        @include mixins.square-icons(1.6rem)
+        @include mixins.medium
+            display: none
+
+    &__close
+        @include mixins.square-icons(1.6rem)
+        @include mixins.medium
+            display: none
+
+    &__cart
+        @include mixins.square-icons(1.6rem)
+        @include mixins.medium
+            // display: none

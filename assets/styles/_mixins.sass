@@ -1,5 +1,31 @@
 @use 'functions'
 
+//breakpoints
+$small: 320px
+$medium: 768px
+$large: 1440px
+
+@mixin small
+    @media screen and (min-width: $small)
+        @content
+
+@mixin medium
+    @media screen and (min-width: $medium)
+        @content
+
+@mixin large
+    @media screen and (min-width: $large)
+        @content
+
+// sizing imaages
+@mixin set-dimensions($width, $height)
+    width: $width
+    height: $height
+
+@mixin square-icons($width)
+    width: $width
+    height: $width
+
 //typography
 @mixin type-scale
     $levels: 1, 2, 3, 4, 5, 6

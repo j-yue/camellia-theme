@@ -1,0 +1,88 @@
+{% assign settings = section.settings %}
+{% assign logo = settings.header__logo | img_url: '200x200' %}
+
+<header class="header">
+    {% comment %} <div class="header__mobile-items"> {% endcomment %}
+        <div class="header__wrapper">
+            <button class="btn btn__header header__toggle">
+                {% include 'icon-hamburger' %}
+            </button>
+
+            <a href="/" class="header__link">
+                <div class="header__logo">
+                    {% include 'logo' %}
+                </div>
+            </a>
+
+            <nav class="nav nav__header--desktop">
+                {% include 'nav', linklist: section.settings.header__nav %}
+            </nav>
+
+            <button class="btn btn__header header__cart">
+                {% include 'icon-cart' %}
+            </button>
+        </div>
+        
+        <form class="search" role="search" action="/" method="get">
+            <div class="search__wrapper">
+                <label for="header-search" class="search__label">
+                    <span class="visually-hidden">Search</span>
+                </label>
+                <button class="btn btn__header search__btn">
+                    {% include 'icon-search' %}
+                </button>
+                <input type="search" class="search__input" id="header-search" placeholder="Search">
+                
+            </div>
+        </form>
+
+        <nav class="nav nav__header--mobile nav__header--collapsed">
+            <button class="btn btn__header header__close">
+                {% include 'icon-close' %}
+            </button>
+            {% include 'nav', linklist: section.settings.header__nav %}
+        </nav>
+</header>
+
+{% javascript %}
+
+function toggleElement(el, target) {
+    document.querySelector(`.${el}`).classList.toggle(target)
+}
+
+document.querySelector('.header__toggle').addEventListener('click', () => {
+    toggleElement('nav__header--mobile', 'nav__header--expanded');
+})
+
+document.querySelector('.header__close').addEventListener('click', () => {
+    toggleElement('nav__header--mobile', 'nav__header--expanded');
+})
+
+// document.querySelector('.header__toggle').addEventListener('click', () => {
+// console.log('expanding menu')
+// // animation was hidden when page loads
+// // document.querySelector('.nav__header--collapsed').style.opacity = 1
+// document.querySelector('.nav__header').classList.toggle('nav--collapsed')
+// document.querySelector('.nav__header').classList.toggle('nav--expanded')
+// });
+// document.querySelector('.header__close').addEventListener('click', () => {
+
+// document.querySelector('.nav__header').classList.toggle('nav--expanded')
+// document.querySelector('.nav__header').classList.toggle('nav--collapsed')
+// })
+{% endjavascript %}
+
+
+{% schema %}
+{
+"name": "Header",
+"settings": [
+{
+"type": "link_list",
+"label": "Main Navigation",
+"id": "header__nav",
+"info": "Only the first level links will be rendered"
+}
+]
+}
+{% endschema %}

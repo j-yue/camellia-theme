@@ -1,0 +1,19 @@
+{% comment %}
+    Creates an unordered list of links to be nested inside of a menu
+
+    Used to create header and footer links
+
+    Accepts:
+    - linklist: {Object} Linklist Liquid object (required)
+
+    Usage:
+    {% include 'nav', linklist: section.settings.header__nav%}
+{% endcomment %}
+
+<ul class="nav__list">
+    {% for link in linklists[linklist].links %}
+        <li class="nav__item">
+            <a href="{{link.url}}" class="nav__link">{{link.title}}</a>
+        </li>
+    {% endfor %}
+</ul>

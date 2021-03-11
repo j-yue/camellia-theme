@@ -1,1 +1,21 @@
+@use 'mixins'
 
+html, body, div, section, article, header, footer, nav
+    box-sizing: border-box
+
+html
+    min-width: 320px
+    height: 100%
+    width: 100%
+
+body
+    margin: 0
+    width: 100%
+    height: 100%
+    @include mixins.medium
+        width: 80%
+        margin: auto
+
+svg
+    // width: 100%
+    height: 100%
