@@ -2,7 +2,6 @@
 {% assign logo = settings.header__logo | img_url: '200x200' %}
 
 <header class="header">
-    {% comment %} <div class="header__mobile-items"> {% endcomment %}
         <div class="header__wrapper">
             <button class="btn btn__header header__toggle">
                 {% include 'icon-hamburger' %}
@@ -46,43 +45,31 @@
 
 {% javascript %}
 
-function toggleElement(el, target) {
-    document.querySelector(`.${el}`).classList.toggle(target)
-}
+    function toggleElement(el, target) {
+        document.querySelector(`.${el}`).classList.toggle(target)
+    }
 
-document.querySelector('.header__toggle').addEventListener('click', () => {
-    toggleElement('nav__header--mobile', 'nav__header--expanded');
-})
+    document.querySelector('.header__toggle').addEventListener('click', () => {
+        toggleElement('nav__header--mobile', 'nav__header--expanded');
+    })
 
-document.querySelector('.header__close').addEventListener('click', () => {
-    toggleElement('nav__header--mobile', 'nav__header--expanded');
-})
+    document.querySelector('.header__close').addEventListener('click', () => {
+        toggleElement('nav__header--mobile', 'nav__header--expanded');
+    })
 
-// document.querySelector('.header__toggle').addEventListener('click', () => {
-// console.log('expanding menu')
-// // animation was hidden when page loads
-// // document.querySelector('.nav__header--collapsed').style.opacity = 1
-// document.querySelector('.nav__header').classList.toggle('nav--collapsed')
-// document.querySelector('.nav__header').classList.toggle('nav--expanded')
-// });
-// document.querySelector('.header__close').addEventListener('click', () => {
-
-// document.querySelector('.nav__header').classList.toggle('nav--expanded')
-// document.querySelector('.nav__header').classList.toggle('nav--collapsed')
-// })
 {% endjavascript %}
 
 
 {% schema %}
-{
-"name": "Header",
-"settings": [
-{
-"type": "link_list",
-"label": "Main Navigation",
-"id": "header__nav",
-"info": "Only the first level links will be rendered"
-}
-]
-}
+    {
+    "name": "Header",
+    "settings": [
+        {
+        "type": "link_list",
+        "label": "Main Navigation",
+        "id": "header__nav",
+        "info": "Only the first level links will be rendered"
+        }
+    ]
+    }
 {% endschema %}
