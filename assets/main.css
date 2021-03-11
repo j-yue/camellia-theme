@@ -150,37 +150,22 @@ h6 {
     padding: 0;
   }
 }
-.header__toggle {
-  width: 1.6rem;
-  height: 1.6rem;
-}
 @media screen and (min-width: 768px) {
   .header__toggle {
     display: none;
   }
-}
-.header__search {
-  width: 1.6rem;
-  height: 1.6rem;
 }
 @media screen and (min-width: 768px) {
   .header__search {
     display: none;
   }
 }
-.header__close {
-  width: 1.6rem;
-  height: 1.6rem;
-}
 @media screen and (min-width: 768px) {
   .header__close {
     display: none;
   }
 }
-.header__cart {
-  width: 1.6rem;
-  height: 1.6rem;
-}
+
 .btn:hover {
   cursor: pointer;
 }
@@ -188,6 +173,8 @@ h6 {
   border: none;
   background: none;
   padding: 0;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 @media screen and (min-width: 320px) {
