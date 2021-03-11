@@ -4,21 +4,21 @@
 <header class="header">
         <div class="header__wrapper">
             <button class="btn btn__header header__toggle">
-                {% include 'icon-hamburger' %}
+                {% render 'icon-hamburger' %}
             </button>
 
             <a href="/" class="header__link link">
                 <div class="header__logo">
-                    {% include 'logo' %}
+                    {% render 'logo' %}
                 </div>
             </a>
 
             <nav class="nav nav__header--desktop">
-                {% include 'nav', linklist: section.settings.header__nav %}
+                {% render 'nav', linklist: section.settings.header__nav %}
             </nav>
 
             <button class="btn btn__header header__cart">
-                {% include 'icon-cart' %}
+                {% render 'icon-cart' %}
             </button>
         </div>
         
@@ -28,7 +28,7 @@
                     <span class="visually-hidden">Search</span>
                 </label>
                 <button class="btn btn__header search__btn">
-                    {% include 'icon-search' %}
+                    {% render 'icon-search' %}
                 </button>
                 <input type="search" class="search__input" id="header-search" placeholder="Search">
                 
@@ -37,9 +37,9 @@
 
         <nav class="nav nav__header--mobile nav__header--collapsed">
             <button class="btn btn__header header__close">
-                {% include 'icon-close' %}
+                {% render 'icon-close' %}
             </button>
-            {% include 'nav', linklist: section.settings.header__nav %}
+            {% render 'nav', linklist: section.settings.header__nav %}
         </nav>
 </header>
 
