@@ -93,10 +93,15 @@ h6 {
   font-family: var(--font__heading);
 }
 
-.body-text {
+body {
   font-size: 1rem;
   font-weight: 300;
   font-family: var(--font__body);
+}
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 1.6rem;
+  }
 }
 
 .visually-hidden {
@@ -293,9 +298,12 @@ h6 {
   .intro {
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
-    min-height: 30rem;
+    min-height: 35rem;
+    padding-left: 25%;
+    padding-right: 25%;
+    text-align: center;
   }
 }
 @media screen and (min-width: 1440px) {

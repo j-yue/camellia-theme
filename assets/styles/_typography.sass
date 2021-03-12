@@ -10,10 +10,12 @@ html
 // assign rules for headings and calculate heading sizes based on a scale
 @include mixins.type-scale
 
-.body-text
+body
     font-size: 1rem
     font-weight: 300
     font-family: var(--font__body)
+    @include mixins.medium
+        font-size: 1.6rem
 
 .visually-hidden
     display: none

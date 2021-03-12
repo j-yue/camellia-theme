@@ -7,8 +7,11 @@
     color: var(--color__secondary)
     // background image url is declared in corresponding liquid section since merchant will pick image
     @include mixins.medium
-        @include mixins.flex(column nowrap, space-between, flex-start)
-        min-height: 30rem
+        @include mixins.flex(column nowrap, center, flex-start)
+        min-height: 35rem
+        padding-left: 25%
+        padding-right: 25%
+        text-align: center
     @include mixins.large
         min-height: 23rem
 
