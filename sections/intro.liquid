@@ -1,0 +1,88 @@
+{% assign settings = section.settings %}
+
+<section class="intro">
+
+    <div class="intro__text-wrapper">
+        <p class="intro__heading">{{settings.intro__heading}}</p>
+        <p class="intro__text">{{settings.intro__body}}</p>
+    </div>
+
+    <div class="intro__link-wrapper">
+        <a href="{{settings.cta-secondary-link.url}}" class="link intro__link intro__link--secondary">
+            {{settings.cta-secondary}}
+        </a>
+        <a href="{{settings.cta-primary-link.url}}" class="link intro__link intro__link--primary">
+            {{settings.cta-primary}}
+        </a>
+    </div>
+</section>
+
+{% render 'img-gradient', img: {{settings.intro__hero}}, gradient: true, target: 'intro' %}
+
+{% schema %}
+    {
+        "name": "Intro",
+        "settings": [
+            {
+            "type": "text",
+            "id": "intro__heading",
+            "label": "Heading",
+            "placeholder": "Grab visitor's attention",
+            "default": "Grab the visitor's attention"
+            },
+
+            {
+            "type": "textarea",
+            "id": "intro__body",
+            "label": "Intro text",
+            "placeholder": "Welcome to my shop!",
+            "default": "Tell the visitor what makes Camellia special. What branding are you aiming? Mind the copy and what story you are telling as the visitor scrolls down. Keep it short and brief."
+            },
+
+            {
+            "type": "image_picker",
+            "label": "Background",
+            "id": "intro__hero",
+            "info": "Pick a HQ, eye-catching, landscape-oriented picture of a product. The background image will align center bottom."
+            },
+
+            {
+            "type": "header",
+            "content": "Links",
+            "info": "These are your main call to actions. From Google Analytics, top destinations are 1) the menu and 2) boba box and shopping. They will be styled like buttons"
+            },
+
+            {
+            "type": "text",
+            "id": "cta-secondary",
+            "label": "Label",
+            "default": "Menu"
+            },
+
+            {
+            "type": "url",
+            "label": "Link",
+            "id": "cta-secondary-link"
+            },
+
+            {
+            "type": "text",
+            "id": "cta-primary",
+            "label": "Label",
+            "default": "Shop"
+            },
+
+            {
+            "type": "url",
+            "label": "Link",
+            "id": "cta-primary-link"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Intro with 2 CTAs",
+                "category": "Intro"
+            }
+        ]
+    }
+{% endschema %}

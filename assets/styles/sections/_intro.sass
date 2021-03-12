@@ -1,0 +1,47 @@
+@use '../mixins'
+
+.intro
+    width: 100%
+    min-height: 25rem
+    padding: var(--padding)
+    color: var(--color__secondary)
+    // background image url is declared in corresponding liquid section since merchant will pick image
+    @include mixins.medium
+        @include mixins.flex(column nowrap, space-between, flex-start)
+        min-height: 30rem
+    @include mixins.large
+        min-height: 23rem
+
+    &__text-wrapper
+
+    &__heading
+        font-size: 2.4rem
+        font-weight: bold
+        margin: 0
+        line-height: 1.25
+        font-family: var(--font__heading)
+
+    &__text
+        line-height: 1.25
+
+    &__link-wrapper
+        width: 100%
+        margin-top: calc(var(--padding) *2)
+        @include mixins.flex(row nowrap, space-evenly, center)
+
+    &__link
+        line-height: 2
+        border-radius: .4rem
+        padding: .5rem
+        min-width: 20%
+        max-width: 30%
+        text-align: center
+
+        &--primary
+            background: var(--color__secondary)
+            border: 2px solid var(--color__secondary)
+            color: var(--color__primary)
+
+        &--secondary
+            border: 2px solid var(--color__secondary)
+            color: var(--color__secondary)

@@ -1,0 +1,39 @@
+{% comment %}
+    Sets the merchant selected image as a background image with optional gradient 
+
+    Just CSS
+
+    Accepts:
+    - img: {Object} Image Liquid object (required)
+    - gradient: {Type} Boolean (required)
+    - target: {String} Class name of target element
+
+    Accepts:
+    - linklist: {Object} Linklist Liquid object (required)
+
+    Usage:
+    {%include 'img-gradient', img: section.settings.intro__hero, target: 'intro' %}
+{% endcomment %}
+
+<style>
+    .{{target}} {
+        background-blend-mode: multiply;
+        background-position: bottom;
+        background-size: cover;
+        background-image: {% if gradient %}linear-gradient(60deg, var(--color__primary) 100%, var(--color__secondary) 50%),{% endif %} url({{img | img_url: '600x900'}});
+    }
+
+    @media screen and (min-width: 768px) {
+        .{{target}} {
+            background-image: {% if gradient %}linear-gradient(60deg, var(--color__primary) 100%, var(--color__secondary) 50%),{% endif %} url({{img | img_url: '1200x1800'}});
+        }
+
+    }
+
+    @media screen and (min-width: 1440px) {
+        .{{target}} {
+            background-image: {% if gradient %}linear-gradient(60deg, var(--color__primary) 100%, var(--color__secondary) 50%),{% endif %} url({{img | img_url: '2400x3600'}});
+        }
+
+    }
+</style>
