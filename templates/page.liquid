@@ -1,2 +1,26 @@
-<h1>{{ page.title }}</h1>
-<div>{{ page.content }}</div>
+{% comment %} 
+    Renders a general page with responsive images and a two column layout
+    - There are 2 types of images
+        1) standalone - on mobile devices, they take up the whole page width and become smaller on wider devices
+        2) rows of images - on mobile devices, each image takes up the whole page width and shrink to smaller rows of images
+    - 2 column layout - one column is an image, and the other is text (order doesn't matter)
+        
+    Styling is located in assets/styles/templates/_page.sass
+
+    Since the page is merchant generated via Shopify's page editor ui, merchant will 
+    need to follow these guidelines for images to render correctly:
+    - All images must specify alts since captions are unsupported in this template (SEO, accessibility)
+    - For better speed, images should be low res (will be replaced with hq version programmatically)
+    - Standalone - insert a single image normally 
+    - Rows of images - create an unordered (bulleted) list and add each images as a bullet item
+    - 2 column layout - create an ordered list of even number items - it doesnt matter the order of text and image
+
+
+todo: write js to lazy load hq images
+{% endcomment %}
+
+
+<article class="page__wrapper">
+    <h1 class="page__header">{{page.title}}</h1>
+    <section class="page__content">{{page.content}}</section>
+</article>

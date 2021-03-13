@@ -1,0 +1,54 @@
+@use '../mixins'    
+
+.page
+    padding: 0 var(--padding)
+
+    &__header
+        text-align: center
+
+    img
+        width: 100%
+        @include mixins.medium
+            width: 45vw
+            margin: auto
+            display: block
+
+    ul
+        @include mixins.remove-space
+
+        @include mixins.medium
+            @include mixins.flex(row wrap, space-between, stretch)
+            margin-right: -2rem
+        li
+            list-style-type: none
+            margin: 1rem 0
+            min-width: 30%
+            flex: 1
+            img
+                width: 100%
+                height: 100%
+                object-fit: cover
+                @include mixins.medium
+                    padding-right: 2rem
+
+    ol
+        @include mixins.remove-space
+        @include mixins.medium
+            @include mixins.flex(row wrap, space-between, stretch)
+
+        li
+            list-style-type: none
+            padding: 1rem 0
+
+            @include mixins.medium
+                @include mixins.flex-center
+                flex: 1
+                min-width: 50%
+                &:nth-of-type(2n-1)
+                    padding-right: 1rem
+                &:nth-of-type(2n)
+                    padding-left: 1rem
+
+            img
+                @include mixins.medium
+                    width: 100%

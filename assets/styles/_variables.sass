@@ -1,7 +1,11 @@
 @use 'functions'
+@use 'mixins'
 
 :root
     --padding: 1.6rem
     --height-header: var(--padding) + functions.heading-size(6)
     --font-size-nav-mobile: 3.2rem
     --font-size-nav-desktop: 1.6rem
+
+    @include mixins.medium
+        --padding: 3.2rem
