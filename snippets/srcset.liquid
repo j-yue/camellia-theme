@@ -1,0 +1,17 @@
+{% comment %}
+Generate srcset value for responsive images
+
+Used main in another snippet, responsive-img.liquid
+
+Accepts:
+- img: {Object} Image Liquid Object (required)
+
+Usage:
+{% include 'srcset', img: section.settings.page__img %}
+{% endcomment %}
+
+{% capture result %}
+{{img | img_url: '640x'}} 320w, {{img | img_url: '1536x'}} 768w, {{img | img_url: '2880x'}} 1440w,
+{% endcapture %}
+
+{{result}}

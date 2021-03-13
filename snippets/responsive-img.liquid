@@ -1,0 +1,21 @@
+{% comment %}
+Creates a responsive, lazyload image
+
+Accepts:
+- img: {Object} Image Liquid Object (required)
+- class: {String} Name of class for additional styling (optional)
+
+Usage:
+{% include 'responsive-img', img: section.settings.page__img, class: 'menu__drink'%}
+{% endcomment %}
+
+{% assign src = img.src %}
+
+{% capture srcset %}
+    {% include 'srcset', img: img %}
+{% endcapture %}
+
+
+<div class="page__img-wrapper">
+    <img class="lazyload image {{class}}" alt="{{img.alt}}" src="{{img.src | img_url: '100x'}}" data-sizes="auto" data-srcset="{{srcset}}">
+</div>
