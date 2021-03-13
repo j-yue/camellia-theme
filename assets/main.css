@@ -448,6 +448,9 @@ p {
     padding-left: 1rem;
   }
 }
+.page ol li span {
+  width: 100%;
+}
 @media screen and (min-width: 768px) {
   .page ol li img {
     width: 100%;
