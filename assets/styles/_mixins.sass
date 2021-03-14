@@ -1,5 +1,15 @@
 @use 'functions'
 
+//Order-------------------------------------------------
+//  Order
+//  breakpoints
+//  typography
+//  sizing images
+//  layout
+//  position
+//  button styles
+//------------------------------------------------------
+
 //breakpoints
 $small: 320px
 $medium: 768px
@@ -44,6 +54,7 @@ $large: 1440px
     justify-content: $justify
     align-items: $align
 
+//layout
 @mixin flex-center
     @include flex(row nowrap, center, center)
 
@@ -54,6 +65,7 @@ $large: 1440px
 @mixin reset-anchor
     text-decoration: none
 
+//position
 //set position of block 
 //optionally set coordinates of block
 //$coords-map is a map
@@ -61,3 +73,23 @@ $large: 1440px
     position: $position
     @each $prop, $val in $coords-map
         #{$prop}: $val
+
+//button styles
+@mixin btn
+    line-height: 2
+    border-radius: .4rem
+    padding: .5rem
+    min-width: 20%
+    max-width: 30%
+    text-align: center
+
+@mixin btn-primary
+    @include btn
+    background: var(--color__secondary)
+    border: 2px solid var(--color__secondary)
+    color: var(--color__primary)
+
+@mixin btn-secondary
+    @include btn
+    border: 2px solid var(--color__secondary)
+    color: var(--color__secondary)

@@ -1,0 +1,102 @@
+{% assign settings = section.settings %}
+
+<section class="grid hero">
+    <div class="hero__wrapper hero__wrapper--img">
+    {% capture class %}hero__img image--{{settings.hero__img-position}}{% endcapture %}
+        {% include 'responsive-img', img: settings.hero__img, class %}
+    </div>
+
+    <div class="hero__wrapper hero__wrapper--text-wrapper">
+        <h2 class="grid__item--block hero__title">{{settings.hero__title}}</h2>
+        <p class="grid__item grid__item--block hero__content">{{hero__content}}</p>
+        {% if settings.hero__checkbox == true %}
+            <a href="" class="link link--secondary hero__img">{{settings.hero__btn}}</a>
+        {% endif %}
+    </div>
+</section>
+
+<style>
+    .hero {
+        background: {{settings.hero__overlay}}
+    }
+</style>
+
+{% schema %}
+    {
+        "name": "Text overlay",
+        "settings": [
+            {
+            "type": "image_picker",
+            "label": "Background Image",
+            "id": "hero__img"
+            },
+
+            {
+            "type": "select",
+            "id": "hero__img-position",
+            "label": "Image position",
+            "default": "center",
+            "info": "Images may be cropped at different screen sizes. If the critical part of the image is in the center, select center and etc.",
+            "options": 	[
+                {
+                "value": "top",
+                "label": "top"
+                },
+
+                {
+                "value": "center",
+                "label": "center"
+                },
+
+                {
+                "value": "bottom",
+                "label": "bottom"
+                }
+            ]
+            },
+
+            {
+            "type": "color",
+            "label": "Overlay color",
+            "id": "hero__overlay",
+            "default": "#000000"
+            },
+
+            {
+            "type": "text",
+            "id": "hero__title",
+            "label": "Heading",
+            "placeholder": "Heading for this Section",
+            "default": "Boba is our craft"
+            },
+
+            {
+            "type": "richtext",
+            "label": "Text",
+            "id": "hero__content",
+            "default": "<p>We honor the art of tea and take it seriously.</p>"
+            },
+
+            {
+            "type": "checkbox",
+            "id": "hero__checkbox",
+            "label": "Show button",
+            "default": true
+            },
+
+            {
+            "type": "text",
+            "id": "hero__btn",
+            "label": "Button",
+            "placeholder": "Call to action",
+            "default": "Join Us"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Text overlay",
+                "category": "Image"
+            }
+        ]
+    }
+{% endschema %}

@@ -1,3 +1,11 @@
+@use '../mixins'
+
 .link
     text-decoration: none
-    color: var(--color__text)
+    color: inherit
+
+    &--primary
+        @include mixins.btn-primary
+
+    &--secondary
+        @include mixins.btn-secondary
