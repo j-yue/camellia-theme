@@ -16,6 +16,4 @@ Usage:
 {% endcapture %}
 
 
-<div class="page__img-wrapper">
-    <img class="lazyload image {{class}}" alt="{{img.alt}}" src="{{img.src | img_url: '100x'}}" data-sizes="auto" data-srcset="{{srcset}}">
-</div>
+<img class="lazyload image {{class}}" alt="{{img.alt}}" src="{{img.src | img_url: '100x'}}" data-sizes="auto" data-srcset="{{srcset}}">
