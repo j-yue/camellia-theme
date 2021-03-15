@@ -10,7 +10,7 @@
         <h2 class="grid__item--block hero__title">{{settings.hero__title}}</h2>
         <p class="grid__item grid__item--block hero__content">{{hero__content}}</p>
         {% if settings.hero__checkbox == true %}
-            <a href="" class="link link--secondary hero__img">{{settings.hero__btn}}</a>
+            <a href="{{settings.hero__url}}" class="link link--primary hero__btn">{{settings.hero__btn}}</a>
         {% endif %}
     </div>
 </section>
@@ -90,6 +90,11 @@
             "label": "Button",
             "placeholder": "Call to action",
             "default": "Join Us"
+            },
+            {
+                "type": "url",
+                "id": "hero__url",
+                "label": "Link"
             }
         ],
         "presets": [

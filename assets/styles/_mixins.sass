@@ -81,6 +81,7 @@ $large: 1440px
     padding: .5rem
     min-width: 20%
     max-width: 30%
+    transition: .5s
     text-align: center
 
 @mixin btn-primary
@@ -88,8 +89,14 @@ $large: 1440px
     background: var(--color__secondary)
     border: 2px solid var(--color__secondary)
     color: var(--color__primary)
+    &:hover
+        background: var(--color__primary)
+        color: var(--color__secondary)
+        border-color: var(--color__primary)
 
 @mixin btn-secondary
     @include btn
     border: 2px solid var(--color__secondary)
     color: var(--color__secondary)
+    &:hover
+        @include btn-primary
