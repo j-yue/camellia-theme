@@ -181,8 +181,56 @@ p {
   }
 }
 
+.btn {
+  line-height: 2;
+  border-radius: 0.4rem;
+  padding: 1rem;
+  min-width: 20%;
+  transition: 0.5s;
+  text-align: center;
+  border: none;
+  font: inherit;
+  background: none;
+}
 .btn:hover {
   cursor: pointer;
+}
+.btn:hover {
+  cursor: pointer;
+}
+.btn--primary {
+  line-height: 2;
+  border-radius: 0.4rem;
+  padding: 1rem;
+  min-width: 20%;
+  transition: 0.5s;
+  text-align: center;
+  background: var(--color__secondary);
+  border: 2px solid var(--color__secondary);
+  color: var(--color__primary);
+}
+.btn--primary:hover {
+  cursor: pointer;
+}
+.btn--primary:hover {
+  background: var(--color__primary);
+  color: var(--color__secondary);
+  border-color: var(--color__primary);
+}
+.btn--secondary {
+  background: var(--color__primary);
+  color: var(--color__secondary);
+  border: 2px solid var(--color__primary);
+}
+.btn--secondary:hover {
+  background: var(--color__secondary);
+  color: var(--color__primary);
+}
+.btn---disabled {
+  background: #88888840;
+  border-color: inherit;
+  color: #88888880;
+  cursor: not-allowed;
 }
 .btn__header {
   border: none;
@@ -299,14 +347,16 @@ p {
 .link--primary {
   line-height: 2;
   border-radius: 0.4rem;
-  padding: 0.5rem;
+  padding: 1rem;
   min-width: 20%;
-  max-width: 30%;
   transition: 0.5s;
   text-align: center;
   background: var(--color__secondary);
   border: 2px solid var(--color__secondary);
   color: var(--color__primary);
+}
+.link--primary:hover {
+  cursor: pointer;
 }
 .link--primary:hover {
   background: var(--color__primary);
@@ -316,25 +366,29 @@ p {
 .link--secondary {
   line-height: 2;
   border-radius: 0.4rem;
-  padding: 0.5rem;
+  padding: 1rem;
   min-width: 20%;
-  max-width: 30%;
   transition: 0.5s;
   text-align: center;
   border: 2px solid var(--color__secondary);
   color: var(--color__secondary);
 }
 .link--secondary:hover {
+  cursor: pointer;
+}
+.link--secondary:hover {
   line-height: 2;
   border-radius: 0.4rem;
-  padding: 0.5rem;
+  padding: 1rem;
   min-width: 20%;
-  max-width: 30%;
   transition: 0.5s;
   text-align: center;
   background: var(--color__secondary);
   border: 2px solid var(--color__secondary);
   color: var(--color__primary);
+}
+.link--secondary:hover:hover {
+  cursor: pointer;
 }
 .link--secondary:hover:hover {
   background: var(--color__primary);
@@ -361,6 +415,52 @@ p {
   width: 100%;
   height: 100%;
 }
+.slideshow {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.slideshow__current-img {
+  width: 100%;
+  height: 20rem;
+}
+@media screen and (min-width: 768px) {
+  .slideshow__current-img {
+    height: 35rem;
+  }
+}
+.slideshow__thumbnail-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.slideshow__thumbnails {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 8rem;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-top: 1rem;
+}
+.slideshow__thumbnails::-webkit-scrollbar {
+  width: 100%;
+  height: 100%;
+}
+@media screen and (min-width: 768px) {
+  .slideshow__thumbnails {
+    height: 12rem;
+  }
+}
+.slideshow__thumbnail {
+  width: 45%;
+  padding-right: 1rem;
+}
+
 .intro {
   width: 100%;
   min-height: 25rem;
@@ -460,6 +560,20 @@ p {
 .hero__title {
   width: 100%;
   text-align: center;
+}
+
+.featured-product {
+  padding: var(--padding);
+}
+.featured-product__title {
+  margin-top: 1rem;
+}
+.featured-product__btn {
+  width: 100%;
+}
+.featured-product__details-link {
+  color: var(--color__primary);
+  font-style: italic;
 }
 
 .page__header {

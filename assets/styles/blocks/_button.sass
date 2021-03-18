@@ -1,8 +1,23 @@
 @use '../mixins'
 
 .btn
+    @include mixins.btn
+    border: none
+    font: inherit
+    background: none
+
     &:hover
         cursor: pointer
+
+    &--primary
+        @include mixins.btn-primary
+
+    &--secondary
+        @include mixins.btn-third
+        // @include mixins.btn-secondary
+
+    &---disabled
+        @include mixins.btn-disabled
 
     &__header
         border: none
