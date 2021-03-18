@@ -2,12 +2,12 @@
 
 <section class="featured-product">
     <div class="featured-product__slideshow slideshow">
-        {% include 'responsive-img', img: product.featured_image, class: 'slideshow__current-img' %}
+        {% include 'responsive-img', img: product.images[0], class: 'slideshow__current-img' %}
         
         <div class="featured-product__slideshow slideshow__thumbnails">  
-                {% for img in product.images %}
-                    {% include 'responsive-img', img, class: 'slideshow__thumbnail' %}
-                {% endfor %}
+            {% for img in product.images %}
+                {% include 'responsive-img', img, class: 'slideshow__thumbnail' %}
+            {% endfor %}
         </div>
     </div>
     <div class="featured-product__details-wrapper">
@@ -27,22 +27,18 @@
 </section>
 
 <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('.slideshow__thumbnail').classList.toggle('slideshow__thumbnail--selected');
+    })
     const thumbnails = document.querySelectorAll('.slideshow__thumbnail');
     const currentImg = document.querySelector('.slideshow__current-img');
     thumbnails.forEach(thumbnail => {
         thumbnail.addEventListener('click', () => {
-            const [src, srcset, alt] = [thumbnail.src, thumbnail.srcset, thumbnail.alt];
-            {% comment %} console.log(this) {% endcomment %}
-            {% comment %} currentImg.src = src; {% endcomment %}
-            {% comment %} currentImg.srcset = srcset; {% endcomment %}
-            {% comment %} currentImg.srcset = alt; {% endcomment %}
-            {% comment %} const clone = thumbnail.cloneNode().classList.add('slideshow__current-img');
-            console.log(typeof clone);
-            console.log(typeof thumbnail)
-            currentImg.replaceWith(clone) {% endcomment %}
-            {% comment %} console.log(thumbnail) {% endcomment %}
-            {% comment %} currentImg.replaceWith(thumbnail)
-            currentImg.classList.toggle('slideshow__current-img'); {% endcomment %}
+           currentImg.removeAttribute('src');
+           currentImg.srcset = thumbnail.srcset;
+           currentImg.alt = thumbnail.alt;
+           document.querySelector('.slideshow__thumbnail--selected').classList.toggle('slideshow__thumbnail--selected');
+           thumbnail.classList.toggle('slideshow__thumbnail--selected')
         })
     })
 </script>
