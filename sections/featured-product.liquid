@@ -13,15 +13,14 @@
     <div class="featured-product__details-wrapper">
         <h3 class="featured-product__title">{{product.title}}</h3>
         <p class="featured-product__price">{{product.price | money}}</p>
-        {% if product.available %}            
-            <button class="featured-product__btn btn btn--secondary">Add to cart</button>
+        {% if product.available %}
+            <button class="featured-product__btn btn btn--primary">Add to cart</button>
         {% else %}
-            <button class="featured-product__btn btn btn--disabled" disabled>Add to cart</button>
+            <button class="featured-product__btn btn btn--disabled" disabled>Sold Out</button>
         {% endif %}
         <p class="featured-product__details">{{product.description | truncatewords: 50 }} 
             <a href="{{product.url}}" class="featured-product__details-link link">View details</a>
         </p>
-        
         
     </div>
 </section>

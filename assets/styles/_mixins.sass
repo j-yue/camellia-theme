@@ -85,33 +85,27 @@ $large: 1440px
     &:hover
         cursor: pointer
 
+@mixin btnStyle($bg, $color, $border: $bg)
+    background: $bg
+    border: 2px solid $border
+    color: $color
+    font-weight: bold
+
 @mixin btn-primary
-    @include btn
-    background: var(--color__secondary)
-    border: 2px solid var(--color__secondary)
-    color: var(--color__primary)
+    @include btnStyle(var(--color__primary), var(--color__secondary))
     &:hover
-        background: var(--color__primary)
-        color: var(--color__secondary)
-        border-color: var(--color__primary)
-
-@mixin btn-third
-    background: var(--color__primary)
-    color: var(--color__secondary)
-    border: 2px solid var(--color__primary)
-    &:hover
-        background: var(--color__secondary)
-        color: var(--color__primary)
-
-@mixin btn-disabled
-    background: #88888840
-    border-color: inherit
-    color: #88888880
-    cursor: not-allowed
+        @include btnStyle(var(--color__secondary), var(--color__primary), var(--color__primary))
 
 @mixin btn-secondary
-    @include btn
-    border: 2px solid var(--color__secondary)
-    color: var(--color__secondary)
+    @include btnStyle(var(--color__secondary), var(--color__primary))
     &:hover
-        @include btn-primary
+        @include btnStyle(var(--color__primary), var(--color__secondary))
+
+@mixin btn-outline
+    @include btnStyle(none, var(--color__secondary), var(--color__secondary))
+    &:hover
+        @include btnStyle(var(--color__primary), var(--color__secondary), var(--color__primary))
+
+@mixin btn-disabled
+    @include btnStyle(#ccc, #666)
+    cursor: not-allowed

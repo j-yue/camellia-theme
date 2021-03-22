@@ -4,8 +4,17 @@
     text-decoration: none
     color: inherit
 
-    &--primary
-        @include mixins.btn-primary
+    &-btn
+        @include mixins.btn
 
-    &--secondary
-        @include mixins.btn-secondary
+        &--primary
+            @include mixins.btn-primary
+
+        &--secondary
+            @include mixins.btn-secondary
+
+        &--outline
+            @include mixins.btn-outline
+
+        &--disabled
+            @include mixins.btn-disabled
