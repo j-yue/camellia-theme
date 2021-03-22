@@ -1,0 +1,40 @@
+@use '../mixins'
+@use 'sass:color'
+
+.variant
+    @include mixins.flex(row nowrap, center, stretch)
+    border: 1px solid #000
+    transition: .5s
+    position: relative
+
+    &:hover
+        cursor: pointer
+        background: var(--color__primary--100)
+
+    &__styled
+        @include mixins.flex(row nowrap, center, center)
+        padding: calc(var(--padding)*.5)
+
+    &__current
+        width: 80%
+
+    &__caret
+        width: 20%
+        text-align: end
+
+    &__wrapper
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+        opacity: 0
+        &:hover
+            cursor: pointer
+
+    &__label
+        height: 100%
+        opacity: 0
+
+    &__input
+        width: 100%
+        height: 100%

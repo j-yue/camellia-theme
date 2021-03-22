@@ -14,6 +14,28 @@
         <div class="featured-product__details">
             <h3 class="featured-product__title">{{product.title}}</h3>
             <p class="featured-product__price">{{product.price | money}}</p>
+
+            {% unless product.has_only_default_variant %}
+                <div class="variant">
+                    <div class="variant__styled" aria-hidden="true">
+                        <span class="variant__current">{{product.first_available_variant.title}}</span>
+                        <button class="variant__caret btn btn__select">
+                            {% include 'icon-caret-down' %}
+                        </button>
+                    </div>
+                    <div class="variant__wrapper">
+                        <label for="variant" class="variant__label">
+                            <select name="variant" class="variant__input">
+                                {% for variant in product.variants %}
+                                    {% if variant.available %}
+                                        <option value="{{variant.id}}">{{variant.title}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            {% endunless %}
             
             <p class="featured-product__description">
                 {{product.description | truncatewords: 30 }} 

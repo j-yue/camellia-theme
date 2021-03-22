@@ -283,6 +283,11 @@ p {
   width: 1.6rem;
   height: 1.6rem;
 }
+.btn__select {
+  padding: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+}
 
 .search {
   width: 100%;
@@ -443,6 +448,52 @@ p {
 }
 .slideshow__thumbnail--selected {
   opacity: 0.5;
+}
+
+.variant {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: stretch;
+  border: 1px solid #000;
+  transition: 0.5s;
+  position: relative;
+}
+.variant:hover {
+  cursor: pointer;
+  background: var(--color__primary--100);
+}
+.variant__styled {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: calc(var(--padding)*.5);
+}
+.variant__current {
+  width: 80%;
+}
+.variant__caret {
+  width: 20%;
+  text-align: end;
+}
+.variant__wrapper {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.variant__wrapper:hover {
+  cursor: pointer;
+}
+.variant__label {
+  height: 100%;
+  opacity: 0;
+}
+.variant__input {
+  width: 100%;
+  height: 100%;
 }
 
 .header {
