@@ -3,14 +3,24 @@
 .featured-product
     padding: var(--padding)
 
+    @include mixins.medium
+        @include mixins.flex(row nowrap, center, center)
+
+    &__slideshow
+        @include mixins.medium
+            width: 50%
+
+    &__wrapper
+        @include mixins.medium
+            width: 50%
+            padding-left: var(--padding)
+            align-self: stretch
+
     &__title
         margin-top: 1rem
 
     &__btn
         width: 100%
-        @include mixins.medium
-            max-width: 50%
-            display: block
 
     &__details-link
         color: var(--color__primary)

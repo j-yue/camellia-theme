@@ -10,18 +10,24 @@
             {% endfor %}
         </div>
     </div>
-    <div class="featured-product__details-wrapper">
-        <h3 class="featured-product__title">{{product.title}}</h3>
-        <p class="featured-product__price">{{product.price | money}}</p>
-        {% if product.available %}
-            <button class="featured-product__btn btn btn--primary">Add to cart</button>
-        {% else %}
-            <button class="featured-product__btn btn btn--disabled" disabled>Sold Out</button>
-        {% endif %}
-        <p class="featured-product__details">{{product.description | truncatewords: 50 }} 
-            <a href="{{product.url}}" class="featured-product__details-link link">View details</a>
-        </p>
-        
+    <div class="featured-product__wrapper">
+        <div class="featured-product__details">
+            <h3 class="featured-product__title">{{product.title}}</h3>
+            <p class="featured-product__price">{{product.price | money}}</p>
+            
+            <p class="featured-product__description">
+                {{product.description | truncatewords: 30 }} 
+                <a href="{{product.url}}" class="featured-product__details-link link">View details</a>
+            </p>
+            
+        </div>
+        <div class="featured-product__btn-wrapper">
+            {% if product.available %}
+                <button class="featured-product__btn btn btn--primary">Add to cart</button>
+            {% else %}
+                <button class="featured-product__btn btn btn--disabled" disabled>Sold Out</button>
+            {% endif %}
+        </div>
     </div>
 </section>
 
