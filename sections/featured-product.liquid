@@ -2,11 +2,11 @@
 
 <section class="featured-product">
     <div class="featured-product__slideshow slideshow">
-        {% include 'responsive-img', img: product.images[0], class: 'slideshow__current-img' %}
+        {% render 'responsive-img', img: product.images[0], class: 'slideshow__current-img' %}
         
         <div class="featured-product__slideshow slideshow__thumbnails">  
             {% for img in product.images %}
-                {% include 'responsive-img', img, class: 'slideshow__thumbnail' %}
+                {% render 'responsive-img', img: img , class: 'slideshow__thumbnail' %}
             {% endfor %}
         </div>
     </div>
@@ -20,7 +20,7 @@
                     <div class="variant__styled" aria-hidden="true">
                         <span class="variant__current">{{product.first_available_variant.title}}</span>
                         <button class="variant__caret btn btn__select">
-                            {% include 'icon-caret-down' %}
+                            {% render 'icon-caret-down' %}
                         </button>
                     </div>
                     <div class="variant__wrapper">
