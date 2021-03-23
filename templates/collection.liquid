@@ -1,4 +1,4 @@
-{% paginate collection.products by 2 %}
+<!-- {% paginate collection.products by 20 %}
   <h1>{{ collection.title }}</h1>
   {% for product in collection.products %}
     <div>
@@ -15,4 +15,33 @@
   {% if paginate.pages > 1 %}
     {{ paginate | default_pagination }}
   {% endif %}
-{% endpaginate %}
+{% endpaginate %} -->
+
+
+//{% assign products = collection.products %}
+<section class="collection">
+
+  <div class="breadcrumb">breadcrumb</div>
+
+  <h1 class="collection__title">{{collection.title}}</h1>
+  <p class="collection__description">{{collection.description}}</p>
+  
+  <div class="collection__controls">
+    <span class="collection__count">{{collection.products_count}} products</span>
+    <span>filter</span>
+  </div>
+
+  {% paginate collection.products by 12 %}
+    <div class="collection__products">
+    {% for product in collection.products %}
+      {% render 'product-card', product: product, class: 'collection_product' %}
+    {% endfor %}
+    </div>
+    
+    {% if paginate.pages > 1 %}
+      <button class="collection__btn btn btn--primary">Load more</button>
+    {% endif %}
+
+  {% endpaginate %}
+
+</section>

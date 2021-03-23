@@ -1,0 +1,25 @@
+@use '../mixins'
+
+.product-card
+
+    @include mixins.flex(column nowrap, space-between, center)
+
+    &__img
+        height: 5rem
+
+    &__title
+        height: 4rem
+        text-decoration: none
+        color: inherit
+        text-align: center
+        font-weight: normal
+        letter-spacing: -.5px
+        line-height: 1.35
+        padding-top: calc(var(--padding)*.5)
+
+    &__price
+        // grid-area: price
+
+    &__btn
+        // width: 100%
+        // grid-area: btn
