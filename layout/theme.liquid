@@ -19,6 +19,10 @@
   {{ 'application.js' | asset_url | script_tag }}
   {{ 'lazysizes.min.js' | asset_url | script_tag }}
 
+  {% if template contains 'collection' %}
+    {{ 'loadmore.js' | asset_url | script_tag}}
+  {% endif %}
+
 <style>
   {{ settings.font__heading | font_face }}
   {{ settings.font__body | font_face }}
