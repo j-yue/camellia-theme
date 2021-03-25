@@ -6,10 +6,33 @@ Accepts:
 - pages: {Number} Number of pages created by paginate tag (required)
 - class: {String} Name of class for additional styling (optional)
 
-Usage:
 {% render 'pagination', paginate: paginate, pages: paginate.pages, class: 'collection__products'%}
 {% endcomment %}
 
-<button class="btn btn--primary collection__load-btn" data-next-page="2">
+<button class="btn btn--primary collection__load-btn" data-next-page="2" onclick="appendProducts(this, {{pages}})">
     Load more
 </button>
+
+<script>
+    const ATTR_NAME = 'data-next-page';
+    const QUERY = '?page=';
+    const container = document.querySelector('.collection__products');
+
+    function textToHTML(text) {
+        const parser = new DOMParser();
+        return parser.parseFromString(text, 'text/html');
+    }
+
+    function updateBtn(btn, maxPages) {
+        const currentPage = parseInt(btn.getAttribute(ATTR_NAME));
+        const nextPage = currentPage + 1;
+        btn.setAttribute(ATTR_NAME, nextPage);
+        if (nextPage > maxPages) btn.classList.add('collection__load-btn--hidden');
+        return currentPage;
+    }
+
+    function appendProducts(btn, maxPages) {
+        const currentPage = updateBtn(btn, maxPages);
+        fetch(QUERY + currentPage).then(response => response.text()).then(data => textToHTML(data)).then(html => container.append(...html.querySelectorAll('.collection__product')));
+    }
+</script>

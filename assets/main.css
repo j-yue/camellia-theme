@@ -521,9 +521,12 @@ p {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: var(--padding);
 }
-.collection__btn {
+.collection__load-btn {
   display: block;
   margin: var(--padding) auto;
+}
+.collection__load-btn--hidden {
+  display: none;
 }
 .collection__controls {
   width: 100%;
