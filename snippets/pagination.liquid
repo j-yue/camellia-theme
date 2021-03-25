@@ -1,0 +1,15 @@
+{% comment %}
+Paginates a collection
+
+Accepts:
+- paginate: {Object} Paginate Liquid Object (required)
+- pages: {Number} Number of pages created by paginate tag (required)
+- class: {String} Name of class for additional styling (optional)
+
+Usage:
+{% render 'pagination', paginate: paginate, pages: paginate.pages, class: 'collection__products'%}
+{% endcomment %}
+
+<button class="btn btn--primary collection__load-btn" data-next-page="2">
+    Load more
+</button>

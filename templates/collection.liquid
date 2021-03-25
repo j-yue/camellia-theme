@@ -1,24 +1,4 @@
-<!-- {% paginate collection.products by 20 %}
-  <h1>{{ collection.title }}</h1>
-  {% for product in collection.products %}
-    <div>
-      <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-      {{ product.price | money }}
-      {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
-      <a href="{{ product.url | within: collection }}">
-        <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-      </a>
-    </div>
-  {% else %}
-    <p>no matches</p>
-  {% endfor %}
-  {% if paginate.pages > 1 %}
-    {{ paginate | default_pagination }}
-  {% endif %}
-{% endpaginate %} -->
 
-
-//{% assign products = collection.products %}
 <section class="collection">
 
   <div class="breadcrumb">breadcrumb</div>
@@ -34,12 +14,12 @@
   {% paginate collection.products by 12 %}
     <div class="collection__products">
     {% for product in collection.products %}
-      {% render 'product-card', product: product, class: 'collection_product' %}
+      {% render 'product-card', product: product, class: 'collection__product' %}
     {% endfor %}
     </div>
     
     {% if paginate.pages > 1 %}
-      <button class="collection__btn btn btn--primary">Load more</button>
+      {% render 'pagination', paginate: paginate, pages: paginate.pages %}
     {% endif %}
 
   {% endpaginate %}
