@@ -1,0 +1,14 @@
+@use '../mixins'
+
+.breadcrumbs
+
+    &__list
+        list-style: none
+        padding: 0
+        text-transform: capitalize
+        @include mixins.flex(row wrap, flex-start, center)
+
+    &__separator
+        &::after
+            content: '\203A'
+            margin: calc(var(--padding)*.5)

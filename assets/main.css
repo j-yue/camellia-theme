@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html, body, div, section, article, header, footer, nav, main, img, li {
   box-sizing: border-box;
 }
@@ -530,6 +531,20 @@ p {
 }
 .collection__controls {
   width: 100%;
+}
+
+.breadcrumbs__list {
+  list-style: none;
+  padding: 0;
+  text-transform: capitalize;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.breadcrumbs__separator::after {
+  content: "›";
+  margin: calc(var(--padding)*.5);
 }
 
 .header {
