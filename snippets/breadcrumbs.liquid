@@ -1,0 +1,28 @@
+{% comment %}
+Creates breadcrumbs for collection and product pages
+
+Accepts:
+- class: {String} Name of class for additional styling (optional)
+
+{% render 'breadcrumbs', class: 'collection__breadcrumbs' %}
+{% endcomment %}
+
+<nav class="breadcrumbs {{class}}" role="navigation" aria-label="breadcrumbs">
+    <ol class="breadcrumbs__list">
+        <li class="breadcrumbs__item">
+            <a href="{{routes.root_url}}" class="breadcrumbs__link">Home</a>
+            <span class="breadcrumbs__separator"></span>
+        </li>
+        {% if template contains 'collection' %}
+            <li class="breadcrumbs__item">{{collection.title}}</li>
+        {% elsif template contains 'product' %}
+            {% if collection.url %}
+                <li class="breadcrumbs__item">
+                    <a href="{{collection.url}}" class="breadcrumbs__link">{{collection.title}}</a>
+                    <span class="breadcrumbs__separator"></span>
+                </li>
+                <li class="breadcrumbs__item">{{product.title}}</li>
+            {% endif %}
+        {% endif %}
+    </ol>
+</nav>

@@ -3,20 +3,28 @@ Creates a product card
 
 Accepts:
 - product: {Object} Product Liquid Object (required)
+- collection: {Object} Collection Liquid Object (optional)
 - class: {String} Name of class for additional styling (optional)
 
 Usage:
 {% render 'product-card', product: collection.products[0], class: 'collection__product'%}
 {% endcomment %}
 
+{% capture url %}
+    {% if collection %}
+        {{product.url | within: collection }}
+    {% else %}
+        {{product.url}}
+    {% endif %}
+{% endcapture %}
 
 <div class="product-card {{class}}">
     <div class="product-card__img">
-        <a href="{{product.url}}" class="product-card__link">
+        <a href="{{url}}" class="product-card__link">
             {% render 'responsive-img', img: product.images[0] %}
         </a>
     </div>
-    <a href="{{product.url}}" class="product-card__title">{{product.title}}</a>
+    <a href="{{url}}" class="product-card__title">{{product.title}}</a>
     <p class="product-card__price">{{product.price | money}}</p>
     <button class="product-card__btn btn btn--primary">add to cart</button>
 </div>

@@ -1,7 +1,7 @@
 
 <section class="collection">
 
-  <div class="breadcrumb">breadcrumb</div>
+  {% render 'breadcrumbs', class: 'collection__breadcrumbs' %}
 
   <h1 class="collection__title">{{collection.title}}</h1>
   <p class="collection__description">{{collection.description}}</p>
@@ -14,7 +14,7 @@
   {% paginate collection.products by 12 %}
     <div class="collection__products">
     {% for product in collection.products %}
-      {% render 'product-card', product: product, class: 'collection__product' %}
+      {% render 'product-card', product: product, collection: collection, class: 'collection__product' %}
     {% endfor %}
     </div>
     
