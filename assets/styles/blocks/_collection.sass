@@ -6,10 +6,8 @@
         display: grid
         grid-template-columns: repeat(2, 1fr)
         grid-gap: var(--padding)
-        // grid-area: 1 / 1 / span 6 / span 2
-        // grid-template-rows: repeat(auto-fit, minmax(45%, 1fr))
-        // grid-gap: var(--padding)
-        // @include mixins.flex(row wrap, center, stretch)
+        @include mixins.medium
+            grid-template-columns: repeat(3, 1fr)
 
     &__product
         // @include mixins.flex(column nowrap, space-between, center)

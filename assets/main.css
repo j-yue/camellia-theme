@@ -502,6 +502,12 @@ p {
 }
 .product-card__img {
   height: 5rem;
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .product-card__img {
+    height: 10rem;
+  }
 }
 .product-card__title {
   height: 4rem;
@@ -517,6 +523,11 @@ p {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: var(--padding);
+}
+@media screen and (min-width: 768px) {
+  .collection__products {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 .collection__load-btn {
   display: block;
