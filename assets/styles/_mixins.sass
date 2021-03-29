@@ -77,30 +77,27 @@ $large: 1440px
 //button styles
 @mixin btn
     line-height: 2
-    border-radius: .4rem
     padding: 1rem
-    min-width: 20%
     transition: .5s
     text-align: center
-    text-transform: uppercase
     &:hover
         cursor: pointer
 
 @mixin btnStyle($bg, $color, $border: $bg)
     background: $bg
-    border: 2px solid $border
+    border: 1px solid $border
     color: $color
     font-weight: bold
 
 @mixin btn-primary
-    @include btnStyle(var(--color__primary), var(--color__secondary))
+    @include btnStyle(var(--color__primary), #fff)
     &:hover
-        @include btnStyle(var(--color__secondary), var(--color__primary), var(--color__primary))
+        @include btnStyle(#fff, var(--color__primary), var(--color__primary))
 
-@mixin btn-secondary
-    @include btnStyle(var(--color__secondary), var(--color__primary))
+@mixin btn-inverse
+    @include btnStyle(#fff, var(--color__primary), var(--color__primary))
     &:hover
-        @include btnStyle(var(--color__primary), var(--color__secondary))
+        @include btnStyle(var(--color__primary), #fff)
 
 @mixin btn-outline
     @include btnStyle(none, var(--color__secondary), var(--color__secondary))
