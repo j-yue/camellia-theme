@@ -1,21 +1,22 @@
 @use '../mixins'
 
 .product-card
-
+    // box-shadow: rgb(211 212 213) 0px 6px 12px 0px
     @include mixins.flex(column nowrap, space-between, flex-start)
 
     &__img
-        height: 8rem
+        height: 15rem
         width: 100%
+        margin-bottom: var(--padding--half)
         @include mixins.medium
             height: 14rem
 
+    &__details
+
     &__title
-        height: 4rem
+        font-size: inherit
         text-decoration: none
         color: inherit
-        letter-spacing: -1px
-        margin-top: calc(var(--padding) * .5)
         @include mixins.medium
             height: auto
 
@@ -26,4 +27,3 @@
 
     &__btn
         width: 100%
-        letter-spacing: -1px

@@ -116,6 +116,7 @@ p {
 
 :root {
   --padding: 1.6rem;
+  --padding--half: .8rem;
   --height-header: var(--padding) + functions.heading-size(6);
   --font-size-nav-mobile: 3.2rem;
   --font-size-nav-desktop: 1.6rem;
@@ -233,47 +234,71 @@ p {
 .btn:hover {
   cursor: pointer;
 }
+.btn--default {
+  background: #000;
+  border: 1px solid #000;
+  color: #fff;
+  font-weight: 300;
+}
+.btn--default:hover {
+  background: var(--color__primary);
+  border: 1px solid var(--color__primary);
+  color: #fff;
+  font-weight: 300;
+}
+.btn--ghost {
+  background: none;
+  border: 1px solid #000;
+  color: #000;
+  font-weight: 300;
+}
+.btn--ghost:hover {
+  background: var(--color__primary);
+  border: 1px solid var(--color__primary);
+  color: #fff;
+  font-weight: 300;
+}
 .btn--primary {
   background: var(--color__primary);
   border: 1px solid var(--color__primary);
   color: #fff;
-  font-weight: bold;
+  font-weight: 300;
 }
 .btn--primary:hover {
   background: #fff;
   border: 1px solid var(--color__primary);
   color: var(--color__primary);
-  font-weight: bold;
+  font-weight: 300;
 }
 .btn--inverse {
   background: #fff;
   border: 1px solid var(--color__primary);
   color: var(--color__primary);
-  font-weight: bold;
+  font-weight: 300;
 }
 .btn--inverse:hover {
   background: var(--color__primary);
   border: 1px solid var(--color__primary);
   color: #fff;
-  font-weight: bold;
+  font-weight: 300;
 }
 .btn--outline {
   background: none;
   border: 1px solid var(--color__secondary);
   color: var(--color__secondary);
-  font-weight: bold;
+  font-weight: 300;
 }
 .btn--outline:hover {
   background: var(--color__primary);
   border: 1px solid var(--color__primary);
   color: var(--color__secondary);
-  font-weight: bold;
+  font-weight: 300;
 }
 .btn--disabled {
   background: #ccc;
   border: 1px solid #ccc;
   color: #666;
-  font-weight: bold;
+  font-weight: 300;
   cursor: not-allowed !important;
 }
 .btn__header {
@@ -317,6 +342,10 @@ p {
   text-decoration: none;
   color: inherit;
 }
+.link--product {
+  text-decoration: none;
+  color: inherit;
+}
 .link-btn {
   line-height: 2;
   padding: 1rem;
@@ -330,43 +359,43 @@ p {
   background: var(--color__primary);
   border: 1px solid var(--color__primary);
   color: #fff;
-  font-weight: bold;
+  font-weight: 300;
 }
 .link-btn--primary:hover {
   background: #fff;
   border: 1px solid var(--color__primary);
   color: var(--color__primary);
-  font-weight: bold;
+  font-weight: 300;
 }
 .link-btn--inverse {
   background: #fff;
   border: 1px solid var(--color__primary);
   color: var(--color__primary);
-  font-weight: bold;
+  font-weight: 300;
 }
 .link-btn--inverse:hover {
   background: var(--color__primary);
   border: 1px solid var(--color__primary);
   color: #fff;
-  font-weight: bold;
+  font-weight: 300;
 }
 .link-btn--outline {
   background: none;
   border: 1px solid var(--color__secondary);
   color: var(--color__secondary);
-  font-weight: bold;
+  font-weight: 300;
 }
 .link-btn--outline:hover {
   background: var(--color__primary);
   border: 1px solid var(--color__primary);
   color: var(--color__secondary);
-  font-weight: bold;
+  font-weight: 300;
 }
 .link-btn--disabled {
   background: #ccc;
   border: 1px solid #ccc;
   color: #666;
-  font-weight: bold;
+  font-weight: 300;
   cursor: not-allowed !important;
 }
 
@@ -495,8 +524,9 @@ p {
   align-items: flex-start;
 }
 .product-card__img {
-  height: 8rem;
+  height: 15rem;
   width: 100%;
+  margin-bottom: var(--padding--half);
 }
 @media screen and (min-width: 768px) {
   .product-card__img {
@@ -504,11 +534,9 @@ p {
   }
 }
 .product-card__title {
-  height: 4rem;
+  font-size: inherit;
   text-decoration: none;
   color: inherit;
-  letter-spacing: -1px;
-  margin-top: calc(var(--padding) * .5);
 }
 @media screen and (min-width: 768px) {
   .product-card__title {
@@ -521,13 +549,17 @@ p {
 }
 .product-card__btn {
   width: 100%;
-  letter-spacing: -1px;
 }
 
 .collection__products {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   grid-gap: var(--padding);
+}
+@media screen and (min-width: 500px) {
+  .collection__products {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media screen and (min-width: 768px) {
   .collection__products {

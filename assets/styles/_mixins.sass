@@ -87,7 +87,17 @@ $large: 1440px
     background: $bg
     border: 1px solid $border
     color: $color
-    font-weight: bold
+    font-weight: 300
+
+@mixin btn-default
+    @include btnStyle(#000, #fff)
+    &:hover
+        @include btnStyle(var(--color__primary), #fff)
+
+@mixin btn-ghost
+    @include btnStyle(none, #000, #000)
+    &:hover
+        @include btnStyle(var(--color__primary), #fff)
 
 @mixin btn-primary
     @include btnStyle(var(--color__primary), #fff)

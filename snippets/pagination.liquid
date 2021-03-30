@@ -9,6 +9,6 @@ Accepts:
 {% render 'pagination', paginate: paginate, pages: paginate.pages, class: 'collection__products'%}
 {% endcomment %}
 
-<button class="btn btn--inverse collection__load-btn" data-next-page="2" onclick="appendProducts(this, {{pages}})">
+<button class="btn btn--ghost collection__load-btn" data-next-page="2" onclick="appendProducts(this, {{pages}})">
     Load more
 </button>

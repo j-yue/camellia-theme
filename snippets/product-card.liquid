@@ -18,22 +18,26 @@ Usage:
     {% endif %}
 {% endcapture %}
 
-<div class="product-card {{class}}">
+<article class="product-card {{class}}">
     <div class="product-card__img">
         <a href="{{url}}" class="product-card__link">
             {% render 'responsive-img', img: product.images[0] %}
         </a>
     </div>
-    <a href="{{url}}" class="product-card__title">{{product.title}}</a>
-    <p class="product-card__price">
-        {% if product.price_varies %}
-            <span class="product-card__price--prefix">from</span>
-        {% endif %}
-    {{product.price | money}}
-    </p>
+    <div class="product-card__details">
+        <a href="{{url}}" class="product-card__title-link link link--product">
+            <h2 class="product-card__title">{{product.title}}</h2>
+        </a>
+        <p class="product-card__price">
+            {% if product.price_varies %}
+                <span class="product-card__price--prefix">from</span>
+            {% endif %}
+        {{product.price | money}}
+        </p>
+    </div>
     {% if product.available %}
-        <button class="product-card__btn product-card__btn--cart btn btn--primary">Add to cart</button>
+        <button class="product-card__btn product-card__btn--cart btn btn--default">Add to cart</button>
     {% else %}
         <button class="product-card__btn product-card__btn--oos btn btn--disabled">Sold out</button>
     {% endif %}
-</div>
+</article>
