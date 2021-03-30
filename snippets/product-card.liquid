@@ -25,6 +25,15 @@ Usage:
         </a>
     </div>
     <a href="{{url}}" class="product-card__title">{{product.title}}</a>
-    <p class="product-card__price">{{product.price | money}}</p>
-    <button class="product-card__btn btn btn--primary">Add to cart</button>
+    <p class="product-card__price">
+        {% if product.price_varies %}
+            <span class="product-card__price--prefix">from</span>
+        {% endif %}
+    {{product.price | money}}
+    </p>
+    {% if product.available %}
+        <button class="product-card__btn product-card__btn--cart btn btn--primary">Add to cart</button>
+    {% else %}
+        <button class="product-card__btn product-card__btn--oos btn btn--disabled">Sold out</button>
+    {% endif %}
 </div>

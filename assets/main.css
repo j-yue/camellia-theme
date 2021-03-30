@@ -269,12 +269,12 @@ p {
   color: var(--color__secondary);
   font-weight: bold;
 }
-.btn---disabled {
+.btn--disabled {
   background: #ccc;
   border: 1px solid #ccc;
   color: #666;
   font-weight: bold;
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 .btn__header {
   border: none;
@@ -367,7 +367,7 @@ p {
   border: 1px solid #ccc;
   color: #666;
   font-weight: bold;
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 
 .image {
@@ -514,6 +514,10 @@ p {
   .product-card__title {
     height: auto;
   }
+}
+.product-card__price--prefix {
+  font-style: italic;
+  margin-right: 1ch;
 }
 .product-card__btn {
   width: 100%;
