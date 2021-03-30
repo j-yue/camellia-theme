@@ -12,11 +12,16 @@
 
 //breakpoints
 $small: 320px
+$small-medium: 500px
 $medium: 768px
 $large: 1440px
 
 @mixin small
     @media screen and (min-width: $small)
+        @content
+
+@mixin small-medium
+    @media screen and (min-width: $small-medium)
         @content
 
 @mixin medium

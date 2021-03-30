@@ -6,7 +6,7 @@
         display: grid
         grid-template-columns: 1fr
         grid-gap: var(--padding)
-        @media screen and ( min-width: 500px)
+        @include mixins.small-medium
             grid-template-columns: repeat(2, 1fr)
         @include mixins.medium
             grid-template-columns: repeat(3, 1fr)
