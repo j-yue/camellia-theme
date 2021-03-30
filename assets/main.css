@@ -489,7 +489,7 @@ p {
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  padding: calc(var(--padding)*.5);
+  padding: var(--padding--half);
 }
 .variant__current {
   width: 80%;
@@ -593,7 +593,7 @@ p {
 }
 .breadcrumbs__separator::after {
   content: "›";
-  margin: calc(var(--padding)*.5);
+  margin: var(--padding--half);
 }
 
 .header {
