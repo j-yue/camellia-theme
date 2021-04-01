@@ -18,7 +18,7 @@ function updateBtn(btn, maxPages) {
 //create query that maintains the selected sort option
 function createQUERY(page) {
   const sort = location.search.toString();
-  return `?${sort}&page=${page}`;
+  return sort ? `${sort}&page=${page}` : `?page=${page}`;
 }
 
 //add products from next page created by paginate tag
