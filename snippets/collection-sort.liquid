@@ -1,13 +1,17 @@
+{% assign sort = collection.sort_by %}
+{% assign options = 'best-selling: Best selling | created-descending: Newest | price-ascending: Price, low to high | price-descending: Price, high to low' | split: '| ' %}
 
 <div class="collection__sort">
     <label for="sort">Sort by</label>
     <select name="sort" id="sort">
-        <option value="best-selling">Best selling</option>
-        <option value="created-descending">Newest</option>
-        <option value="price-ascending">Price, low to high</option>
-        <option value="price-descending">Price, high to low</option>
+        {% for obj in options %}
+            {% assign option = obj | split: ': ' %}
+            {% assign value = option[0] %}
+            <option value={{value}} {% if value == sort %}selected{% endif %}>{{option[1]}}</option>
+        {% endfor %}
     </select>
 </div>
+
 
 <script>
     const params = (new URL(location)).searchParams;
