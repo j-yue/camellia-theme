@@ -15,13 +15,19 @@ function updateBtn(btn, maxPages) {
   return currentPage;
 }
 
+//create query that maintains the selected sort option
+function createQUERY(page) {
+  const sort = location.search.toString();
+  return `?${sort}&page=${page}`;
+}
+
 //add products from next page created by paginate tag
 function appendProducts(btn, maxPages) {
-  const QUERY = "?page=";
   const container = document.querySelector(".collection__products");
 
   const currentPage = updateBtn(btn, maxPages);
-  fetch(QUERY + currentPage)
+
+  fetch(createQUERY(currentPage))
     .then((response) => response.text())
     .then((data) => textToHTML(data))
     .then((html) =>

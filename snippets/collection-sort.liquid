@@ -1,0 +1,20 @@
+
+<div class="collection__sort">
+    <label for="sort">Sort by</label>
+    <select name="sort" id="sort">
+        <option value="best-selling">Best selling</option>
+        <option value="created-descending">Newest</option>
+        <option value="price-ascending">Price, low to high</option>
+        <option value="price-descending">Price, high to low</option>
+    </select>
+</div>
+
+<script>
+    const params = (new URL(location)).searchParams;
+    
+    document.querySelector('#sort').addEventListener('change', e => {
+      params.set('sort_by', e.target.value);
+      window.location.search = params.toString();
+    });
+
+</script>

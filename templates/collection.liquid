@@ -9,6 +9,7 @@
   <div class="collection__controls">
     <span class="collection__count">{{collection.products_count}} products</span>
     <span>filter</span>
+    {% render 'collection-sort' %}
   </div>
 
   {% paginate collection.products by 12 %}
