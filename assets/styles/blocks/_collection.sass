@@ -6,6 +6,7 @@
         display: grid
         grid-template-columns: 1fr
         grid-gap: var(--padding)
+        margin-top: var(--padding)
         @include mixins.small-medium
             grid-template-columns: repeat(2, 1fr)
         @include mixins.medium
@@ -25,3 +26,20 @@
 
     &__controls
         width: 100%
+        @include mixins.flex(row nowrap, center, space-between)
+        position: sticky
+        border: 1px solid #999
+        top: 0
+        background: white
+        border-right: none
+        border-left: none
+        line-height: 3
+        text-align: center
+
+    &__filter
+        flex: 1
+        border-right: 1px solid #999
+
+    &__sort
+        flex: 1
+        border-left: 1px solid #999

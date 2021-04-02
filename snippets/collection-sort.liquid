@@ -2,7 +2,7 @@
 {% assign options = 'best-selling: Best selling | created-descending: Newest | price-ascending: Price, low to high | price-descending: Price, high to low' | split: '| ' %}
 
 <div class="collection__sort">
-    <label for="sort">Sort by</label>
+    <label for="sort" class="visually-hidden">Sort by</label>
     <select name="sort" id="sort">
         {% for obj in options %}
             {% assign option = obj | split: ': ' %}

@@ -555,6 +555,7 @@ p {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: var(--padding);
+  margin-top: var(--padding);
 }
 @media screen and (min-width: 500px) {
   .collection__products {
@@ -580,6 +581,26 @@ p {
 }
 .collection__controls {
   width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: space-between;
+  position: sticky;
+  border: 1px solid #999;
+  top: 0;
+  background: white;
+  border-right: none;
+  border-left: none;
+  line-height: 3;
+  text-align: center;
+}
+.collection__filter {
+  flex: 1;
+  border-right: 1px solid #999;
+}
+.collection__sort {
+  flex: 1;
+  border-left: 1px solid #999;
 }
 
 .breadcrumbs__list {
