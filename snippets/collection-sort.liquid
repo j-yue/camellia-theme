@@ -1,3 +1,14 @@
+{% comment %}
+    Create <select> that sorts collection by:
+    - best selling
+    - newest
+    - price, low to high
+    - price, high to low
+
+    Usage:
+    {%render 'collection-sort'%}
+{% endcomment %}
+
 {% assign sort = collection.sort_by %}
 {% assign options = 'best-selling: Best selling | created-descending: Newest | price-ascending: Price, low to high | price-descending: Price, high to low' | split: '| ' %}
 
