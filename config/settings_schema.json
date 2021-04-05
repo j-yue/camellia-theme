@@ -82,15 +82,35 @@
       },
       {
         "type": "paragraph",
-        "content": "Enter a comma-separated list of the product categories you would liked to use as a category for filtering products"
+        "content": "Enter a comma-separated list of the product categories you would like to use as a category for filtering products"
       },
       {
         "type": "paragraph",
-        "content": "For example, with nomenclature like 'origin_korea' in a product tag, '_' is the separator and 'origin' is the category. Alternatively, you can use another separator, like ':', '$', and etc."
+        "content": "For example, with nomenclature like 'origin_korea' in a product tag, '_' is the separator and 'origin' is the category. Alternatively, you can use another separator, like ':', '#', and etc. You can use space between words, but multiple spaces will be converted to one sapce."
       },
       {
         "type": "paragraph",
-        "content": "Case sensitive."
+        "content": "Case INSENSITIVE and whitespace optional."
+      },
+      {
+        "type": "paragraph",
+        "content": "type, TYPE,brand,    BRand, ORIGIN"
+      },
+      {
+        "type": "paragraph",
+        "content": "is the same as"
+      },
+      {
+        "type": "paragraph",
+        "content": "type, brand, origin"
+      },
+      {
+        "type": "paragraph",
+        "content": "is the same as"
+      },
+      {
+        "type": "paragraph",
+        "content": "type,brand,origin"
       },
       {
         "type": "text",
