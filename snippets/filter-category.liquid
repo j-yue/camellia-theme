@@ -17,7 +17,12 @@ Usage:
             {% assign parsedTag = tag | split: settings.filter__separator %}
             {% assign prefix = parsedTag[0] | downcase %}
             {% if prefix == category %}
-                <li>{{parsedTag[1] | capitalize}}</li>
+                <li class="category__list-item">
+                    <label class="category__label">
+                        <input type="checkbox" class="category__checkbox" id="{{tag}}">
+                        {{parsedTag[1] | capitalize}}
+                    </label>
+                </li>
             {% endif %}
         {% endfor %}
     </ul>

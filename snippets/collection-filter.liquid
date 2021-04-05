@@ -18,12 +18,17 @@ Usage:
         <h2 class="filter__title">Filter</h2>
         <div class="filter__category-container">
             <div class="filter__category category">
-                <h3 class="category__title">Type</h3>
+                <h3 class="category__title">Product Type</h3>
                 <ul class="category__list">
                     {% for type in collection.all_types %}
                     {% assign link = type | link_to_type %}
                     {% unless link contains 'Unknown' %}
-                        <li class="category__list-item">{{link}}</li>
+                        <li class="category__list-item">
+                            <label class="category__label">
+                                <input type="checkbox" class="category__checkbox" id="{{type}}">
+                                {{type | capitalize}}
+                            </label>
+                        </li>
                     {% endunless %}
                     {% endfor %}
                 </ul>
