@@ -15,7 +15,7 @@
 
   {{ content_for_header }} <!-- Header hook for plugins -->
   {{ 'application.scss.css' | asset_url | stylesheet_tag }}
-  {{ 'main.css' | | asset_url | | stylesheet_tag }}
+  {{ 'main.css' | asset_url | stylesheet_tag }}
   {{ 'application.js' | asset_url | script_tag }}
   {{ 'lazysizes.min.js' | asset_url | script_tag }}
 

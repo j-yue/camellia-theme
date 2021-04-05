@@ -7,9 +7,13 @@ Accepts:
 Usage:
 {% render 'collection-filter', collection: collection %}
 {% endcomment %}
+{% assign separator = settings.filter__separator %}
+
+{% comment %}Sanitize input to be case insensitive and strip additional spaces and remove repeats{% endcomment %}
+{% assign categories = settings.filter__prefix | remove: ' ' | downcase | split: ',' | uniq %}
 
 <aside class="collection__filter filter">
-    
+
     <div class="filter__container">
         <h2 class="filter__title">Filter</h2>
         <div class="filter__category-container">
@@ -24,9 +28,12 @@ Usage:
                     {% endfor %}
                 </ul>
             </div>
+            {% for category in categories %}
+                {% render 'filter-category', tags: collection.all_tags , category: category %}
+            {% endfor %}
         </div>
     </div>
-    
+
 </aside>
 
 

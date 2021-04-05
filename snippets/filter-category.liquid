@@ -1,0 +1,24 @@
+{% comment %}
+Create and populate a category in collection filter
+
+Accepts:
+- tags: {Array} Array of Product Tags Liquid Object (required)
+- category: {String} Name of category used to filter tags (required)
+
+Usage:
+{% render 'filter-category', tags: collection.all_tags, category: prefix %}
+{% endcomment%}
+
+<div class="filter__category category">
+    <h3 class="category__title">{{category | capitalize}}</h3>
+
+    <ul class="category__list">
+        {% for tag in tags %}
+            {% assign parsedTag = tag | split: settings.filter__separator %}
+            {% assign prefix = parsedTag[0] | downcase %}
+            {% if prefix == category %}
+                <li>{{parsedTag[1] | capitalize}}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
