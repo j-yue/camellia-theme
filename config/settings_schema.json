@@ -4,37 +4,37 @@
     "theme_name": "Camellia Theme",
     "theme_author": "Jeanette Yue",
     "theme_version": "1.0.0",
-    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/using-themes\/themes-by-shopify\/debut",
-    "theme_support_url": "https:\/\/support.shopify.com\/"
+    "theme_documentation_url": "https://help.shopify.com/manual/using-themes/themes-by-shopify/debut",
+    "theme_support_url": "https://support.shopify.com/"
   },
 
   {
     "name": "Colors",
     "settings": [
       {
-      "type": "header",
-      "content": "Colors"
+        "type": "header",
+        "content": "Colors"
       },
-    
+
       {
-      "type": "color",
-      "label": "Primary Color",
-      "id": "color__primary",
-      "default": "#465C42"
+        "type": "color",
+        "label": "Primary Color",
+        "id": "color__primary",
+        "default": "#465C42"
       },
-    
+
       {
-      "type": "color",
-      "label": "Secondary Color",
-      "id": "color__secondary",
-      "default": "#ffffff"
+        "type": "color",
+        "label": "Secondary Color",
+        "id": "color__secondary",
+        "default": "#ffffff"
       },
-    
+
       {
-      "type": "color",
-      "label": "Text Color",
-      "id": "color__text",
-      "default": "#000000"
+        "type": "color",
+        "label": "Text Color",
+        "id": "color__text",
+        "default": "#000000"
       }
     ]
   },
@@ -43,22 +43,22 @@
     "name": "Typography",
     "settings": [
       {
-      "type": "header",
-      "content": "Typography"
+        "type": "header",
+        "content": "Typography"
       },
-    
+
       {
-      "type": "font_picker",
-      "label": "Heading Font",
-      "id": "font__heading",
-      "default": "helvetica_n4"
+        "type": "font_picker",
+        "label": "Heading Font",
+        "id": "font__heading",
+        "default": "helvetica_n4"
       },
-    
+
       {
-      "type": "font_picker",
-      "label": "Body Font",
-      "id": "font__body",
-      "default": "helvetica_n4"
+        "type": "font_picker",
+        "label": "Body Font",
+        "id": "font__body",
+        "default": "helvetica_n4"
       },
 
       {
@@ -70,8 +70,41 @@
         "unit": "px",
         "label": "Body text size",
         "default": 16
-    }
-
+      }
+    ]
+  },
+  {
+    "name": "Filter Categories",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Filter Categories"
+      },
+      {
+        "type": "paragraph",
+        "content": "Enter a comma-separated list of the product categories you would liked to use as a category for filtering products"
+      },
+      {
+        "type": "paragraph",
+        "content": "For example, with nomenclature like 'origin_korea' in a product tag, '_' is the separator and 'origin' is the category. Alternatively, you can use another separator, like ':', '$', and etc."
+      },
+      {
+        "type": "paragraph",
+        "content": "Case sensitive."
+      },
+      {
+        "type": "text",
+        "id": "filter__separator",
+        "label": "Separator",
+        "default": "_",
+        "placeholder": "In color_blue, '_' is the separator"
+      },
+      {
+        "type": "textarea",
+        "id": "filter__prefix",
+        "label": "Filter Categories",
+        "placeholder": "Color, Brand, Origin, TeaType"
+      }
     ]
   },
   {
@@ -82,7 +115,7 @@
         "label": "Favicon",
         "id": "favicon",
         "info": "Will be scaled down to 32x32px"
-        }
+      }
     ]
   }
 ]
