@@ -596,7 +596,6 @@ p {
 }
 .collection__filter {
   flex: 1;
-  border-right: 1px solid #999;
 }
 .collection__sort {
   flex: 1;
@@ -615,6 +614,12 @@ p {
 .breadcrumbs__separator::after {
   content: "›";
   margin: var(--padding--half);
+}
+
+.category__list {
+  margin-top: 0;
+  padding: 0 0 0 var(--padding--half);
+  list-style: none;
 }
 
 .header {
