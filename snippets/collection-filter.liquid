@@ -17,22 +17,24 @@ Usage:
     <div class="filter__container">
         <h2 class="filter__title">Filter</h2>
         <div class="filter__category-container">
-            <div class="filter__category category">
+
+            {% comment %} <div class="filter__category category">
                 <h3 class="category__title">Product Type</h3>
                 <ul class="category__list">
                     {% for type in collection.all_types %}
                     {% assign link = type | link_to_type %}
                     {% unless link contains 'Unknown' %}
                         <li class="category__list-item">
-                            <label class="category__label">
+                            {% comment %} <label class="category__label">
                                 <input type="checkbox" class="category__checkbox" id="{{type}}">
                                 {{type | capitalize}}
-                            </label>
+                            </label> {% endcomment %}
                         </li>
                     {% endunless %}
                     {% endfor %}
                 </ul>
             </div>
+             {% endcomment %}
             {% for category in categories %}
                 {% render 'filter-category', tags: collection.all_tags , category: category %}
             {% endfor %}
@@ -41,4 +43,49 @@ Usage:
 
 </aside>
 
+<script>
+    
+    const tags = document.querySelectorAll('.category__checkbox');
+    addTagListeners();
 
+    function addTagListeners() {
+        tags.forEach(tag => {
+            tag.addEventListener('change', () => updateURL(tag));
+        });
+    }
+
+    {% comment %}
+        Takes a string representation of anchor element and returns text in href attr
+        @param {String} str Stringified anchor element    
+        @return {String} Text within href attribute of str
+    {% endcomment %}
+    function parseAnchorStr(str) {
+        const regex = /\/collections(.*?)"/gm;
+        let href = str.match(regex);
+        href = href[0].split('"');
+        return href[0];
+    }
+
+    {% comment %}
+        Change url based on state of tag and update history
+        @param {Npde} tag Checkbox clicked    
+        @return {String} Text within href attribute of str
+    {% endcomment %}
+    function updateURL(tag) {
+        const _tag = (tag.checked) ? tag.dataset.addTag : tag.dataset.removeTag;
+        const href = parseAnchorStr(_tag);
+        window.location.href = href;
+    }
+
+    {% comment %} function refreshPage(href) {
+        fetch(href)
+            .then(response => response.text())
+            .then(data => textToHTML(data))
+            .then(html => html.body)
+            .then(body => document.body.replaceWith(body))
+            .then(() => addTagListeners())
+    } {% endcomment %}
+    
+
+    
+</script>

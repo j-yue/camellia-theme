@@ -2,8 +2,9 @@
 {% render 'collection-filter', collection: collection %}
 
 
-<section class="collection">
+<section class="collection"
 
+{{collection.products_count}}
   {% render 'breadcrumbs', class: 'collection__breadcrumbs' %}
 
   <h1 class="collection__title">{{collection.title}}</h1>
