@@ -19,7 +19,6 @@ Usage:
             {% if prefix == category %}
 
                 {% assign tagHandle = tag | handleize %}
-
                 <li class="category__list-item">
                     <label class="category__label">
                         <input 
@@ -32,6 +31,7 @@ Usage:
                             data-remove-tag='{{tag | link_to_remove_tag: tag}}'
                         >
                         {{parsedTag[1] | capitalize}}
+                        <span class="category__tag-count" data-tag='{{tag}}'></span>
                     </label>
                 </li>
             {% endif %}

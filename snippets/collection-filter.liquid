@@ -13,7 +13,7 @@ Usage:
 {% assign categories = settings.filter__prefix | remove: ' ' | downcase | split: ',' | uniq %}
 
 <aside class="collection__filter filter">
-
+    
     <div class="filter__container">
         <h2 class="filter__title">Filter</h2>
         <div class="filter__category-container">
@@ -21,7 +21,7 @@ Usage:
             {% for category in categories %}
                 {% render 'filter-category', tags: collection.all_tags , category: category %}
             {% endfor %}
-            
+
         </div>
     </div>
 
@@ -60,16 +60,18 @@ Usage:
         const href = parseAnchorStr(_tag);
         window.location.href = href;
     }
-
-    {% comment %} function refreshPage(href) {
-        fetch(href)
-            .then(response => response.text())
-            .then(data => textToHTML(data))
-            .then(html => html.body)
-            .then(body => document.body.replaceWith(body))
-            .then(() => addTagListeners())
-    } {% endcomment %}
     
+    const tagCounts = document.querySelectorAll('.category__tag-count');
+    const allProducts = {{collection.all_products | json}};
 
-    
+    function getProductCount(el) {
+        const tag = el.dataset.tag;
+        const matchingProducts = allProducts.filter(product => product.tags.includes(tag));
+        el.innerText = `(${matchingProducts.length})`;
+    }
+
+    tagCounts.forEach(tag => {
+        getProductCount(tag)
+    });
+
 </script>
