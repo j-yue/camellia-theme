@@ -1,8 +1,7 @@
 
 {% render 'collection-filter', collection: collection %}
 
-
-<section class="collection"
+<section class="collection">
 
 {{collection.products_count}}
   {% render 'breadcrumbs', class: 'collection__breadcrumbs' %}
@@ -15,7 +14,11 @@
     {% render 'collection-sort' %}
   </div>
 
-  {% paginate collection.products by 12 %}
+  <div class="collection__products">
+    {% render 'filtered-products' %}
+  </div>
+
+  {% comment %} {% paginate collection.products by 12 %}
     <div class="collection__products">
     {% for product in collection.products %}
       {% render 'product-card', product: product, collection: collection, class: 'collection__product' %}
@@ -26,6 +29,6 @@
       {% render 'pagination', paginate: paginate, pages: paginate.pages %}
     {% endif %}
 
-  {% endpaginate %}
+  {% endpaginate %} {% endcomment %}
 
 </section>

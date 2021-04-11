@@ -1,0 +1,29 @@
+{% assign collectionPath = '/collections/' | append: collection.handle %}
+{% assign tagHandles = request.path | remove: collectionPath | remove: '/' %}
+{% assign numTags = tagHandles | size %}
+
+{% if numTags == 0 %}
+    {% for product in collection.all_products %}
+        {% render 'product-card', product: product, collection: collection, class: 'collection__product' %}
+    {% endfor %}
+
+{% else %}
+
+    {% assign matches = '' %}
+
+    {% comment %} normalize tags from their handles {% endcomment %}
+    {% assign tags = tagHandles | replace: '-', ' ' | split: '+' | join: '&&&' %}
+
+
+    {% for product in collection.all_products %}
+        {% assign productTags = product.tags | join: '&&&' | append: '&&&' | append: tags | downcase | split: '&&&'%}
+        {% assign combinedLength = productTags | size %}
+        {% assign uniqueLength = productTags | uniq | size %}
+        {% if uniqueLength < combinedLength %}
+            {% render 'product-card', product: product, collection: collection, class: 'collection__product' %}
+        {% endif %}
+    {% endfor %}
+
+{% endif %}
+
+

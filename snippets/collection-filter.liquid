@@ -28,14 +28,45 @@ Usage:
 </aside>
 
 <script>
+
+    const tagCounts = document.querySelectorAll('.category__tag-count');
+    const allProducts = {{collection.all_products | json}};
+
+    {% comment %} console.log(allProducts); {% endcomment %}
     
     const tags = document.querySelectorAll('.category__checkbox');
+
     addTagListeners();
 
+    tagCounts.forEach(tag => {
+        getProductCount(tag)
+    });
+
+
+    
     function addTagListeners() {
         tags.forEach(tag => {
-            tag.addEventListener('change', () => updateURL(tag));
+            tag.addEventListener('change', () => {
+                updateURL(tag);
+                updateProducts();
+                });
         });
+    }
+
+
+    {% comment %} avoid nesting for loops to search for duplicates {% endcomment %}
+    {% comment %} if there are duplicates, that means there was at least one match {% endcomment %}
+    function checkMatch(selectedTags, productTags) {
+        const comboArr = [...selectedTags, ...productTags];
+        const comboSet = [...new Set(comboArr)];
+        return comboSet.length < comboArr.length;
+    }
+    
+    function updateProducts() {
+        let selectedTags = [...tags].filter(tags => tags.checked).map(el => el.dataset.tag);
+        let matchingProducts = [...allProducts];
+        matchingProducts = matchingProducts.filter(product => checkMatch(selectedTags, product.tags));
+        console.log(matchingProducts.map(product => product.id));
     }
 
     {% comment %}
@@ -52,17 +83,50 @@ Usage:
 
     {% comment %}
         Change url based on state of tag and update history
-        @param {Npde} tag Checkbox clicked    
+        @param {Node} tag Checkbox clicked    
         @return {String} Text within href attribute of str
     {% endcomment %}
-    function updateURL(tag) {
-        const _tag = (tag.checked) ? tag.dataset.addTag : tag.dataset.removeTag;
-        const href = parseAnchorStr(_tag);
-        window.location.href = href;
+    function updateURL(input) {
+        const handle = input.dataset.handle;
+        const urlParams = getUrlParams();
+        const [collection, tagHandles, sort] = urlParams;
+        
+        const updatedHandles = (input.checked) ? addHandle(handle, tagHandles) : removeHandle(handle, tagHandles);
+        const newPath = createPath(collection, updatedHandles, sort);
+        
+        {% comment %} window.location.href = newPath; {% endcomment %}
+        
+        window.history.pushState({}, '', newPath);
     }
-    
-    const tagCounts = document.querySelectorAll('.category__tag-count');
-    const allProducts = {{collection.all_products | json}};
+
+    function createPath(collection, handles, sort) {
+        const handlesPath = handles ? `/${handles}` : '';
+        const sortPath = sort ? `?sort_by=${sort}` : '';
+        return collection + handlesPath + sortPath;
+    }
+
+    function getUrlParams() {
+        const url = new URL(location);
+        const collectionPath = '{{collection.url}}';
+        const sortParam = url.searchParams.get('sort_by');
+        
+        let tagHandles = url.toString().split(collectionPath);
+        tagHandles = tagHandles[1];
+
+        if (sortParam) tagHandles = (tagHandles.split('?'))[0];
+
+        tagHandles = tagHandles.slice(1);
+        
+        return [collectionPath, tagHandles, sortParam];
+    }
+
+    function addHandle(handle, tagHandles) {
+        return (!tagHandles) ? handle : `${tagHandles}+${handle}`;
+    }
+
+    function removeHandle(handle, tagHandles) {
+        return tagHandles.split('+').filter(_handle => _handle !== handle).join('+');
+    }
 
     function getProductCount(el) {
         const tag = el.dataset.tag;
@@ -70,8 +134,6 @@ Usage:
         el.innerText = `(${matchingProducts.length})`;
     }
 
-    tagCounts.forEach(tag => {
-        getProductCount(tag)
-    });
+
 
 </script>
