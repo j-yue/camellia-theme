@@ -90,7 +90,7 @@
       },
       {
         "type": "paragraph",
-        "content": "Case INSENSITIVE and whitespace optional."
+        "content": "Case INSENSITIVE and whitespace optional. '&&&' is reserved for parsing."
       },
       {
         "type": "paragraph",
