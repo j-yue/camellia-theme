@@ -32,111 +32,44 @@ Usage:
 
 <script>
 
+    {% comment %} 
+        Populate tag counts------------------------------------------------------
+    {% endcomment %}
     const tagCounts = document.querySelectorAll('.category__tag-count');
-    const allProducts = {{collection.all_products | json}};
-
-    {% comment %} console.log(allProducts); {% endcomment %}
-    
-    const tags = document.querySelectorAll('.category__checkbox');
-
-    addTagListeners();
 
     tagCounts.forEach(tag => {
-        getProductCount(tag)
+        const allProducts = {{collection.all_products | json}};
+        const matchingProducts = allProducts.filter(product => product.tags.includes(tag.dataset.tag));
+        tag.innerText = `(${matchingProducts.length})`;
     });
 
 
-    
-    function addTagListeners() {
-        tags.forEach(tag => {
-            tag.addEventListener('change', () => {
-                updateURL(tag);
-                updateProducts();
-                });
-        });
-    }
-
-
-    {% comment %} avoid nesting for loops to search for duplicates {% endcomment %}
-    {% comment %} if there are duplicates, that means there was at least one match {% endcomment %}
-    function checkMatch(selectedTags, productTags) {
-        const comboArr = [...selectedTags, ...productTags];
-        const comboSet = [...new Set(comboArr)];
-        return comboSet.length < comboArr.length;
-    }
-    
-    function updateProducts() {
-        let selectedTags = [...tags].filter(tags => tags.checked).map(el => el.dataset.tag);
-        let matchingProducts = [...allProducts];
-        matchingProducts = matchingProducts.filter(product => checkMatch(selectedTags, product.tags));
-        console.log(matchingProducts.map(product => product.id));
-    }
 
     {% comment %}
-        Takes a string representation of anchor element and returns text in href attr
-        @param {String} str Stringified anchor element    
-        @return {String} Text within href attribute of str
+        Handle form submit--------------------------------------------------------
     {% endcomment %}
-    function parseAnchorStr(str) {
-        const regex = /\/collections(.*?)"/gm;
-        let href = str.match(regex);
-        href = href[0].split('"');
-        return href[0];
-    }
+    const form = document.querySelector('.filter__form');
+    const tags = document.querySelectorAll('.category__checkbox');
 
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        window.location.href = generatePath();
+    });
+
+    
     {% comment %}
-        Change url based on state of tag and update history
-        @param {Node} tag Checkbox clicked    
-        @return {String} Text within href attribute of str
+        Create a new path with the selected product tags
+        @return {String} Path containing handles of selected tags and the selected sort option
     {% endcomment %}
-    function updateURL(input) {
-        const handle = input.dataset.handle;
-        const urlParams = getUrlParams();
-        const [collection, tagHandles, sort] = urlParams;
-        
-        const updatedHandles = (input.checked) ? addHandle(handle, tagHandles) : removeHandle(handle, tagHandles);
-        const newPath = createPath(collection, updatedHandles, sort);
-        
-        {% comment %} window.location.href = newPath; {% endcomment %}
-        
-        window.history.pushState({}, '', newPath);
-    }
-
-    function createPath(collection, handles, sort) {
-        const handlesPath = handles ? `/${handles}` : '';
-        const sortPath = sort ? `?sort_by=${sort}` : '';
-        return collection + handlesPath + sortPath;
-    }
-
-    function getUrlParams() {
-        const url = new URL(location);
+    function generatePath() {
+        const selectedTags = [...tags].filter(tag => tag.checked);
+        const joinedTagHandles = selectedTags.map(tag => tag.dataset.handle).join('+');
         const collectionPath = '{{collection.url}}';
-        const sortParam = url.searchParams.get('sort_by');
-        
-        let tagHandles = url.toString().split(collectionPath);
-        tagHandles = tagHandles[1];
-
-        if (sortParam) tagHandles = (tagHandles.split('?'))[0];
-
-        tagHandles = tagHandles.slice(1);
-        
-        return [collectionPath, tagHandles, sortParam];
+        const selectedSort = '{{collection.sort_by}}';
+        let result = collectionPath.concat('/', joinedTagHandles);
+        if (selectedSort) result = result.concat('?sort_by=', selectedSort);
+        return result;
     }
-
-    function addHandle(handle, tagHandles) {
-        return (!tagHandles) ? handle : `${tagHandles}+${handle}`;
-    }
-
-    function removeHandle(handle, tagHandles) {
-        return tagHandles.split('+').filter(_handle => _handle !== handle).join('+');
-    }
-
-    function getProductCount(el) {
-        const tag = el.dataset.tag;
-        const matchingProducts = allProducts.filter(product => product.tags.includes(tag));
-        el.innerText = `(${matchingProducts.length})`;
-    }
-
-
 
 </script>

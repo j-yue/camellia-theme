@@ -29,6 +29,7 @@ Usage:
                         {% if request.path contains tagHandle %}
                             checked
                         {% endif %}
+                        data-handle="{{tagHandle}}"
                     >
                     {{parsedTag[1] | capitalize}}
                     <span class="category__tag-count" data-tag='{{tag}}'></span>
