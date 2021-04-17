@@ -9,33 +9,32 @@ Usage:
 {% render 'filter-category', tags: collection.all_tags, category: prefix %}
 {% endcomment%}
 
-<div class="filter__category category">
+<li class="filter__category category">
     <h3 class="category__title">{{category | capitalize}}</h3>
+    <fieldset class="category__tags">
+        <legend class="visually-hidden">Filter by {{category}}</legend>
 
-    <ul class="category__list">
         {% for tag in tags %}
             {% assign parsedTag = tag | split: settings.filter__separator %}
             {% assign prefix = parsedTag[0] | downcase %}
+
             {% if prefix == category %}
 
                 {% assign tagHandle = tag | handleize %}
-                <li class="category__list-item">
-                    <label class="category__label">
-                        <input 
-                            type="checkbox" 
-                            class="category__checkbox" 
-                            {% if request.path contains tagHandle %}
-                                checked
-                            {% endif %} 
-                            data-add-tag='{{tag | link_to_add_tag: tag}}' 
-                            data-remove-tag='{{tag | link_to_remove_tag: tag}}'
-                        >
-                        {{parsedTag[1] | capitalize}}
-                        <span class="category__tag-count" data-tag='{{tag}}'></span>
-                    </label>
-                </li>
+
+                <label class="category__label">
+                    <input 
+                        type="checkbox" 
+                        class="category__checkbox" 
+                        {% if request.path contains tagHandle %}
+                            checked
+                        {% endif %}
+                    >
+                    {{parsedTag[1] | capitalize}}
+                    <span class="category__tag-count" data-tag='{{tag}}'></span>
+                </label>
+                
             {% endif %}
         {% endfor %}
-    </ul>
-</div>
-
+    </fieldset>
+</li>
