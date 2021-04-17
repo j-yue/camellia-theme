@@ -3,7 +3,6 @@
 
 <section class="collection">
 
-{{collection.products_count}}
   {% render 'breadcrumbs', class: 'collection__breadcrumbs' %}
 
   <h1 class="collection__title">{{collection.title}}</h1>
@@ -13,6 +12,8 @@
     <div class="collection__filter filter">filter</div>
     {% render 'collection-sort' %}
   </div>
+  
+  <p class="collection__product-total"></p>
 
   <div class="collection__products">
     {% render 'filtered-products' %}
@@ -32,3 +33,15 @@
   {% endpaginate %} {% endcomment %}
 
 </section>
+
+
+<script>
+  {% comment %}
+    Populate product count total after products have loaded
+  {% endcomment %}
+  document.addEventListener('DOMContentLoaded', () => {
+    const productTotal = document.querySelector('.collection__product-total');
+    const count = document.querySelectorAll('.product-card').length;
+    productTotal.innerText = `${count} products`;
+  });
+</script>
