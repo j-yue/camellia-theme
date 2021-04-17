@@ -616,9 +616,19 @@ p {
   margin: var(--padding--half);
 }
 
-.category__list {
-  margin-top: 0;
-  padding: 0 0 0 var(--padding--half);
+.category__tags {
+  border: none;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.filter__categories {
+  margin: 0;
+  padding: 0;
+}
+.filter__categories li {
   list-style: none;
 }
 

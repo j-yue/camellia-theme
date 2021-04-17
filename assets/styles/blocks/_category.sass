@@ -2,7 +2,6 @@
 
 .category
 
-    &__list
-        margin-top: 0
-        padding: 0 0 0 var(--padding--half)
-        list-style: none
+    &__tags
+        border: none
+        @include mixins.flex(column nowrap, center, flex-start)

@@ -1,14 +1,31 @@
 @use 'functions'
 
 //Order-------------------------------------------------
-//  Order
+//  layout
+//  resets
 //  breakpoints
 //  typography
 //  sizing images
-//  layout
 //  position
 //  button styles
 //------------------------------------------------------
+
+//layout
+@mixin flex-center
+    @include flex(row nowrap, center, center)
+
+@mixin remove-space
+    margin: 0
+    padding: 0
+
+@mixin reset-anchor
+    text-decoration: none
+
+//resets
+@mixin reset-list-style
+    @include remove-space
+    li
+        list-style: none
 
 //breakpoints
 $small: 320px
@@ -58,17 +75,6 @@ $large: 1440px
     flex-flow: $flex-flow
     justify-content: $justify
     align-items: $align
-
-//layout
-@mixin flex-center
-    @include flex(row nowrap, center, center)
-
-@mixin remove-space
-    margin: 0
-    padding: 0
-
-@mixin reset-anchor
-    text-decoration: none
 
 //position
 //set position of block 
