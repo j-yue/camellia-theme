@@ -3,9 +3,9 @@
 html
     font-size: var(--font__size)
     @include mixins.medium
-        font-size: 1.5vw
+        font-size: 1rem
     @include mixins.large
-        font-size: 2vw
+        font-size: 1.6vw
 
 // assign rules for headings and calculate heading sizes based on a scale
 @include mixins.type-scale
@@ -15,8 +15,6 @@ body
     font-weight: 300
     font-family: var(--font__body)
     line-height: 1.35
-    @include mixins.medium
-        // font-size: 1.6rem
 
 p
     margin: 1rem 0

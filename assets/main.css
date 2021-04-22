@@ -37,12 +37,12 @@ html {
 }
 @media screen and (min-width: 768px) {
   html {
-    font-size: 1.5vw;
+    font-size: 1rem;
   }
 }
 @media screen and (min-width: 1440px) {
   html {
-    font-size: 2vw;
+    font-size: 1.6vw;
   }
 }
 
@@ -106,6 +106,7 @@ body {
   font-family: var(--font__body);
   line-height: 1.35;
 }
+
 p {
   margin: 1rem 0;
 }
