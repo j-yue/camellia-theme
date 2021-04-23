@@ -82,6 +82,10 @@
       },
       {
         "type": "paragraph",
+        "content": "Theme supports 1000 unique tags per collection."
+      },
+      {
+        "type": "paragraph",
         "content": "Enter a comma-separated list of the product categories you would like to use as a category for filtering products"
       },
       {
