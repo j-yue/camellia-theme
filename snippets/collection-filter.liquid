@@ -104,8 +104,8 @@ Usage:
         @return {String} Path containing handles of selected tags and the selected sort option
     {% endcomment %}
     function generatePath() {
-        const selectedTags = [...tags].filter(tag => tag.checked);
-        const joinedTagHandles = selectedTags.map(tag => tag.dataset.handle).join('+');
+        const selectedTags = document.querySelectorAll('.category__checkbox:checked');
+        const joinedTagHandles = [...selectedTags].map(tag => tag.dataset.handle).join('+'); 
         const collectionPath = '{{collection.url}}';
         const selectedSort = '{{collection.sort_by}}';
         let result = collectionPath.concat('/', joinedTagHandles);
