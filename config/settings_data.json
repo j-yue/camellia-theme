@@ -1,6 +1,23 @@
 {
-  "current": "Default",
+  "current": {
+    "font__heading": "lato_n4",
+    "font__body": "maven_pro_n4",
+    "filter__prefix": "Origin, Type",
+    "favicon": "shopify:\/\/shop_images\/Leaf-Logo_79843c9f-12a5-4c0b-9753-09d63e92b0b8.png",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "header__nav": ""
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
   "presets": {
-    "Default": { }
+    "Default": {
+    }
   }
 }
