@@ -296,9 +296,9 @@ p {
   font-weight: 300;
 }
 .btn--disabled {
-  background: #ccc;
-  border: 1px solid #ccc;
-  color: #666;
+  background: #eee;
+  border: 1px solid #eee;
+  color: #444;
   font-weight: 300;
   cursor: not-allowed !important;
 }
@@ -393,9 +393,9 @@ p {
   font-weight: 300;
 }
 .link-btn--disabled {
-  background: #ccc;
-  border: 1px solid #ccc;
-  color: #666;
+  background: #eee;
+  border: 1px solid #eee;
+  color: #444;
   font-weight: 300;
   cursor: not-allowed !important;
 }
