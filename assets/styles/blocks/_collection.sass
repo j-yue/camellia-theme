@@ -7,10 +7,47 @@
         grid-template-columns: 1fr
         grid-gap: var(--padding)
         margin-top: var(--padding)
+        width: 100%
+
         @include mixins.small-medium
             grid-template-columns: repeat(2, 1fr)
+
         @include mixins.medium
             grid-template-columns: repeat(3, 1fr)
+
+    &__main-wrapper
+        @include mixins.medium-large
+            display: grid
+            grid-template-columns: 2fr 8fr
+            grid-gap: var(--padding)
+
+    &__filter-wrapper
+        &--desktop
+            height: 100vh
+            display: none
+            position: sticky
+            top: 0
+            overflow-y: scroll
+            padding-top: var(--padding)
+            @include mixins.medium-large
+                display: block
+
+        &--mobile
+            position: fixed
+            top: 0
+            left: 0
+            height: 100%
+            overflow-y: auto
+            width: 100%
+            z-index: -1
+            padding: var(--padding)
+            visibility: hidden
+            background: #fff
+            @include mixins.medium-large
+                display: none
+
+    &__filter
+        flex: 1
 
     &__product
         // @include mixins.flex(column nowrap, space-between, center)
@@ -24,22 +61,27 @@
     &__load-btn--hidden
         display: none
 
+    &__filter-btn-wrapper
+        text-align: right
+
+    &__filter-btn
+        @include mixins.medium-large
+            display: none
+
     &__controls
         width: 100%
         @include mixins.flex(row nowrap, center, space-between)
         position: sticky
-        border: 1px solid #999
+        // border: 1px solid #999
         top: 0
         background: white
         border-right: none
         border-left: none
         line-height: 3
         text-align: center
-
-    &__filter
-        flex: 1
-        // border-right: 1px solid #999
+        @include mixins.medium-large
+            display: none
 
     &__sort
         flex: 1
-        border-left: 1px solid #999
+        // border-left: 1px solid #999

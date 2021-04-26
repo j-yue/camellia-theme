@@ -3,10 +3,14 @@
 
 :root
     --padding: 1.6rem
-    --padding--half: .8rem
+    --padding--half: calc(var(--padding)/2)
+    --padding--quarter: calc(var(--padding)/4)
     --height-header: var(--padding) + functions.heading-size(6)
     --font-size-nav-mobile: 3.2rem
     --font-size-nav-desktop: 1.6rem
 
     @include mixins.medium
-        --padding: 3.2rem
+        --padding: 2rem
+
+    @include mixins.large
+        --padding: 3rem

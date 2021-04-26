@@ -117,14 +117,20 @@ p {
 
 :root {
   --padding: 1.6rem;
-  --padding--half: .8rem;
+  --padding--half: calc(var(--padding)/2);
+  --padding--quarter: calc(var(--padding)/4);
   --height-header: var(--padding) + functions.heading-size(6);
   --font-size-nav-mobile: 3.2rem;
   --font-size-nav-desktop: 1.6rem;
 }
 @media screen and (min-width: 768px) {
   :root {
-    --padding: 3.2rem;
+    --padding: 2rem;
+  }
+}
+@media screen and (min-width: 1440px) {
+  :root {
+    --padding: 3rem;
   }
 }
 
@@ -557,6 +563,7 @@ p {
   grid-template-columns: 1fr;
   grid-gap: var(--padding);
   margin-top: var(--padding);
+  width: 100%;
 }
 @media screen and (min-width: 500px) {
   .collection__products {
@@ -567,6 +574,46 @@ p {
   .collection__products {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+@media screen and (min-width: 1024px) {
+  .collection__main-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    grid-gap: var(--padding);
+  }
+}
+.collection__filter-wrapper--desktop {
+  height: 100vh;
+  display: none;
+  position: sticky;
+  top: 0;
+  overflow-y: scroll;
+  padding-top: var(--padding);
+}
+@media screen and (min-width: 1024px) {
+  .collection__filter-wrapper--desktop {
+    display: block;
+  }
+}
+.collection__filter-wrapper--mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow-y: auto;
+  width: 100%;
+  z-index: -1;
+  padding: var(--padding);
+  visibility: hidden;
+  background: #fff;
+}
+@media screen and (min-width: 1024px) {
+  .collection__filter-wrapper--mobile {
+    display: none;
+  }
+}
+.collection__filter {
+  flex: 1;
 }
 .collection__load-btn {
   display: block;
@@ -580,6 +627,14 @@ p {
 .collection__load-btn--hidden {
   display: none;
 }
+.collection__filter-btn-wrapper {
+  text-align: right;
+}
+@media screen and (min-width: 1024px) {
+  .collection__filter-btn {
+    display: none;
+  }
+}
 .collection__controls {
   width: 100%;
   display: flex;
@@ -587,7 +642,6 @@ p {
   justify-content: center;
   align-items: space-between;
   position: sticky;
-  border: 1px solid #999;
   top: 0;
   background: white;
   border-right: none;
@@ -595,12 +649,13 @@ p {
   line-height: 3;
   text-align: center;
 }
-.collection__filter {
-  flex: 1;
+@media screen and (min-width: 1024px) {
+  .collection__controls {
+    display: none;
+  }
 }
 .collection__sort {
   flex: 1;
-  border-left: 1px solid #999;
 }
 
 .breadcrumbs__list {
@@ -628,6 +683,7 @@ p {
 .filter__categories {
   margin: 0;
   padding: 0;
+  padding-left: var(--padding--half);
 }
 .filter__categories li {
   list-style: none;

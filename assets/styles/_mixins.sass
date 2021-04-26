@@ -31,6 +31,7 @@
 $small: 320px
 $small-medium: 500px
 $medium: 768px
+$medium-large: 1024px
 $large: 1440px
 
 @mixin small
@@ -43,6 +44,10 @@ $large: 1440px
 
 @mixin medium
     @media screen and (min-width: $medium)
+        @content
+
+@mixin medium-large
+    @media screen and (min-width: $medium-large)
         @content
 
 @mixin large

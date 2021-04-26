@@ -1,5 +1,10 @@
+<div class="collection__filter-wrapper collection__filter-wrapper--mobile">
+  <button class="btn btn__header header__close collection__filter-close">
+    {% render 'icon-close' %}
+  </button>
+  {% render 'collection-filter', collection: collection %}
+</div>
 
-{% render 'collection-filter', collection: collection %}
 
 <section class="collection">
 
@@ -7,16 +12,30 @@
 
   <h1 class="collection__title">{{collection.title}}</h1>
   <p class="collection__description">{{collection.description}}</p>
-  
-  <div class="collection__controls">
-    <div class="collection__filter filter">filter</div>
-    {% render 'collection-sort' %}
+
+  <div class="collection__filter-btn-wrapper">
+    <button class="collection__filter-btn btn btn--inverse">Filter + Sort</button>
   </div>
+  
+  {% comment %} <div class="collection__controls">
+    <button class="collection__filter-btn btn btn--inverse">Filter</button>
+    {% render 'collection-sort' %}
+  </div>  {% endcomment %}
+
   
   <p class="collection__product-total"></p>
 
-  <div class="collection__products">
-    {% render 'filtered-products' %}
+
+  <div class="collection__main-wrapper">
+
+    <div class="collection__filter-wrapper collection__filter-wrapper--desktop">
+      {% render 'collection-filter', collection: collection %}
+    </div>
+
+    <div class="collection__products">
+      {% render 'filtered-products' %}
+    </div>
+
   </div>
 
   {% comment %} {% paginate collection.products by 12 %}
@@ -44,4 +63,29 @@
     const count = document.querySelectorAll('.product-card').length;
     productTotal.innerText = `${count} products`;
   });
+
+
+  {% comment %}
+    Toggle form and sort dialog when filter button cliked
+  {% endcomment %}
+  const filterBtn = document.querySelector('.collection__filter-btn');
+  filterBtn.addEventListener('click', () => {
+    const filter = document.querySelector('.collection__filter-wrapper--mobile');
+    filter.style.zIndex = 2;
+    filter.style.visibility = 'visible';
+  })
+
+
+  {% comment %}
+    Minimize form and sort dialog when clsoed
+  {% endcomment %}
+  const close = document.querySelector('.collection__filter-close');
+  close.addEventListener('click', () => {
+    const filter = document.querySelector('.collection__filter-wrapper--mobile');
+    filter.style.zIndex = -1;
+    filter.style.visibility = 'hidden';
+  })
+
+
+
 </script>
