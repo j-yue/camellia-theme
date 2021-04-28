@@ -2,6 +2,14 @@
 // initialize empty product total and tag count elements
 // add event listeners to desktop and mobile filter forms
 // =====================================================
+/**
+ * Initialize empty elements (product total count and tag product counts)
+ * Initialize handlers for form
+ * @param {String} allProducts - Stringified JSON of list of collection's products given by {{collection.all_products | json}} from liquid
+ * @param {String} desktopForm - Selector for desktop form
+ * @param {String} mobileForm - Selector for mobile form
+ * @param {String} collectionPath - Path of collection
+ */
 function initializeEverything(
   allProducts,
   desktopForm,
@@ -19,15 +27,27 @@ function initializeEverything(
 // =====================================================
 // initialize empty product total and tag count elements
 // =====================================================
+/**
+ * Populate product total and tag count
+ * @param {String} allProducts - Stringified JSON of collection's products
+ */
 function initializeEmptyElements(allProducts) {
   initializeProductTotal();
   initializeTagCounts(allProducts);
 }
 
+/**
+ * Set an element's inner text
+ * @param {Node} el - Element
+ * @param {String} text - inner text
+ */
 function initializeElement(el, text) {
   el.innerText = text;
 }
 
+/**
+ * Initialize product total
+ */
 function initializeProductTotal() {
   initializeElement(
     document.querySelector(".collection__product-total"),
@@ -35,6 +55,10 @@ function initializeProductTotal() {
   );
 }
 
+/**
+ * For each tag, initialize the number of products containing that tag
+ * @param {String} allProducts -Stringified JSON of collection's product
+ */
 function initializeTagCounts(allProducts) {
   const tagCounts = document.querySelectorAll(".category__tag-count");
 
@@ -49,6 +73,11 @@ function initializeTagCounts(allProducts) {
 // =====================================================
 // add handlers to form
 // =====================================================
+/**
+ *
+ * @param {String} formSelector -Selector for form
+ * @param {String} collectionPath - Path of collection
+ */
 function addFormHandlers(formSelector, collectionPath) {
   const form = document.querySelector(formSelector);
   updateFormUI(form);
@@ -58,7 +87,12 @@ function addFormHandlers(formSelector, collectionPath) {
 // =====================================================
 // Update fiter and sort form appearance when changes made
 // =====================================================
-// collection__filter-wrapper--desktop or mobile
+/**
+ * Whenever changes made to form, check to see if changes match initial selected inputs and update state
+ * Disabled - initial and current selected input values match
+ * Not disabled - initial and current select input values don't match
+ * @param {Node} form - The form element
+ */
 function updateFormUI(form) {
   const submitBtn = form.querySelector(".filter__submit");
   const initialState = getState(form);
@@ -72,6 +106,11 @@ function updateFormUI(form) {
   });
 }
 
+/**
+ * Generate object containing the selected sort and tag inputs
+ * @param {Node} form - Form element
+ * @returns {Object} - Object containing the selected sort (Node) and selected tags (NodeList)
+ */
 function getState(form) {
   return {
     sort: form.querySelector(".category__radio:checked"),
@@ -79,6 +118,12 @@ function getState(form) {
   };
 }
 
+/**
+ * Check if form values have changed
+ * @param {Object} initialState - Selected sort and tags when page loaded
+ * @param {Object} newState - Selected sort and tags when form submitted
+ * @returns {Boolean} - newState does not match initialState
+ */
 function hasFormChanged(initialState, newState) {
   if (initialState.sort !== newState.sort) return true;
 
@@ -92,6 +137,13 @@ function hasFormChanged(initialState, newState) {
   return false;
 }
 
+/**
+ * Update submit btn appearance and state
+ * @param {Node} submitBtn - Submit button element
+ * @param {String} oldState - Class name matching old state
+ * @param {String} newState - Class name matching new state
+ * @param {Boolean} disabledState - Should submitBtn be disabled or not
+ */
 function changeSubmitBtnState(submitBtn, oldState, newState, disabledState) {
   submitBtn.classList.remove(oldState);
   submitBtn.classList.add(newState);
@@ -101,11 +153,17 @@ function changeSubmitBtnState(submitBtn, oldState, newState, disabledState) {
 // =====================================================
 // Handle visibility of mobile filter form
 // =====================================================
+/**
+ * Toggle visibility of mobile filter
+ */
 function handleMobileFormToggle() {
   toggleOpen();
   toggleClose();
 }
 
+/**
+ * Toggle filter open
+ */
 function toggleOpen() {
   const filterBtn = document.querySelector(".collection__filter-btn");
   filterBtn.addEventListener("click", () => {
@@ -117,6 +175,9 @@ function toggleOpen() {
   });
 }
 
+/**
+ * Toggle filter closed
+ */
 function toggleClose() {
   const close = document.querySelector(".collection__filter-close");
   close.addEventListener("click", () => {
@@ -131,18 +192,27 @@ function toggleClose() {
 // =====================================================
 // Handle form submit
 // =====================================================
+/**
+ * Generate a path given the form's selected inputs
+ * @param {Node} form - Form element
+ * @param {String} collectionPath - Path of collection
+ * @returns {String} - Path generated by the submitted selected inputs
+ */
 function generatePath(form, collectionPath) {
   const { sort, tags } = getState(form);
   const joinedTagHandles = [...tags].map((tag) => tag.dataset.handle).join("+");
   let result = collectionPath.concat("/", joinedTagHandles);
-  result = result.concat("?sort_by=", sort.value);
-  return result;
+  return result.concat("?sort_by=", sort.value);
 }
 
+/**
+ * Navigate user to path generated from selected inputs
+ * @param {Node} form - Form element
+ * @param {String} collectionPath - Path of collection
+ */
 function handleSubmit(form, collectionPath) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    let result = generatePath(form, collectionPath);
-    window.location.href = result;
+    window.location.href = generatePath(form, collectionPath);
   });
 }
