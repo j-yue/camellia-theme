@@ -17,12 +17,7 @@
     <button class="collection__filter-btn btn btn--inverse">Filter + Sort</button>
   </div>
   
-  {% comment %} <div class="collection__controls">
-    <button class="collection__filter-btn btn btn--inverse">Filter</button>
-    {% render 'collection-sort' %}
-  </div>  {% endcomment %}
 
-  
   <p class="collection__product-total"></p>
 
 
@@ -55,37 +50,5 @@
 
 
 <script>
-  {% comment %}
-    Populate product count total after products have loaded
-  {% endcomment %}
-  document.addEventListener('DOMContentLoaded', () => {
-    const productTotal = document.querySelector('.collection__product-total');
-    const count = document.querySelectorAll('.product-card').length;
-    productTotal.innerText = `${count} products`;
-  });
-
-
-  {% comment %}
-    Toggle form and sort dialog when filter button cliked
-  {% endcomment %}
-  const filterBtn = document.querySelector('.collection__filter-btn');
-  filterBtn.addEventListener('click', () => {
-    const filter = document.querySelector('.collection__filter-wrapper--mobile');
-    filter.style.zIndex = 2;
-    filter.style.visibility = 'visible';
-  })
-
-
-  {% comment %}
-    Minimize form and sort dialog when clsoed
-  {% endcomment %}
-  const close = document.querySelector('.collection__filter-close');
-  close.addEventListener('click', () => {
-    const filter = document.querySelector('.collection__filter-wrapper--mobile');
-    filter.style.zIndex = -1;
-    filter.style.visibility = 'hidden';
-  })
-
-
-
+  initializeEverything({{collection.all_products | json}}, '.collection__filter-wrapper--desktop form', '.collection__filter-wrapper--mobile form', '{{collection.url}}');
 </script>

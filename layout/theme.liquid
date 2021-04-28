@@ -21,6 +21,7 @@
 
   {% if template contains 'collection' %}
     {{ 'loadmore.js' | asset_url | script_tag}}
+    {{ 'collection.js' | asset_url | script_tag}}
   {% endif %}
 
 <style>
