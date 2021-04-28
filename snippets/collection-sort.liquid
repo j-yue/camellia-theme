@@ -9,27 +9,35 @@
     {%render 'collection-sort'%}
 {% endcomment %}
 
-{% assign sort = collection.sort_by %}
-{% assign options = 'best-selling: Best selling | created-descending: Newest | price-ascending: Price, low to high | price-descending: Price, high to low' | split: '| ' %}
 
-<div class="collection__sort">
-    <label for="sort" class="visually-hidden">Sort by</label>
-    <select name="sort" id="sort">
+{% assign options = 'price-ascending: Lowest price | price-descending: Highest price | best-selling: Best selling | created-descending: Newest' | split: '| ' %}
+{% assign sort = collection.sort_by %}
+{% assign defaultSort = collection.default_sort_by %}
+
+
+<li class="filter__category category">
+    <fieldset class="category__input-group">
+        <h3 class="category__title">Sort</h3>
+        <legend class="visually-hidden">Sort by option</legend>
+        
         {% for obj in options %}
             {% assign option = obj | split: ': ' %}
             {% assign value = option[0] %}
-            <option value={{value}} {% if value == sort %}selected{% endif %}>{{option[1]}}</option>
+            <label class="category__label">
+                <input
+                    type="radio"
+                    name="sort"
+                    class="category__radio"
+                    value="{{value}}"
+                    {% if sort == blank and defaultSort == value %}
+                        checked
+                    {% endif %}
+                    {% if sort == value and defaultSort != value %}
+                        checked
+                    {% endif %}
+                >
+                {{option[1] | capitalize}}
+            </label>
         {% endfor %}
-    </select>
-</div>
-
-
-<script>
-    const params = (new URL(location)).searchParams;
-    
-    document.querySelector('#sort').addEventListener('change', e => {
-      params.set('sort_by', e.target.value);
-      window.location.search = params.toString();
-    });
-
-</script>
+    </fieldset>
+</li>

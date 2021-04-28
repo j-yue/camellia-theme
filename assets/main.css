@@ -672,7 +672,7 @@ p {
   margin: var(--padding--half);
 }
 
-.category__tags {
+.category__input-group {
   border: none;
   display: flex;
   flex-flow: column nowrap;

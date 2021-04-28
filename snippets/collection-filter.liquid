@@ -19,6 +19,9 @@ Usage:
     <form class="filter__form">
         <h2 class="filter__title">Filter</h2>
         <ul class="filter__categories">
+
+            {% render 'collection-sort' %}
+
             {% for category in categories %}
                 {% render 'filter-category', tags: collection.all_tags, category: category %}
             {% endfor %}
