@@ -1,9 +1,16 @@
 {% comment %}
-    Create <select> that sorts collection by:
+    Create radio inputs that sorts collection by:
     - best selling
     - newest
-    - price, low to high
-    - price, high to low
+    - lowest price
+    - highest price
+
+    The checked radio criteria:
+        Case 1: no sort option selected
+        - Radio with value matching collection's default sort is checked
+
+        Case 2: sort option selected
+        - Radio with value matching the selected sort is checked
 
     Usage:
     {%render 'collection-sort'%}
@@ -29,10 +36,10 @@
                     name="sort"
                     class="category__radio"
                     value="{{value}}"
-                    {% if sort == blank and defaultSort == value %}
+                    {% if sort == value and defaultSort != value %}
                         checked
                     {% endif %}
-                    {% if sort == value and defaultSort != value %}
+                    {% if defaultSort == value and sort == blank or sort == value %}
                         checked
                     {% endif %}
                 >
