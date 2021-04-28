@@ -38,6 +38,20 @@
     {{content_for_layout}}  
   </main>
 
+  <button class="fab fab__scroll-up">
+    {% render 'icon-caret-up' %}
+  </button>
+
   {% render 'css-variables' %}
+
+  <script>
+    document.querySelector('.fab__scroll-up').addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
+    })
+  </script>
 </body>
 </html>

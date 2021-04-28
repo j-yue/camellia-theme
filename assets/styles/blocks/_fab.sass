@@ -1,1 +1,17 @@
+@use '../_mixins'
 
+.fab
+    @include mixins.icon
+    border-radius: 50%
+    border: none
+    padding: 0
+    @include mixins.medium
+        display: none
+
+    &:hover
+        cursor: pointer
+
+    &__scroll-up
+        position: fixed
+        bottom: var(--padding)
+        right: var(--padding)
