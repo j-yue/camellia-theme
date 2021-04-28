@@ -612,9 +612,6 @@ p {
     display: none;
   }
 }
-.collection__filter {
-  flex: 1;
-}
 .collection__filter-close {
   float: right;
 }
