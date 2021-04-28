@@ -49,8 +49,8 @@
     &__filter
         flex: 1
 
-    &__product
-        // @include mixins.flex(column nowrap, space-between, center)
+    &__filter-close
+        float: right
 
     &__load-btn
         display: block
@@ -72,7 +72,6 @@
         width: 100%
         @include mixins.flex(row nowrap, center, space-between)
         position: sticky
-        // border: 1px solid #999
         top: 0
         background: white
         border-right: none
@@ -81,7 +80,3 @@
         text-align: center
         @include mixins.medium-large
             display: none
-
-    &__sort
-        flex: 1
-        // border-left: 1px solid #999

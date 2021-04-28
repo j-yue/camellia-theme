@@ -615,6 +615,9 @@ p {
 .collection__filter {
   flex: 1;
 }
+.collection__filter-close {
+  float: right;
+}
 .collection__load-btn {
   display: block;
   margin: var(--padding) auto;
@@ -653,9 +656,6 @@ p {
   .collection__controls {
     display: none;
   }
-}
-.collection__sort {
-  flex: 1;
 }
 
 .breadcrumbs__list {
