@@ -827,6 +827,7 @@ p {
   text-decoration: none;
 }
 .footer__social-media {
+  width: 100%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
