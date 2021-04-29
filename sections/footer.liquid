@@ -1,0 +1,99 @@
+{% assign settings = section.settings %}
+
+<footer class="footer">
+    <section class="footer__newsletter newsletter">
+        <p class="newsletter__heading">{{settings.newsletter__heading}}</p>
+
+        <p class="newsletter__message">{{settings.newsletter__message}}</p>
+
+        <label class="newsletter__input-label">
+            <input type="email" class="newsletter__input" placeholder="jane@doe.com" required>
+        </label>
+    </section>
+
+    {% for block in section.blocks %}
+        {% assign block_settings = block.settings %}
+        <section class="footer__menu">
+            <h3 class="footer__menu-name">{{block_settings.menu_name}}</h3>
+            <ul class="footer__menu-list">
+                {% assign links = linklists[block_settings.menu].links %}
+                {% for link in links %}
+                    <li class="footer__menu-item">
+                        <a class="footer__menu-link" href="{{link.url}}">{{link.title}}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% endfor %}
+
+    <section class="footer__social-media">
+        {% assign social = 'yelp, instagram, facebook' | split: ', ' %}
+        {% for site in social %}
+            <a href="{{settings[site]}}">
+                {% assign icon_name = 'icon-' | append: site %}
+                {% include icon_name %}
+            </a>
+        {% endfor %}
+    </section>
+</footer>
+
+<script>
+</script>
+
+{% schema %}
+    {
+        "name": "Footer",
+        "settings": [
+            {
+                "type": "text",
+                "id": "newsletter__heading",
+                "label": "Newsletter Heading",
+                "default": "Join the community"
+            },
+            {
+                "type": "textarea",
+                "id": "newsletter__message",
+                "label": "Newsletter Message",
+                "default": "Sign-up for our newsletter, The Orange Pekoe, for updates and more."
+            },
+            {
+                "type": "header",
+                "content": "Social Media Links"
+            },
+            {
+                "type": "url",
+                "id": "yelp",
+                "label": "Yelp"
+            },
+            {
+                "type": "url",
+                "id": "instagram",
+                "label": "Instagram"
+            },
+            {
+                "type": "url",
+                "id": "facebook",
+                "label": "Facebook"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "link_list",
+                "name": "Menu",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "menu_name",
+                        "label": "Menu Name"
+                    },
+                    {
+                        "type": "link_list",
+                        "id": "menu",
+                        "label": "Menu"
+                    }
+                ]
+            }
+        ],
+        "max_blocks": 2
+    }
+{% endschema %}
