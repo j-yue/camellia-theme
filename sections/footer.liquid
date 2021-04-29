@@ -13,22 +13,21 @@
             </label>
         </section>
 
-        <div class="footer__menus">
-            {% for block in section.blocks %}
-                {% assign block_settings = block.settings %}
-                <section class="footer__menu">
-                    <h3 class="footer__heading">{{block_settings.menu_name}}</h3>
-                    <ul class="footer__menu-list">
-                        {% assign links = linklists[block_settings.menu].links %}
-                        {% for link in links %}
-                            <li class="footer__menu-item">
-                                <a class="footer__menu-link" href="{{link.url}}">{{link.title}}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </section>
-            {% endfor %}
-        </div>
+        {% for block in section.blocks %}
+            {% assign block_settings = block.settings %}
+            <section class="footer__menu">
+                <h3 class="footer__heading">{{block_settings.menu_name}}</h3>
+                <ul class="footer__menu-list">
+                    {% assign links = linklists[block_settings.menu].links %}
+                    {% for link in links %}
+                        <li class="footer__menu-item">
+                            <a class="footer__menu-link" href="{{link.url}}">{{link.title}}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endfor %}
+            
     </div>
 
     <section class="footer__social-media">

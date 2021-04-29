@@ -13,7 +13,7 @@
         grid-gap: var(--padding)
 
         @include mixins.small-medium
-            grid-template: 1fr / repeat(2, 1fr)
+            @include mixins.flex(row nowrap, '', '')
 
     &__heading
         font-size: inherit
@@ -25,10 +25,10 @@
         @include mixins.small-medium
             order: 2
 
-    &__menus
-        display: grid
-        grid-template-columns: repeat(2, 1fr)
-        grid-gap: var(--padding)
+    // &__menus
+    //     display: grid
+    //     grid-template-columns: repeat(2, 1fr)
+    //     grid-gap: var(--padding)
 
     &__menu-list
         @include mixins.reset-list-style

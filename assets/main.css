@@ -764,7 +764,10 @@ p {
 }
 @media screen and (min-width: 500px) {
   .footer__wrapper {
-    grid-template: 1fr/repeat(2, 1fr);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: "";
+    align-items: "";
   }
 }
 .footer__heading {
@@ -777,11 +780,6 @@ p {
   .footer__newsletter {
     order: 2;
   }
-}
-.footer__menus {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: var(--padding);
 }
 .footer__menu-list {
   margin: 0;
