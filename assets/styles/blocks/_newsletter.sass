@@ -1,0 +1,25 @@
+@use '../mixins'
+
+.newsletter
+
+    &__signup-field
+        @include mixins.remove-space
+        border: none
+
+    &__input-wrapper
+        @include mixins.flex(row nowrap, center, center)
+        background: var(--color__secondary)
+
+    &__input
+        width: 85%
+        padding: var(--padding--half)
+        border: none
+        border-radius: 0
+
+    &__signup-submit
+        width: 15%
+        padding: var(--padding--half)
+        border: none
+        border-radius: 0
+        &:hover
+            cursor: pointer
