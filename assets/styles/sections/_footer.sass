@@ -1,0 +1,36 @@
+@use '../mixins'
+
+.footer
+    background: var(--color__primary)
+    color: var(--color__secondary)
+    padding: var(--padding)
+    display: grid
+    grid-template-rows: 1fr 1fr .5fr
+    grid-gap: var(--padding)
+
+    &__menus
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        grid-gap: var(--padding)
+
+    &__menu-list
+        @include mixins.reset-list-style
+        @include mixins.remove-space
+
+    &__menu
+        color: inherit
+
+    &__menu-link
+        color: inherit
+        @include mixins.reset-anchor
+
+    &__social-media
+        @include mixins.flex(row nowrap, center, center)
+
+    &__icon-wrapper
+        text-align: center
+        @include mixins.icon
+        margin: var(--padding--half)
+
+    &__icon-link
+        color: var(--color__secondary)
