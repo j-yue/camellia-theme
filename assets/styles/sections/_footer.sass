@@ -4,9 +4,20 @@
     background: var(--color__primary)
     color: var(--color__secondary)
     padding: var(--padding)
-    display: grid
-    grid-template-rows: 1fr 1fr .5fr
-    grid-gap: var(--padding)
+    @include mixins.flex(row wrap, center, center)
+
+    &__wrapper
+        margin-bottom: var(--padding)
+        display: grid
+        grid-template-rows: repeat(2, 1fr)
+        grid-gap: var(--padding)
+
+        @include mixins.small-medium
+            grid-template: 1fr / 1fr 2fr
+
+    &__newsletter
+        @include mixins.small-medium
+            order: 2
 
     &__menus
         display: grid

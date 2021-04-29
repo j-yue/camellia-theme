@@ -751,9 +751,26 @@ p {
   background: var(--color__primary);
   color: var(--color__secondary);
   padding: var(--padding);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+.footer__wrapper {
+  margin-bottom: var(--padding);
   display: grid;
-  grid-template-rows: 1fr 1fr 0.5fr;
+  grid-template-rows: repeat(2, 1fr);
   grid-gap: var(--padding);
+}
+@media screen and (min-width: 500px) {
+  .footer__wrapper {
+    grid-template: 1fr/1fr 2fr;
+  }
+}
+@media screen and (min-width: 500px) {
+  .footer__newsletter {
+    order: 2;
+  }
 }
 .footer__menus {
   display: grid;

@@ -1,31 +1,34 @@
 {% assign settings = section.settings %}
 
 <footer class="footer">
-    <section class="footer__newsletter newsletter">
-        <h3 class="newsletter__heading">{{settings.newsletter__heading}}</h3>
 
-        <p class="newsletter__message">{{settings.newsletter__message}}</p>
+    <div class="footer__wrapper">
+        <section class="footer__newsletter newsletter">
+            <h3 class="footer__heading">{{settings.newsletter__heading}}</h3>
 
-        <label class="newsletter__input-label">
-            <input type="email" class="newsletter__input" placeholder="jane@doe.com" required>
-        </label>
-    </section>
+            <p class="newsletter__message">{{settings.newsletter__message}}</p>
 
-    <div class="footer__menus">
-        {% for block in section.blocks %}
-            {% assign block_settings = block.settings %}
-            <section class="footer__menu">
-                <h3 class="footer__menu-name">{{block_settings.menu_name}}</h3>
-                <ul class="footer__menu-list">
-                    {% assign links = linklists[block_settings.menu].links %}
-                    {% for link in links %}
-                        <li class="footer__menu-item">
-                            <a class="footer__menu-link" href="{{link.url}}">{{link.title}}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </section>
-        {% endfor %}
+            <label class="newsletter__input-label">
+                <input type="email" class="newsletter__input" placeholder="jane@doe.com" required>
+            </label>
+        </section>
+
+        <div class="footer__menus">
+            {% for block in section.blocks %}
+                {% assign block_settings = block.settings %}
+                <section class="footer__menu">
+                    <h3 class="footer__heading">{{block_settings.menu_name}}</h3>
+                    <ul class="footer__menu-list">
+                        {% assign links = linklists[block_settings.menu].links %}
+                        {% for link in links %}
+                            <li class="footer__menu-item">
+                                <a class="footer__menu-link" href="{{link.url}}">{{link.title}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            {% endfor %}
+        </div>
     </div>
 
     <section class="footer__social-media">

@@ -1,0 +1,318 @@
+{% comment %} 
+Contains the basic parts of a page
+- Title
+- Subheading
+- Responsive images
+
+May add
+- Map
+- Figcaption or image with accompanying text
+- Image with text and cta
+{% endcomment %}
+
+{% comment %} 
+    Renders a general page with responsive images
+
+    Styling is located in assets/styles/templates/_page.sass
+
+    The images have block behavior unless the device meets the medium breakpoint,
+    where they will tile
+
+    Since the page is merchant generated via Shopify's page editor ui, merchant will 
+    need to follow these guidelines for images to render correctly:
+    - All images must specify alts since captions are unsupported in this template (SEO, accessibility)
+    - For single images, insert a single image normally (for better speed, use a low resolution picture and a page script will update it to a hq img)
+    - To tile images, create an unordered (bulleted) list and add each image as a bullet item
+    - To create rows of images, create multiple bulleted lists of images
+
+{% endcomment %}
+
+{% comment %} 
+
+// .page
+//     &__title
+//         text-align: center
+
+//     &__subheading
+//         margin-top: 1rem
+
+//     &__content
+//         padding: 0 var(--padding)
+
+//     &__map-wrapper
+//         width: 100%
+
+//     &__img-wrapper
+//         width: 100%
+//         height: 100%
+//         @include mixins.flex(row nowrap, center, center)
+
+//     &__single-img
+//         box-sizing: border-box
+//         @include mixins.medium
+//             width: 45vw
+//             display: block
+//             margin: 1rem auto
+
+//     &__group-img-list
+//         @include mixins.remove-space
+//         margin: 1rem 0
+//         @include mixins.medium
+//             @include mixins.flex(row nowrap, space-between, stretch)
+
+//     &__group-img-list-item
+//         list-style-type: none
+//         margin-top: 1rem
+//         @include mixins.medium
+//             flex: 1
+//             @include mixins.flex(row nowrap, space-between, stretch)
+//             &:not(:last-of-type)
+//                 padding-right: 2rem
+
+ {% endcomment %}
+
+{% assign title = section.settings.page__title %}
+{% assign blocks = section.blocks %}
+{% assign indexes = '1, 2, 3, 4' | split: ', '%}
+
+<article class="page">
+    <h1 class="page__title">{{title}}</h1>
+    <section class="page__content">
+        {% for block in blocks %}
+            {% assign type = block.type %}
+            {% assign settings = block.settings %}
+                {% if type == 'subheading' %}
+                    <h2 class="page__subheading">{{settings.page__subheading}}</h2>
+
+                {% elsif type == 'content' %}
+                    {{settings.page__content}}
+
+                {% elsif type == 'single-image' %}
+                    {% assign img = settings.page__single-image %}
+                    {% unless img == blank %}
+                        {% assign class = 'page__single-img image--' | append: settings.page__single-image-position %}
+                        {% include 'responsive-img', img, class  %}
+                    {% endunless %}
+                
+                {% else %}
+                    <ul class="page__group-img-list">
+                        {% for index in indexes %}
+                            {% assign img = 'page__group-image-' | append: index %}
+                            
+                            {% unless settings[img] == blank %}
+                                {% capture position %}{{img}}-position{% endcapture %}
+
+                                <li class="page__group-img-list-item">
+                                    {% include 'responsive-img', img: settings[img], class: 'page__group-img' %}
+                                </li>    
+                            {% endunless %}
+                            
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+        {% endfor %}
+    </section>
+</article>
+
+{% schema %}
+    {
+        "name": "Page",
+        "settings": [
+            {
+            "type": "text",
+            "id": "page__title",
+            "label": "Page title",
+            "placeholder": "Title of page",
+            "default": "Page Title"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "subheading",
+                "name": "Subheading",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "page__subheading",
+                        "label": "Subheading",
+                        "placeholder": "Second level title"
+                    }
+                ]
+            },
+            {
+                "type": "content",
+                "name": "Content",
+                "settings": [
+                    {
+                        "type": "richtext",
+                        "label": "Content",
+                        "id": "page__content",
+                        "info": "You don't need to create a content block for each paragraph. Each content block can be a letter long or paragraphs long. But do mind the white space."
+                    }
+                ]
+            },
+            {
+                "type": "single-image",
+                "name": "Single Image",
+                "settings": [
+                    {
+                        "type": "header",
+                        "content": "Single Image",
+                        "info": "Insert an image that spans the width of the page. Don't forget the alt for any image you upload! It's important for SEO and visitors using assistive technologies."
+                    },
+                    {
+                        "type": "image_picker",
+                        "label": "Single Image",
+                        "id": "page__single-image"
+                    },
+                    {
+                        "type": "select",
+                        "id": "page__single-image-position",
+                        "label": "Image Position",
+                        "default": "center",
+                        "info": "Image will be cropped to fit screen, and the way they will. If the focus of the image is cut off, specify which portion of the image you want to focus on",
+                        "options": 	[
+                            {
+                            "value": "top",
+                            "label": "top"
+                            },
+
+                            {
+                            "value": "center",
+                            "label": "center"
+                            },
+
+                            {
+                            "value": "bottom",
+                            "label": "bottom"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "group-image",
+                "name": "Image Group",
+                "settings": [
+                    {
+                        "type": "header",
+                        "content": "Image Group",
+                        "info": "Create up to 4 images in a row. Stack this block multiple times to create rows of images. On devices smaller than the iPad, the images will resize to take up the whole width of the page."
+                    },
+                    {
+                        "type": "image_picker",
+                        "label": "Image 1",
+                        "id": "page__group-image-1"
+                    },
+                    {
+                        "type": "select",
+                        "id": "page__group-image-1-position",
+                        "label": "Image Position",
+                        "default": "center",
+                        "info": "Image will be cropped to fit screen, and the way they will. If the focus of the image is cut off, specify which portion of the image you want to focus on",
+                        "options": 	[
+                            {
+                            "value": "top",
+                            "label": "top"
+                            },
+
+                            {
+                            "value": "center",
+                            "label": "center"
+                            },
+
+                            {
+                            "value": "bottom",
+                            "label": "bottom"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "image_picker",
+                        "label": "Image 2",
+                        "id": "page__group-image-2"
+                    },
+                    {
+                        "type": "select",
+                        "id": "page__group-image-2-position",
+                        "label": "Image Position",
+                        "default": "center",
+                        "info": "Image will be cropped to fit screen, and the way they will. If the focus of the image is cut off, specify which portion of the image you want to focus on",
+                        "options": 	[
+                            {
+                            "value": "top",
+                            "label": "top"
+                            },
+
+                            {
+                            "value": "center",
+                            "label": "center"
+                            },
+
+                            {
+                            "value": "bottom",
+                            "label": "bottom"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "image_picker",
+                        "label": "Image 3",
+                        "id": "page__group-image-3"
+                    },
+                    {
+                        "type": "select",
+                        "id": "page__group-image-3-position",
+                        "label": "Image Position",
+                        "default": "center",
+                        "info": "Image will be cropped to fit screen, and the way they will. If the focus of the image is cut off, specify which portion of the image you want to focus on",
+                        "options": 	[
+                            {
+                            "value": "top",
+                            "label": "top"
+                            },
+
+                            {
+                            "value": "center",
+                            "label": "center"
+                            },
+
+                            {
+                            "value": "bottom",
+                            "label": "bottom"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "image_picker",
+                        "label": "Image 4",
+                        "id": "page__group-image-4"
+                    },
+                    {
+                        "type": "select",
+                        "id": "page__group-image-4-position",
+                        "label": "Image Position",
+                        "default": "center",
+                        "info": "Image will be cropped to fit screen, and the way they will. If the focus of the image is cut off, specify which portion of the image you want to focus on",
+                        "options": 	[
+                            {
+                            "value": "top",
+                            "label": "top"
+                            },
+
+                            {
+                            "value": "center",
+                            "label": "center"
+                            },
+
+                            {
+                            "value": "bottom",
+                            "label": "bottom"
+                            }
+                        ]
+                    }
+                ]
+            } 
+        ]
+    }
+{% endschema %}
