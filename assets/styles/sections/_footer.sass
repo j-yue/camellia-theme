@@ -13,7 +13,13 @@
         grid-gap: var(--padding)
 
         @include mixins.small-medium
-            grid-template: 1fr / 1fr 2fr
+            grid-template: 1fr / repeat(2, 1fr)
+
+    &__heading
+        font-size: inherit
+        text-transform: uppercase
+        letter-spacing: 1px
+        margin-bottom: var(--padding--half)
 
     &__newsletter
         @include mixins.small-medium
@@ -33,6 +39,7 @@
 
     &__menu-link
         color: inherit
+        font-weight: inherit
         @include mixins.reset-anchor
 
     &__social-media

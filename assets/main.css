@@ -764,8 +764,14 @@ p {
 }
 @media screen and (min-width: 500px) {
   .footer__wrapper {
-    grid-template: 1fr/1fr 2fr;
+    grid-template: 1fr/repeat(2, 1fr);
   }
+}
+.footer__heading {
+  font-size: inherit;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--padding--half);
 }
 @media screen and (min-width: 500px) {
   .footer__newsletter {
@@ -791,6 +797,7 @@ p {
 }
 .footer__menu-link {
   color: inherit;
+  font-weight: inherit;
   text-decoration: none;
 }
 .footer__social-media {
