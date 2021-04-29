@@ -9,15 +9,17 @@
             <p class="newsletter__message">{{settings.newsletter__message}}</p>
 
             <form class="newsletter__signup">
-                <legend class="visually-hidden">Newsletter Signup</legend>
-                <div class="newsletter__input-wrapper">
-                    <label class="newsletter__signup-label">
-                        <input type="email" class="newsetter__input" placeholder="jane@doe.com" required>
-                    </label>
-                    <button type="submit" class="newsletter__signup-submit btn">
-                        <span class="newsletter__signup-arrow">→</span>
-                    </button>
-                </div>
+                <fieldset class="newsletter__signup-field">
+                    <legend class="visually-hidden">Newsletter Signup</legend>
+                    <div class="newsletter__input-wrapper">
+                        <label for="signup" class="visually-hidden">Newsletter Signup</label>
+                        <input type="email" name="signup" class="newsetter__input" placeholder="jane@doe.com" required>
+
+                        <button type="submit" class="newsletter__signup-submit">
+                            <span class="newsletter__signup-arrow">→</span>
+                        </button>
+                    </div>
+                </fieldset>
             </form>
         </section>
 
