@@ -567,6 +567,7 @@ p {
 .collection__products {
   display: grid;
   grid-template-columns: 1fr;
+  grid-auto-rows: max-content;
   grid-gap: var(--padding);
   margin-top: var(--padding);
   width: 100%;
@@ -589,7 +590,7 @@ p {
   }
 }
 .collection__filter-wrapper--desktop {
-  height: 100vh;
+  height: 100%;
   display: none;
   position: sticky;
   top: 0;
