@@ -8,9 +8,17 @@
 
             <p class="newsletter__message">{{settings.newsletter__message}}</p>
 
-            <label class="newsletter__input-label">
-                <input type="email" class="newsletter__input" placeholder="jane@doe.com" required>
-            </label>
+            <form class="newsletter__signup">
+                <legend class="visually-hidden">Newsletter Signup</legend>
+                <div class="newsletter__input-wrapper">
+                    <label class="newsletter__signup-label">
+                        <input type="email" class="newsetter__input" placeholder="jane@doe.com" required>
+                    </label>
+                    <button type="submit" class="newsletter__signup-submit btn">
+                        <span class="newsletter__signup-arrow">→</span>
+                    </button>
+                </div>
+            </form>
         </section>
 
         {% for block in section.blocks %}
