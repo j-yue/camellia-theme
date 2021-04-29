@@ -64,8 +64,8 @@ $large: 1440px
     height: $width
 
 @mixin icon
-    $size: calc(var(--padding--half) * 3)
-    @include square-icons($size)
+    // $size: calc(var(--padding) * 1.2)
+    @include square-icons(var(--padding))
 
 //typography
 @mixin type-scale

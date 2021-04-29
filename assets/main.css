@@ -318,13 +318,13 @@ p {
   border: none;
   background: none;
   padding: 0;
-  width: calc(var(--padding--half) * 3);
-  height: calc(var(--padding--half) * 3);
+  width: var(--padding);
+  height: var(--padding);
 }
 .btn__select {
   padding: 0;
-  width: calc(var(--padding--half) * 3);
-  height: calc(var(--padding--half) * 3);
+  width: var(--padding);
+  height: var(--padding);
 }
 
 .search {
@@ -347,8 +347,8 @@ p {
   padding-left: 0.8rem;
 }
 .search__btn {
-  width: calc(var(--padding--half) * 3);
-  height: calc(var(--padding--half) * 3);
+  width: var(--padding);
+  height: var(--padding);
 }
 
 .link {
@@ -692,8 +692,8 @@ p {
 }
 
 .fab {
-  width: calc(var(--padding--half) * 3);
-  height: calc(var(--padding--half) * 3);
+  width: var(--padding);
+  height: var(--padding);
   border-radius: 50%;
   border: none;
   padding: 0;
@@ -842,8 +842,8 @@ p {
 }
 .footer__icon-wrapper {
   text-align: center;
-  width: calc(var(--padding--half) * 3);
-  height: calc(var(--padding--half) * 3);
+  width: var(--padding);
+  height: var(--padding);
   margin: var(--padding--half);
 }
 .footer__icon-link {
