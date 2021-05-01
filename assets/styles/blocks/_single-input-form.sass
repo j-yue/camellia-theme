@@ -1,0 +1,28 @@
+@use '../mixins'
+
+.single-input-form
+
+    &__field
+        @include mixins.remove-space
+        border: none
+
+    &__wrapper
+        @include mixins.flex(row nowrap, center, center)
+        background: var(--color__secondary)
+
+    &__input
+        flex: 1
+        padding: var(--padding--half)
+        border: none
+        border-radius: 0
+
+    &__submit
+        padding: var(--padding--half)
+        background: var(--color__primary--500)
+        border: none
+        border-radius: 0
+        &:hover
+            cursor: pointer
+
+    &__icon-wrapper
+        height: 1rem

@@ -332,23 +332,11 @@ p {
   padding: 1.6rem 0;
 }
 .search__wrapper {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  align-items: center;
-  height: 1.6rem;
-  padding: 0.1rem;
-  border-radius: 0.9rem;
-  border: 1px solid #888;
+  border: 1px solid #000;
+  border-radius: var(--padding);
 }
-.search__input {
-  border: none;
-  background: none;
-  padding-left: 0.8rem;
-}
-.search__btn {
-  width: var(--padding);
-  height: var(--padding);
+.search__submit {
+  background: none !important;
 }
 
 .link {
@@ -739,6 +727,37 @@ p {
 }
 .newsletter__signup-submit:hover {
   cursor: pointer;
+}
+
+.single-input-form__field {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.single-input-form__wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  background: var(--color__secondary);
+}
+.single-input-form__input {
+  flex: 1;
+  padding: var(--padding--half);
+  border: none;
+  border-radius: 0;
+}
+.single-input-form__submit {
+  padding: var(--padding--half);
+  background: var(--color__primary--500);
+  border: none;
+  border-radius: 0;
+}
+.single-input-form__submit:hover {
+  cursor: pointer;
+}
+.single-input-form__icon-wrapper {
+  height: 1rem;
 }
 
 .header {
