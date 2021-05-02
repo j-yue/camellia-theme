@@ -8,15 +8,17 @@
 
             <p class="newsletter__message">{{settings.newsletter__message}}</p>
 
-            <form class="newsletter__signup">
-                <fieldset class="newsletter__signup-field">
+            <form class="single-input-form">
+                <fieldset class="single-input-form__field">
                     <legend class="visually-hidden">Newsletter Signup</legend>
-                    <div class="newsletter__input-wrapper">
+                    <div class="single-input-form__wrapper">
                         <label for="signup" class="visually-hidden">Newsletter Signup</label>
-                        <input type="email" name="signup" class="newsletter__input" placeholder="jane@doe.com" required>
+                        <input type="email" name="signup" class="single-input-form__input" placeholder="jane@doe.com" required>
 
-                        <button type="submit" class="newsletter__signup-submit">
-                            <span class="newsletter__signup-arrow">→</span>
+                        <button type="submit" class="single-input-form__submit">
+                            <div class="single-input-form__icon-wrapper">
+                                {% render 'icon-arrow-right' %}
+                            </div>
                         </button>
                     </div>
                 </fieldset>

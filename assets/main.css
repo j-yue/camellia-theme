@@ -704,34 +704,6 @@ p {
   right: var(--padding);
 }
 
-.newsletter__signup-field {
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-.newsletter__input-wrapper {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  background: var(--color__secondary);
-}
-.newsletter__input {
-  width: 85%;
-  padding: var(--padding--half);
-  border: none;
-  border-radius: 0;
-}
-.newsletter__signup-submit {
-  width: 15%;
-  padding: var(--padding--half);
-  border: none;
-  border-radius: 0;
-}
-.newsletter__signup-submit:hover {
-  cursor: pointer;
-}
-
 .single-input-form__field {
   margin: 0;
   padding: 0;
