@@ -335,6 +335,9 @@ p {
   border: 1px solid #000;
   border-radius: var(--padding);
 }
+.search__input {
+  border-radius: inherit !important;
+}
 .search__submit {
   background: none !important;
 }
