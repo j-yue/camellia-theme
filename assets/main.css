@@ -351,6 +351,10 @@ p {
   padding: var(--padding--half);
   box-shadow: 0 0 2rem #eee;
 }
+
+.results--hidden {
+  display: none;
+}
 .results__title {
   text-transform: capitalize;
 }
@@ -375,15 +379,6 @@ p {
   height: calc(var(--padding)*2);
   background: var(--color__primary--100);
   margin-right: var(--padding--half);
-}
-
-.list {
-  margin: 0;
-  padding: 0;
-  padding: var(--padding--half);
-}
-.list li {
-  list-style: none;
 }
 
 .link {

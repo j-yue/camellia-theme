@@ -25,10 +25,10 @@
         padding: var(--padding--half)
         box-shadow: 0 0 2rem #eee
 
-        &--hidden
-            // display: none
-
 .results
+    &--hidden
+        display: none
+
     &__title
         text-transform: capitalize
 
@@ -47,7 +47,3 @@
         height: $height
         background: var(--color__primary--100)
         margin-right: var(--padding--half)
-
-.list
-    @include mixins.reset-list-style
-    padding: var(--padding--half)

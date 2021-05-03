@@ -1,4 +1,4 @@
-const classname = ".search__results--hidden";
+const visibility = "results--hidden";
 
 document.addEventListener("DOMContentLoaded", () => {
   const search = document.querySelector(".search__input");
@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   search.addEventListener("input", (e) => {
     const query = e.target.value;
-    // query
-    //   ? results.classList.remove(classname)
-    //   : results.classList.add(classname);
+    query
+      ? results.classList.remove(visibility)
+      : results.classList.add(visibility);
     const queryStr = `/search/suggest.json?q=${query}&resources[type]=product,page,collection&resources[limit]=4&resources[options][unavailable_products]=last`;
     fetch(queryStr)
       .then((response) => response.json())
