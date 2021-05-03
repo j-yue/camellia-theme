@@ -29,7 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!html) html = "No results";
 
         results.innerHTML = html;
-      });
+      })
+      .catch((err) => console.log(err));
   });
 });
 
