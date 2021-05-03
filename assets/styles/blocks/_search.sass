@@ -1,10 +1,12 @@
 @use '../mixins'
 
 .search
-    width: 100%
-    padding: 1.6rem 0
-
     &__wrapper
+        width: 100%
+        padding-top: var(--padding)
+        position: relative
+
+    &__input-wrapper
         border: 1px solid #000
         border-radius: var(--padding)
 
@@ -13,3 +15,39 @@
 
     &__submit
         background: none !important
+
+    &__results
+        margin-top: var(--padding--half)
+        background: #fff
+        width: 100%
+        max-height: 50vh
+        overflow-y: auto
+        padding: var(--padding--half)
+        box-shadow: 0 0 2rem #eee
+
+        &--hidden
+            // display: none
+
+.results
+    &__title
+        text-transform: capitalize
+
+    &__list
+        @include mixins.reset-list-style
+
+    &__list-item
+        margin-bottom: var(--padding--half)
+
+    &__link
+        @include mixins.flex(row nowrap, flex-start, center)
+
+    &__img
+        $height: calc(var(--padding)*2)
+        width: $height
+        height: $height
+        background: var(--color__primary--100)
+        margin-right: var(--padding--half)
+
+.list
+    @include mixins.reset-list-style
+    padding: var(--padding--half)

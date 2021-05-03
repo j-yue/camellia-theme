@@ -18,6 +18,7 @@
   {{ 'main.css' | asset_url | stylesheet_tag }}
   {{ 'application.js' | asset_url | script_tag }}
   {{ 'lazysizes.min.js' | asset_url | script_tag }}
+  {{ 'search.js' | asset_url | script_tag}}
 
   {% if template contains 'collection' %}
     {{ 'loadmore.js' | asset_url | script_tag}}

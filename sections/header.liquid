@@ -2,30 +2,31 @@
 {% assign logo = settings.header__logo | img_url: '200x200' %}
 
 <header class="header">
-        <div class="header__wrapper">
-            <button class="btn btn__header header__toggle">
-                {% render 'icon-hamburger' %}
-            </button>
+    <div class="header__wrapper">
+        <button class="btn btn__header header__toggle">
+            {% render 'icon-hamburger' %}
+        </button>
 
-            <a href="/" class="header__link link">
-                <div class="header__logo">
-                    {% render 'logo' %}
-                </div>
-            </a>
+        <a href="/" class="header__link link">
+            <div class="header__logo">
+                {% render 'logo' %}
+            </div>
+        </a>
 
-            <nav class="nav nav__header--desktop">
-                {% render 'nav', linklist: section.settings.header__nav %}
-            </nav>
+        <nav class="nav nav__header--desktop">
+            {% render 'nav', linklist: section.settings.header__nav %}
+        </nav>
 
-            <button class="btn btn__header header__cart">
-                {% render 'icon-cart' %}
-            </button>
-        </div>
+        <button class="btn btn__header header__cart">
+            {% render 'icon-cart' %}
+        </button>
+    </div>
 
+    <div class="search__wrapper">
         <form class="search single-input-form">
             <fieldset class="single-input-form__field">
                 <legend class="visually-hidden">Search website</legend>
-                <div class="search__wrapper single-input-form__wrapper">
+                <div class="search__input-wrapper single-input-form__wrapper">
                     <label for="search" class="visually-hidden">Newsletter Signup</label>
                     <input type="text" name="search" class="search__input single-input-form__input" placeholder="Boba Box" required>
 
@@ -38,28 +39,18 @@
             </fieldset>
         </form>
         
-        {% comment %} <form class="search" role="search" action="/" method="get">
-            <div class="search__wrapper">
-                <label for="header-search" class="search__label">
-                    <span class="visually-hidden">Search</span>
-                </label>
-                <button class="btn btn__header search__btn">
-                    {% render 'icon-search' %}
-                </button>
-                <input type="search" class="search__input" id="header-search" placeholder="Search">
-                
-            </div>
-        </form> {% endcomment %}
 
-        <div class="search__results">
+        <div class="search__results search__results--hidden">
         </div>
+        
+    </div>
 
-        <nav class="nav nav__header--mobile nav__header--collapsed">
-            <button class="btn btn__header header__close">
-                {% render 'icon-close' %}
-            </button>
-            {% render 'nav', linklist: section.settings.header__nav %}
-        </nav>
+    <nav class="nav nav__header--mobile nav__header--collapsed">
+        <button class="btn btn__header header__close">
+            {% render 'icon-close' %}
+        </button>
+        {% render 'nav', linklist: section.settings.header__nav %}
+    </nav>
 </header>
 
 {% javascript %}
