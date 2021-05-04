@@ -343,8 +343,28 @@ p {
 .search__input {
   border-radius: inherit !important;
 }
+.search__clear {
+  margin-right: var(--padding--half);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.search__clear:hover {
+  cursor: pointer;
+}
+.search__clear--hidden {
+  display: none;
+}
 .search__icon {
   margin-right: var(--padding--half);
+  width: var(--padding);
+  height: var(--padding);
 }
 .search__results {
   margin-top: var(--padding--half);

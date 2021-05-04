@@ -14,8 +14,21 @@
     &__input
         border-radius: inherit !important
 
+    &__clear
+        margin-right: var(--padding--half)
+        @include mixins.square-icons(1rem)
+        border-radius: 50%
+        border: none
+        padding: 0
+        @include mixins.flex(row nowrap, center, center)
+        &:hover
+            cursor: pointer
+        &--hidden
+            display: none
+
     &__icon
         margin-right: var(--padding--half)
+        @include mixins.icon
 
     &__results
         margin-top: var(--padding--half)

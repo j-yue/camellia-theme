@@ -11,6 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const search = document.querySelector(".search__input");
   const results = document.querySelector(".search__results");
   const submit = document.querySelector(".search__submit");
+  const clear = document.querySelector(".search__clear");
+
+  clear.addEventListener("click", () => {
+    search.value = "";
+  });
 
   submit.addEventListener("click", () => {
     const url = `${window.location.origin}/search?q=${search.value}`;
@@ -27,6 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
     query
       ? submit.classList.remove("search__submit--hidden")
       : submit.classList.add("search__submit--hidden");
+
+    query
+      ? clear.classList.remove("search__clear--hidden")
+      : submit.classList.add("search__clear--hidden");
 
     const queryStr = `/search/suggest.json?q=${query}&resources[type]=product,page,collection&resources[limit]=4&resources[options][unavailable_products]=last`;
 

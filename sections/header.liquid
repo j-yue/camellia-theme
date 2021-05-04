@@ -27,16 +27,18 @@
             <fieldset class="single-input-form__field">
                 <legend class="visually-hidden">Search website</legend>
                 <div class="search__input-wrapper single-input-form__wrapper">
-                    <label for="search" class="visually-hidden">Newsletter Signup</label>
                     
-                    <span class="">
-                        {% render 'icon-close' %}
-                    </span>
+                    <label for="search" class="visually-hidden">Newsletter Signup</label>
+                                    
                     <input type="text" name="search" class="search__input single-input-form__input" placeholder="Boba Box" required>
 
-                        <div class="single-input-form__icon-wrapper search__icon">
-                            {% render 'icon-search' %}
-                        </div>
+                    <button class="search__clear search__clear--hidden">
+                        {% render 'icon-close' %}
+                    </button>
+
+                    <div class="single-input-form__icon-wrapper search__icon">
+                        {% render 'icon-search' %}
+                    </div>
                 </div>
             </fieldset>
         </form>
