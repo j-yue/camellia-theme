@@ -377,6 +377,11 @@ p {
 }
 .results__list-item {
   margin-bottom: var(--padding--half);
+  transition: 0.3s;
+  padding: var(--padding--quarter);
+}
+.results__list-item:hover {
+  background: var(--color__primary--100);
 }
 .results__link {
   display: flex;
