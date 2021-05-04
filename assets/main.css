@@ -331,6 +331,10 @@ p {
   width: 100%;
   padding-top: var(--padding);
   position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: stretch;
 }
 .search__input-wrapper {
   border: 1px solid #000;
@@ -339,8 +343,8 @@ p {
 .search__input {
   border-radius: inherit !important;
 }
-.search__submit {
-  background: none !important;
+.search__icon {
+  margin-right: var(--padding--half);
 }
 .search__results {
   margin-top: var(--padding--half);
@@ -350,6 +354,12 @@ p {
   overflow-y: auto;
   padding: var(--padding--half);
   box-shadow: 0 0 2rem #eee;
+}
+.search__submit {
+  position: relative;
+}
+.search__submit--hidden {
+  display: none;
 }
 
 .results--hidden {
@@ -379,6 +389,7 @@ p {
   height: calc(var(--padding)*2);
   background: var(--color__primary--100);
   margin-right: var(--padding--half);
+  object-fit: cover;
 }
 
 .link {

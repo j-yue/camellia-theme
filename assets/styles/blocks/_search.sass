@@ -5,6 +5,7 @@
         width: 100%
         padding-top: var(--padding)
         position: relative
+        @include mixins.flex(column nowrap, center, stretch)
 
     &__input-wrapper
         border: 1px solid #000
@@ -13,8 +14,8 @@
     &__input
         border-radius: inherit !important
 
-    &__submit
-        background: none !important
+    &__icon
+        margin-right: var(--padding--half)
 
     &__results
         margin-top: var(--padding--half)
@@ -24,6 +25,11 @@
         overflow-y: auto
         padding: var(--padding--half)
         box-shadow: 0 0 2rem #eee
+
+    &__submit
+        position: relative
+        &--hidden
+            display: none
 
 .results
     &--hidden
@@ -37,6 +43,10 @@
 
     &__list-item
         margin-bottom: var(--padding--half)
+        // transition: .3s
+        // padding: var(--padding--quarter)
+        // &:hover
+        //     background: var(--color__primary--100)
 
     &__link
         @include mixins.flex(row nowrap, flex-start, center)
@@ -47,3 +57,4 @@
         height: $height
         background: var(--color__primary--100)
         margin-right: var(--padding--half)
+        object-fit: cover

@@ -1,14 +1,29 @@
 const visibility = "results--hidden";
 
+function updateSubmitState(submit, isDisabled, removeClass, addClass, text) {
+  submit.disabled = isDisabled;
+  submit.classList.remove(removeClass);
+  submit.classList.add(addClass);
+  submit.innerText = text;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const search = document.querySelector(".search__input");
   const results = document.querySelector(".search__results");
+  const submit = document.querySelector(".search__submit");
 
   search.addEventListener("input", (e) => {
     const query = e.target.value;
+
+    // }
     query
       ? results.classList.remove(visibility)
       : results.classList.add(visibility);
+
+    query
+      ? submit.classList.remove("search__submit--hidden")
+      : submit.classList.add("search__submit--hidden");
+
     const queryStr = `/search/suggest.json?q=${query}&resources[type]=product,page,collection&resources[limit]=4&resources[options][unavailable_products]=last`;
     fetch(queryStr)
       .then((response) => response.json())
@@ -26,7 +41,24 @@ document.addEventListener("DOMContentLoaded", () => {
           html += renderResult(type);
         });
 
-        if (!html) html = "No results";
+        if (!html) {
+          html = "No results";
+          updateSubmitState(
+            submit,
+            true,
+            "btn--default",
+            "btn--disabled",
+            `No results for '${query}'`
+          );
+        } else {
+          updateSubmitState(
+            submit,
+            false,
+            "btn--disabled",
+            "btn--default",
+            `Search all results for '${query}'`
+          );
+        }
 
         results.innerHTML = html;
       })
