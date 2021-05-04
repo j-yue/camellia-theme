@@ -12,10 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const results = document.querySelector(".search__results");
   const submit = document.querySelector(".search__submit");
 
+  submit.addEventListener("click", () => {
+    const url = `${window.location.origin}/search?q=${search.value}`;
+    window.location = url;
+  });
+
   search.addEventListener("input", (e) => {
     const query = e.target.value;
 
-    // }
     query
       ? results.classList.remove(visibility)
       : results.classList.add(visibility);
@@ -25,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       : submit.classList.add("search__submit--hidden");
 
     const queryStr = `/search/suggest.json?q=${query}&resources[type]=product,page,collection&resources[limit]=4&resources[options][unavailable_products]=last`;
+
     fetch(queryStr)
       .then((response) => response.json())
       .then((suggestions) => {
