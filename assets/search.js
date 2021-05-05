@@ -17,6 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
     search.value = "";
   });
 
+  search.addEventListener("focusout", () => {
+    results.classList.add(visibility);
+    submit.classList.add("search__submit--hidden");
+  });
+
   submit.addEventListener("click", () => {
     const url = `${window.location.origin}/search?q=${search.value}`;
     window.location = url;
