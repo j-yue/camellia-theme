@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     query
       ? clear.classList.remove("search__clear--hidden")
-      : submit.classList.add("search__clear--hidden");
+      : clear.classList.add("search__clear--hidden");
 
     const queryStr = `/search/suggest.json?q=${query}&resources[type]=product,page,collection&resources[limit]=4&resources[options][unavailable_products]=last`;
 
