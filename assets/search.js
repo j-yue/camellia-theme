@@ -17,7 +17,7 @@ function initializeSearchBar() {
 
     // Hide search results and submit button
     search.addEventListener("focusout", () => {
-      udpateUI(null, results, submit, clear);
+      udpateUI(null, results, submit);
     });
 
     // Go to results page
@@ -86,9 +86,9 @@ function initializeSearchBar() {
  * @param {String} query - User search input
  * @param {Node} results - Search results
  * @param {Node} submit - Submit button
- * @param {Clear} clear - Clera button
+ * @param {Clear} clear - Clera button (optional)
  */
-function udpateUI(query, results, submit, clear) {
+function udpateUI(query, results, submit, clear = null) {
   const hiddenClasses = {
     results: "results--hidden",
     submit: "search__submit--hidden",
@@ -102,8 +102,10 @@ function udpateUI(query, results, submit, clear) {
   };
 
   Object.entries(components).map(([type, el]) => {
-    const selector = hiddenClasses[type];
-    query ? el.classList.remove(selector) : el.classList.add(selector);
+    if (el) {
+      const selector = hiddenClasses[type];
+      query ? el.classList.remove(selector) : el.classList.add(selector);
+    }
   });
 }
 
