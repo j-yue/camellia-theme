@@ -1,4 +1,21 @@
-const visibility = "results--hidden";
+function udpateUI(query, results, submit, clear) {
+  const hiddenClasses = {
+    results: "results--hidden",
+    submit: "search__submit--hidden",
+    clear: "search__clear--hidden",
+  };
+
+  const components = {
+    results,
+    submit,
+    clear,
+  };
+
+  Object.entries(components).map(([type, el]) => {
+    const selector = hiddenClasses[type];
+    query ? el.classList.remove(selector) : el.classList.add(selector);
+  });
+}
 
 function updateSubmitState(submit, isDisabled, removeClass, addClass, text) {
   submit.disabled = isDisabled;
@@ -18,8 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   search.addEventListener("focusout", () => {
-    results.classList.add(visibility);
-    submit.classList.add("search__submit--hidden");
+    udpateUI(null, results, submit, clear);
   });
 
   submit.addEventListener("click", () => {
@@ -30,17 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   search.addEventListener("input", (e) => {
     const query = e.target.value;
 
-    query
-      ? results.classList.remove(visibility)
-      : results.classList.add(visibility);
-
-    query
-      ? submit.classList.remove("search__submit--hidden")
-      : submit.classList.add("search__submit--hidden");
-
-    query
-      ? clear.classList.remove("search__clear--hidden")
-      : clear.classList.add("search__clear--hidden");
+    udpateUI(query, results, submit, clear);
 
     const queryStr = `/search/suggest.json?q=${query}&resources[type]=product,page,collection&resources[limit]=4&resources[options][unavailable_products]=last`;
 
