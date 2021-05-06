@@ -1,3 +1,6 @@
+// =====================================================
+// initialize event handlers for search bar
+// =====================================================
 initializeSearchBar();
 
 /**
@@ -17,16 +20,19 @@ function initializeSearchBar() {
     });
 
     // Hide search results and submit when user clicks outside search input
-    const body = document.body;
-    body.addEventListener("click", (e) => {
+    document.body.addEventListener("click", (e) => {
       const path = e.path;
       if (!path.includes(searchBar)) udpateUI(null, results, submit);
     });
 
     // Go to results page
     submit.addEventListener("click", (e) => {
-      const url = `${window.location.origin}/search?q=${search.value}`;
-      window.location = url;
+      goToSearchResults(search.value);
+    });
+
+    //Go to results page
+    search.addEventListener("keydown", (e) => {
+      if (e.keyCode === 13) goToSearchResults(search.value);
     });
 
     // Fetch results and preview them
@@ -159,4 +165,12 @@ function renderResult(results) {
   });
   html += "</ul></section>";
   return html;
+}
+
+/**
+ * Redirect user to search results
+ * @param {String} value - Search value
+ */
+function goToSearchResults(value) {
+  if (value) window.location = `${window.location.origin}/search?q=${value}`;
 }
