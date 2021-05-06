@@ -9,19 +9,22 @@ function initializeSearchBar() {
     const results = document.querySelector(".search__results");
     const submit = document.querySelector(".search__submit");
     const clear = document.querySelector(".search__clear");
+    const searchBar = document.querySelector(".search__wrapper");
 
     // Reset input value
     clear.addEventListener("click", () => {
       search.value = "";
     });
 
-    // Hide search results and submit button
-    search.addEventListener("focusout", () => {
-      udpateUI(null, results, submit);
+    // Hide search results and submit when user clicks outside search input
+    const body = document.body;
+    body.addEventListener("click", (e) => {
+      const path = e.path;
+      if (!path.includes(searchBar)) udpateUI(null, results, submit);
     });
 
     // Go to results page
-    submit.addEventListener("click", () => {
+    submit.addEventListener("click", (e) => {
       const url = `${window.location.origin}/search?q=${search.value}`;
       window.location = url;
     });
