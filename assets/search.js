@@ -172,5 +172,6 @@ function renderResult(results) {
  * @param {String} value - Search value
  */
 function goToSearchResults(value) {
-  if (value) window.location = `${window.location.origin}/search?q=${value}`;
+  if (value)
+    window.location = `${window.location.origin}/search?q=${value}&options[prefix]=last`;
 }
