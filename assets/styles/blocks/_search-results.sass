@@ -1,0 +1,24 @@
+@use '../mixins'
+
+.search-results
+    &__wrapper
+
+    &__type-wrapper
+        margin-bottom: var(--padding)
+
+    &__list
+        @include mixins.reset-list-style
+
+        &--product
+            display: grid
+            grid-template-columns: 1fr
+            grid-auto-rows: max-content
+            grid-gap: var(--padding)
+            margin-top: var(--padding)
+            width: 100%
+
+            @include mixins.small-medium
+                grid-template-columns: repeat(2, 1fr)
+
+            @include mixins.medium
+                grid-template-columns: repeat(3, 1fr)

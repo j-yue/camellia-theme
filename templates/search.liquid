@@ -1,22 +1,20 @@
-{% paginate search.results by 10 %}
-  <form action="/search" method="get" role="search">
-    <input type="search" name="q" value="{{ search.terms | escape }}">
-    <button type="submit">search</button>
-  </form>
+<section class="search-results">
 
-  {% if search.performed %}
-    {% for item in search.results %}
-      {% if item.featured_image %}
-        <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
-          {{ item.featured_image.src | img_url: 'medium' | img_tag: item.featured_image.alt }}
-        </a>
-      {% endif %}
-      <h5>{{ item.title | link_to: item.url }}</h5>
-      <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
-    {% else %}
-      no results
-    {% endfor %}
-  {% endif %}
+  <h1 class="search-results__main-title">Search results for '{{search.terms}}'</h1>
 
-  {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}
-{% endpaginate %}
+  <p class="search-results__total">total results {{search.results_count}}</p>
+
+  <section class="search-results__wrapper">
+    {% paginate search.results by 1000 %}
+
+      {% assign types = 'product, page, article' | split: ', ' %}
+
+      {% for type in types %}
+        {% render 'search-results', type: type, data: search.results %}
+      {% endfor %}
+
+    {% endpaginate %}
+  </section>
+
+</section>
+  

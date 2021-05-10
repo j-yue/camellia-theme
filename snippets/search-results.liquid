@@ -1,0 +1,30 @@
+{% comment %}
+Render search results grouped by result type
+
+Accepts:
+- type: {String} product, page, or blog (required)
+- data: {object} search results liquid object (required)
+
+Usage:
+{% render 'search-results', type: 'product', data: product %}
+{% endcomment %}
+
+{% assign filteredResults = data | where: 'object_type', type %}
+<section class="search-results__type-wrapper">
+    <h2 class="search-results__title">{{type | capitalize}}s ({{filteredResults | size}})</h2>
+    <ul class="search-results__list search-results__list--{{type}}">
+        {% for item in filteredResults %}
+            <li class="search-results__item">
+                {% if type == 'product' %}
+                    {% render 'product-card', product: item, class: 'search-result__product' %}
+
+                {% else %}
+                    <a class="search-results__link">
+                        <h3 class="search-results__title">{{item.title}}</h3>
+                    </a>   
+
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</section>
