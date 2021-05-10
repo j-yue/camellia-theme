@@ -2,19 +2,23 @@
 
   <h1 class="search-results__main-title">Search results for '{{search.terms}}'</h1>
 
-  <p class="search-results__total">total results {{search.results_count}}</p>
+  <p class="search-results__total">{{search.results_count}} found</p>
 
-  <section class="search-results__wrapper">
-    {% paginate search.results by 1000 %}
+  {% if search.results != blank %}
 
-      {% assign types = 'product, page, article' | split: ', ' %}
-
-      {% for type in types %}
-        {% render 'search-results', type: type, data: search.results %}
-      {% endfor %}
-
-    {% endpaginate %}
-  </section>
+    <section class="search-results__wrapper">
+      {% paginate search.results by 1000 %}
+  
+        {% assign types = 'product, page, article' | split: ', ' %}
+  
+        {% for type in types %}
+          {% render 'search-results', type: type, data: search.results %}
+        {% endfor %}
+  
+      {% endpaginate %}
+    </section>
+    
+  {% endif %}
 
 </section>
   
