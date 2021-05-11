@@ -13,6 +13,8 @@
     <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
   {%- endif -%}
 
+  <link rel="stylesheet" href="{{'animate.min.css' | asset_url}}">
+
   {{ content_for_header }} <!-- Header hook for plugins -->
   {{ 'application.scss.css' | asset_url | stylesheet_tag }}
   {{ 'main.css' | asset_url | stylesheet_tag }}
