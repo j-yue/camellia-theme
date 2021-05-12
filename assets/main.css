@@ -123,6 +123,7 @@ p {
 
 :root {
   --padding: 1.6rem;
+  --padding--double: 3.2rem;
   --padding--half: calc(var(--padding)/2);
   --padding--quarter: calc(var(--padding)/4);
   --height-header: var(--padding) + functions.heading-size(6);
@@ -761,11 +762,6 @@ p {
   border: none;
   padding: 0;
 }
-@media screen and (min-width: 768px) {
-  .fab {
-    display: none;
-  }
-}
 .fab:hover {
   cursor: pointer;
 }
@@ -773,6 +769,18 @@ p {
   position: fixed;
   bottom: var(--padding);
   right: var(--padding);
+  background: var(--color__primary--500);
+}
+@media screen and (min-width: 768px) {
+  .fab__scroll-up {
+    display: none;
+  }
+}
+.fab__close-modal {
+  float: right;
+  margin-top: var(--padding--quarter);
+  margin-right: var(--padding--quarter);
+  background: var(--color__secondary);
 }
 
 .single-input-form__field {
@@ -815,6 +823,73 @@ p {
 }
 .search-results__list li {
   list-style: none;
+}
+
+.modal {
+  overflow-x: hidden;
+  position: fixed;
+  z-index: 1;
+  background: var(--color__primary--500);
+  backdrop-filter: blur(5px);
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  animation-name: fadeIn;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+.modal--close {
+  animation-name: fadeOut;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+.modal__wrapper {
+  width: calc(100% - var(--padding--double));
+  background: var(--color__secondary);
+  padding: var(--padding);
+  position: absolute;
+  overflow-y: auto;
+}
+.modal__close {
+  position: relative;
+  z-index: 1;
+}
+.modal__cart {
+  right: 0;
+  animation-name: fadeInRight;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+.modal__cart--close {
+  animation-name: fadeOutRight;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+.modal__header {
+  left: 0;
+  background: yellow;
+  animation-name: fadeInLeft;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+.modal__header--close {
+  animation-name: fadeOutLeft;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+.modal__quickview {
+  width: calc(100% - var(--padding--double));
+  height: calc(100% - var(--padding--double));
+  top: var(--padding);
+  left: var(--padding);
+  animation-name: fadeInUp;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+.modal__quickview--close {
+  animation-name: fadeOutDown;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
 
 .header {

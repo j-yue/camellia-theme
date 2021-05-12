@@ -1,0 +1,54 @@
+@use '../mixins'
+
+.modal
+    overflow-x: hidden //hide overflow caused by animations
+    position: fixed
+    z-index: 1
+    background: var(--color__primary--500)
+    backdrop-filter: blur(5px)
+    width: 100%
+    height: 100%
+    overflow-y: hidden
+    // display: none
+    @include mixins.modal-animation(fadeIn, .8s)
+
+    &--close
+        @include mixins.modal-animation(fadeOut, .8s)
+
+    &--open
+        // display: block
+
+    &__wrapper
+        width: calc(100% - var(--padding--double))
+        background: var(--color__secondary)
+        padding: var(--padding)
+        position: absolute
+        overflow-y: auto
+
+    &__close
+        position: relative
+        z-index: 1
+
+    &__cart
+        // animation: fadeInRight .5s
+        right: 0
+        @include mixins.modal-animation(fadeInRight)
+        &--close
+            @include mixins.modal-animation(fadeOutRight)
+
+    &__header
+        left: 0
+        background: yellow
+        @include mixins.modal-animation(fadeInLeft)
+        &--close
+            @include mixins.modal-animation(fadeOutLeft)
+
+    &__quickview
+        width: calc(100% - var(--padding--double))
+        height: calc(100% - var(--padding--double))
+        top: var(--padding)
+        left: var(--padding)
+        // animation: fadeInUp .5s
+        @include mixins.modal-animation(fadeInUp)
+        &--close
+            @include mixins.modal-animation(fadeOutDown)

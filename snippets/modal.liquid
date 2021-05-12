@@ -1,0 +1,31 @@
+{% comment %}
+Creates an animated modal that contains content for mobile menus, sidebars, quick shop, etc
+
+Accepts:
+- type: {String} header, cart, quickview (required)
+- content: {HTML} content to be wrapped inside modal (required)
+Usage:
+{% render 'modal', type: 'cart', content: content, classes: 'modal__cart animate__bounce' %}
+{% endcomment %}
+
+
+<div class="modal" role="dialog" data-modal-type="{{type}}">
+    <button class="fab fab__close-modal modal__close modal__close--open">
+        {% render 'icon-close' %}
+    </button>
+    
+    <section class="modal__wrapper modal__{{type}}">
+        {{content}}
+    </section>
+</div>
+
+<script>
+
+    const body = document.body;
+    const modal = body.querySelector('.modal');
+    const wrapper = modal.querySelector('.modal__wrapper');
+    body.addEventListener('click', (e) => {
+        wrapper.classList.toggle('modal__quickview--close')
+        modal.classList.toggle('modal--close')
+    });
+</script>

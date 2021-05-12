@@ -5,8 +5,6 @@
     border-radius: 50%
     border: none
     padding: 0
-    @include mixins.medium
-        display: none
 
     &:hover
         cursor: pointer
@@ -15,3 +13,12 @@
         position: fixed
         bottom: var(--padding)
         right: var(--padding)
+        background: var(--color__primary--500)
+        @include mixins.medium
+            display: none
+
+    &__close-modal
+        float: right
+        margin-top: var(--padding--quarter)
+        margin-right: var(--padding--quarter)
+        background: var(--color__secondary)

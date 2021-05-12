@@ -8,6 +8,7 @@
 //  sizing images
 //  position
 //  button styles
+//  animations
 //------------------------------------------------------
 
 //layout
@@ -137,3 +138,12 @@ $large: 1440px
 @mixin btn-disabled
     @include btnStyle(#eee, #444)
     cursor: not-allowed !important
+
+// animations
+@mixin animation($name, $duration, $fill)
+    animation-name: $name
+    animation-duration: $duration
+    animation-fill-mode: $fill
+
+@mixin modal-animation($name, $duration: .5s)
+    @include animation($name, $duration, forwards)
