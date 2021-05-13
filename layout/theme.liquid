@@ -21,7 +21,7 @@
   {{ 'application.js' | asset_url | script_tag }}
   {{ 'lazysizes.min.js' | asset_url | script_tag }}
   {{ 'search.js' | asset_url | script_tag}}
-
+  {{ 'cart.js' | asset_url | script_tag}}
   {% if template contains 'collection' %}
     {{ 'loadmore.js' | asset_url | script_tag}}
     {{ 'collection.js' | asset_url | script_tag}}
@@ -35,7 +35,7 @@
 </head>
 <body>
   
-  {% render 'modal', type: 'quickview' %}
+  {% comment %} {% render 'modal', type: 'quickview' %} {% endcomment %}
 
   {% section 'header' %}
 
