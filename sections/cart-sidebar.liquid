@@ -1,0 +1,13 @@
+
+{% comment %} <section class="cart-sidebar"> {% endcomment %}
+
+    {% comment %} {% render 'modal', type: 'cart' %} {% endcomment %}
+{% comment %} </section> {% endcomment %}
+
+{%- capture content -%}
+<section class="cart-sidebar">
+{{cart.item | size}}
+</section>
+{%- endcapture -%}
+
+{% render 'modal', type: 'cart', content: content %}
