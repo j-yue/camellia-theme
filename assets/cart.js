@@ -37,8 +37,13 @@ function addToCart(btn) {
     });
 }
 
+function updateCartBadge(count) {
+  const badge = document.querySelector(".badge__cart");
+  badge.innerText = count;
+}
+
 function getCartData() {
   fetch("/cart.js")
     .then((response) => response.json())
-    .then((data) => console.log(data.items));
+    .then((data) => updateCartBadge(data.item_count));
 }

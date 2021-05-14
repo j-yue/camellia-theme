@@ -1,0 +1,12 @@
+@use '../mixins'
+
+.badge
+    &__cart
+        background: var(--color__primary)
+        color: var(--color__secondary)
+        @include mixins.icon
+        @include mixins.flex(row nowrap, center, center)
+        border-radius: 50%
+        position: absolute
+        bottom: var(--padding--half)
+        left: var(--padding--half)

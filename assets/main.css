@@ -892,6 +892,21 @@ p {
   animation-fill-mode: forwards;
 }
 
+.badge__cart {
+  background: var(--color__primary);
+  color: var(--color__secondary);
+  width: var(--padding);
+  height: var(--padding);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  bottom: var(--padding--half);
+  left: var(--padding--half);
+}
+
 .header {
   width: 100%;
   padding: var(--padding);
@@ -921,6 +936,9 @@ p {
   .header__toggle {
     display: none;
   }
+}
+.header__cart {
+  position: relative;
 }
 @media screen and (min-width: 768px) {
   .header__search {
