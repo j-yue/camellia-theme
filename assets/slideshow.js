@@ -7,11 +7,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
 });
 
 function updateSelectedMedia(goLeft) {
-  const parent = document.querySelector(".quickview__current-img");
+  const parent = document.querySelector(".quickview__slideshow");
 
   const thumbnails = document.querySelectorAll(".quickview__thumbnail");
   //update parent data attributes and get the new current index
   const newIndex = updateSlideshowIndexes(parent, goLeft);
+  console.log(newIndex);
   const newCurrentImg = createNewImage(thumbnails[newIndex].dataset.html);
   updateSelectedThumbnail(thumbnails[newIndex]);
   parent.replaceChild(newCurrentImg, parent.children[0]);

@@ -8,13 +8,12 @@ Usage:
 {% render 'slideshow', media: product.media %}
 {% endcomment %}
 
-<div class="quickview__slideshow">
-    {% assign lastIndex = media | size | minus: 1 %}
-    <div class="quickview__current-img" data-slideshow-current="0" data-slideshow-left="{{lastIndex}}" data-slideshow-right="1" data-slideshow-last="{{lastIndex}}">
+{% assign lastIndex = media | size | minus: 1 %}
+
+<div class="quickview__slideshow" data-slideshow-current="0" data-slideshow-left="{{lastIndex}}" data-slideshow-right="1" data-slideshow-last="{{lastIndex}}">    
         <div class="quickview__current-img-wrapper">
-            {% render 'responsive-img', img: media[0] %}
+            {% render 'responsive-img', img: media[0], class: 'quickview__current-img' %}
         </div>
-    </div>
     <div class="quickview__controls">
         <button class="quickview__arrow quickview__arrow--left fab">{% render 'icon-chevron-left' %}</button>
         <button class="quickview__arrow quickview__arrow--right fab">{% render 'icon-chevron-right' %}</button>
