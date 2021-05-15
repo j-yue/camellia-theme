@@ -11,7 +11,9 @@ Usage:
 <div class="quickview__slideshow">
     {% assign lastIndex = media | size | minus: 1 %}
     <div class="quickview__current-img" data-slideshow-current="0" data-slideshow-left="{{lastIndex}}" data-slideshow-right="1" data-slideshow-last="{{lastIndex}}">
-        {% render 'responsive-img', img: media[0] %}
+        <div class="quickview__current-img-wrapper">
+            {% render 'responsive-img', img: media[0] %}
+        </div>
     </div>
     <div class="quickview__controls">
         <button class="quickview__arrow quickview__arrow--left fab">{% render 'icon-chevron-left' %}</button>

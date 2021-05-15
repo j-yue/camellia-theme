@@ -36,7 +36,7 @@ function normalizeIndex(index, divider) {
 
 function createNewImage(htmlString) {
   const newCurrentImg = document.createElement("div");
-  newCurrentImg.classList.add("quickview__current-img");
+  newCurrentImg.classList.add("quickview__current-img-wrapper");
   newCurrentImg.innerHTML = htmlString;
   return newCurrentImg;
 }
