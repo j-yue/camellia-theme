@@ -565,6 +565,56 @@ p {
   opacity: 0.5;
 }
 
+.quickview__slideshow {
+  position: relative;
+}
+.quickview__thumbnails {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: var(--padding);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.quickview__thumbnails li {
+  list-style: none;
+}
+.quickview__thumbnail {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color__secondary);
+  margin: 0 0.25rem;
+  transition: 0.3s;
+  border: 2px solid var(--color__secondary);
+}
+.quickview__thumbnail--selected {
+  background: var(--color__primary);
+}
+.quickview__controls {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: var(--padding--quarter);
+}
+.quickview__controls li {
+  list-style: none;
+}
+.quickview__arrow {
+  background: var(--color__secondary);
+}
+
 .variant {
   display: flex;
   flex-flow: row nowrap;
@@ -846,7 +896,6 @@ p {
 .modal__wrapper {
   width: calc(100% - var(--padding--double));
   background: var(--color__secondary);
-  padding: var(--padding);
   position: absolute;
   overflow-y: auto;
 }

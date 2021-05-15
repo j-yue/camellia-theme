@@ -1,0 +1,19 @@
+{% comment %}
+Creates a modal thats a mini product page
+
+Accepts:
+- handle: {String} handle of product
+
+Usage:
+{% render 'quickview', type: 'cart', product: product' %}
+{% endcomment %}
+
+{% assign product = all_products['reusable-metal-boba-straw'] %}
+
+{%- capture content -%}
+<section class="quickview">
+    {% render 'slideshow', media: product.media %}
+</section>
+{%- endcapture -%}
+
+{% render 'modal', type: 'quickview', content: content %}

@@ -36,7 +36,7 @@ Usage:
         </p>
     </div>
     {% if product.available %}
-        <button class="product-card__btn product-card__btn--cart btn btn--default" data-variant-id="{{product.first_available_variant.id}}">Add to cart</button>
+        <button class="product-card__btn product-card__btn--cart btn btn--default" data-handle="{{product.handle}}" data-variant-id="{{product.first_available_variant.id}}">Quick Add</button>
     {% else %}
         <button class="product-card__btn product-card__btn--oos btn btn--disabled">Sold out</button>
     {% endif %}

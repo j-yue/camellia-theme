@@ -33,3 +33,39 @@
 
     &__thumbnail--selected
         opacity: .5
+
+.quickview
+    &__slideshow
+        position: relative
+
+    &__thumbnails
+        @include mixins.reset-list-style
+        @include mixins.flex(row nowrap, center, center)
+        position: absolute
+        bottom: var(--padding)
+        left: 50%
+        transform: translateX(-50%)
+
+    &__thumbnail
+        width: .5rem
+        height: .5rem
+        border-radius: 50%
+        background: var(--color__secondary)
+        margin: 0 .25rem
+        transition: .3s
+        border: 2px solid var(--color__secondary)
+
+    &__thumbnail--selected
+        background: var(--color__primary)
+
+    &__controls
+        @include mixins.reset-list-style
+        width: 100%
+        @include mixins.flex(row nowrap, space-between, center)
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        padding: var(--padding--quarter)
+
+    &__arrow
+        background: var(--color__secondary)

@@ -1,0 +1,24 @@
+{% comment %}
+Create a slideshow 
+
+Accepts:
+- media: {Object} media attribute of Liquid Product Object (required)
+
+Usage:
+{% render 'slideshow', media: product.media %}
+{% endcomment %}
+
+<div class="quickview__slideshow">
+    <div class="quickview__current-img">
+        {% render 'responsive-img', img: media[0] %}
+    </div>
+    <div class="quickview__controls">
+        <button class="quickview__arrow fab">{% render 'icon-chevron-left' %}</button>
+        <button class="quickview__arrow fab">{% render 'icon-chevron-right' %}</button>
+    </div>
+    <ul class="quickview__thumbnails">
+        {% for item in media %}
+            <li class="quickview__thumbnail {%if item == media[0]%}quickview__thumbnail--selected{%endif%}"></li>
+        {% endfor %}
+    </ul>
+</div>
