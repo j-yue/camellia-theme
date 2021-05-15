@@ -21,11 +21,11 @@ Usage:
 
 <script>
 
-    const body = document.body;
+    {% comment %} const body = document.body;
     const modal = body.querySelector('.modal');
     const wrapper = modal.querySelector('.modal__wrapper');
     body.addEventListener('click', (e) => {
         wrapper.classList.toggle('modal__quickview--close')
         modal.classList.toggle('modal--close')
-    });
+    }); {% endcomment %}
 </script>
