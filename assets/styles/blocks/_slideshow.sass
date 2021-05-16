@@ -38,6 +38,16 @@
     &__slideshow
         position: relative
 
+    &__current-img-wrapper
+        height: 50vh
+        background: #000
+        @include mixins.flex(row nowrap, center, center)
+        object-fit: contain
+
+    &__current-img
+        // object-position: center
+        // object-fit: contain !important
+
     &__thumbnails
         @include mixins.reset-list-style
         @include mixins.flex(row nowrap, center, center)

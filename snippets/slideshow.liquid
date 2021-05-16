@@ -20,7 +20,7 @@ Usage:
     </div>
     <ul class="quickview__thumbnails">
         {% for item in media %}
-            {%- capture renderedHTML -%}{% render 'responsive-img', img: item %}{%- endcapture -%}
+            {%- capture renderedHTML -%}{% render 'responsive-img', img: item, class: 'quickview__current-img' %}{%- endcapture -%}
             <li class="quickview__thumbnail {%if item == media[0]%}quickview__thumbnail--selected{%endif%}" data-html='{{renderedHTML | strip}}'></li>
         {% endfor %}
     </ul>

@@ -482,7 +482,7 @@ p {
 .image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: inherit;
 }
 .image--top {
   object-position: top;
@@ -567,6 +567,15 @@ p {
 
 .quickview__slideshow {
   position: relative;
+}
+.quickview__current-img-wrapper {
+  height: 50vh;
+  background: #000;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
 }
 .quickview__thumbnails {
   margin: 0;

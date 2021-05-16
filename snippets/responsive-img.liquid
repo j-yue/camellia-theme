@@ -16,4 +16,4 @@ Usage:
 {% endcapture %}
 
 
-<img class="lazyload image {{class}}" alt="{{img.alt}}" src="{{img.src | img_url: '100x'}}" data-sizes="auto" data-srcset="{{srcset | strip}}">
+<img class="lazyload image {{class | strip}}" alt="{{img.alt}}" src="{{img.src | img_url: '100x'}}" data-sizes="auto" data-srcset="{{srcset | strip}}">
