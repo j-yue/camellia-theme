@@ -8,12 +8,40 @@ Usage:
 {% render 'quickview', type: 'cart', product: product' %}
 {% endcomment %}
 
-{% assign product = all_products['reusable-metal-boba-straw'] %}
+{% assign product = all_products['boba-box'] %}
 
 {%- capture content -%}
 <section class="quickview">
-    {% render 'slideshow', media: product.media %}
+    <div class="quickview__slideshow-wrapper">
+        {% render 'slideshow', media: product.media %}
+    </div>
+    <article class="quickview__content">
+        <h2 class="quickview__title">{{product.title }}</h2>
+        <p class="quickview__price">{{product.price_min | money}}</p>
+        <section class="quickview__order">
+            {% for option in product.options_with_values %}
+                {%- capture id -%}option{{forloop.index}}{%- endcapture -%}
+                <section class="quickview__option">
+                    <label for="{{id}}" class="quickview__option-label">{{option.name}}</label>
+                    <select id="{{id}}" class="quickview__option-dropdown">
+                        {% for value in option.values %}
+                            <option value='{{value}}'>{{value}}</option>
+                        {% endfor %}
+                    </select>
+                </section>
+            {% endfor %}
+
+            
+        </section>
+    </article>
+
 </section>
 {%- endcapture -%}
 
 {% render 'modal', type: 'quickview', content: content %}
+
+<script>
+    {% comment %} console.log(`
+        {{product.options | json}}
+        `) {% endcomment %}
+</script>

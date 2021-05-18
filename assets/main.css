@@ -968,6 +968,31 @@ p {
   left: var(--padding--half);
 }
 
+.quickview__content {
+  padding: var(--padding--half);
+}
+.quickview__title {
+  line-height: 1;
+  letter-spacing: -1px;
+  text-transform: capitalize;
+  font-size: calc(var(--font__size) * 1.6);
+}
+.quickview__option {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin-bottom: var(--padding--half);
+}
+.quickview__option-label {
+  padding-bottom: var(--padding--quarter);
+  font-weight: bold;
+}
+.quickview__option-dropdown {
+  height: var(--padding);
+  font-size: inherit;
+}
+
 .header {
   width: 100%;
   padding: var(--padding);

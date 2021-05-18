@@ -1,0 +1,23 @@
+@use '../mixins'
+
+.quickview
+    &__content
+        padding: var(--padding--half)
+
+    &__title
+        line-height: 1
+        letter-spacing: -1px
+        text-transform: capitalize
+        font-size: calc(var(--font__size) * 1.6)
+
+    &__option
+        @include mixins.flex(column nowrap, flex-start, stretch)
+        margin-bottom: var(--padding--half)
+
+    &__option-label
+        padding-bottom: var(--padding--quarter)
+        font-weight: bold
+
+    &__option-dropdown
+        height: var(--padding)
+        font-size: inherit
