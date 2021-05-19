@@ -23,6 +23,7 @@
   {{ 'search.js' | asset_url | script_tag}}
   {{ 'cart.js' | asset_url | script_tag}}
   {{ 'slideshow.js' | asset_url | script_tag}}
+  {{ 'product.js' | asset_url | script_tag}}
 
   {% if template contains 'collection' %}
     {{ 'loadmore.js' | asset_url | script_tag}}
@@ -63,6 +64,8 @@
         behavior: 'smooth'
       })
     })
+
+    Camellia = {};
   </script>
 </body>
 </html>

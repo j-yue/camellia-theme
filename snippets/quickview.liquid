@@ -8,7 +8,7 @@ Usage:
 {% render 'quickview', type: 'cart', product: product' %}
 {% endcomment %}
 
-{% assign product = all_products['boba-box'] %}
+{% assign product = all_products['reusable-metal-boba-straw'] %}
 
 {%- capture content -%}
 <section class="quickview">
@@ -24,7 +24,7 @@ Usage:
                 <section class="quickview__option">
                     <label for="{{id}}" class="quickview__option-label">{{option.name}}</label>
                     <div class="quickview__option-container">
-                        <select id="{{id}}" class="quickview__option-dropdown">
+                        <select id="{{id}}" class="quickview__option-dropdown" data-option-number="{{id}}">
                             {% for value in option.values %}
                                 <option value='{{value}}'>{{value}}</option>
                             {% endfor %}
@@ -38,7 +38,7 @@ Usage:
 
             {% render 'quantity', classes: 'quickview__quantity' %}
             
-            <button class="quickview__cart btn btn--default">Add to cart</button>
+            <button class="quickview__cart btn btn--default" data-variant="{{product.variants[0].id}}">Add to cart</button>
         </section>
     </article>
 
@@ -48,7 +48,7 @@ Usage:
 {% render 'modal', type: 'quickview', content: content %}
 
 <script>
-    {% comment %} console.log(`
-        {{product.options | json}}
-        `) {% endcomment %}
+    document.addEventListener('DOMContentLoaded', e => {
+        Camellia['quickviewProduct'] = {{product | json}};
+    })
 </script>
