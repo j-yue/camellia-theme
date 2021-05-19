@@ -1,0 +1,20 @@
+{% comment %}
+Creates a quantity input with increment and decrement buttons
+
+Accepts:
+- classes: {String} classes to apply styling
+- changeCallback:  
+
+
+Usage:
+{% render 'quantity', classes: 'quickview__quantity' %}
+{% endcomment %}
+
+<section class="quantity {{classes}}">
+    <label for="amount" class="quantity__label">Quantity</label>
+    <div class="quantity__inputs-wrapper">
+        <div role="button" class="quantity__btn" tabindex="0" aria-pressed="false" aria-label="Decrement quantity">-</div>
+        <input type="number" step="1" value="1" class="quantity__input" id="amount" min="1">
+        <div role="button" class="quantity__btn" tabindex="0" aria-pressed="false" aria-label="Increment quality">+</div>
+    </div>
+</section>
