@@ -23,11 +23,16 @@ Usage:
                 {%- capture id -%}option{{forloop.index}}{%- endcapture -%}
                 <section class="quickview__option">
                     <label for="{{id}}" class="quickview__option-label">{{option.name}}</label>
-                    <select id="{{id}}" class="quickview__option-dropdown">
-                        {% for value in option.values %}
-                            <option value='{{value}}'>{{value}}</option>
-                        {% endfor %}
-                    </select>
+                    <div class="quickview__option-container">
+                        <select id="{{id}}" class="quickview__option-dropdown">
+                            {% for value in option.values %}
+                                <option value='{{value}}'>{{value}}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="quickview__caret-wrapper">
+                            {% render 'icon-caret-down' %}
+                        </div>
+                    </div>
                 </section>
             {% endfor %}
 

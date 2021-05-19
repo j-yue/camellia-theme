@@ -14,10 +14,23 @@
         @include mixins.flex(column nowrap, flex-start, stretch)
         margin-bottom: var(--padding--half)
 
+    &__option-container
+        position: relative
+        &:hover
+            cursor: pointer
+
     &__option-label
         padding-bottom: var(--padding--quarter)
-        font-weight: bold
 
     &__option-dropdown
-        height: var(--padding)
-        font-size: inherit
+        padding: var(--padding--quarter)
+        font: inherit
+        border-radius: 0
+        -webkit-appearance: none
+        width: 100%
+
+    &__caret-wrapper
+        @include mixins.icon
+        position: absolute
+        top: var(--padding--quarter)
+        right: var(--padding--quarter)

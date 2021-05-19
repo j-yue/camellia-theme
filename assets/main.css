@@ -984,13 +984,28 @@ p {
   align-items: stretch;
   margin-bottom: var(--padding--half);
 }
+.quickview__option-container {
+  position: relative;
+}
+.quickview__option-container:hover {
+  cursor: pointer;
+}
 .quickview__option-label {
   padding-bottom: var(--padding--quarter);
-  font-weight: bold;
 }
 .quickview__option-dropdown {
+  padding: var(--padding--quarter);
+  font: inherit;
+  border-radius: 0;
+  -webkit-appearance: none;
+  width: 100%;
+}
+.quickview__caret-wrapper {
+  width: var(--padding);
   height: var(--padding);
-  font-size: inherit;
+  position: absolute;
+  top: var(--padding--quarter);
+  right: var(--padding--quarter);
 }
 
 .quantity__inputs-wrapper {
