@@ -1007,6 +1007,10 @@ p {
   top: var(--padding--quarter);
   right: var(--padding--quarter);
 }
+.quickview__cart {
+  width: 100%;
+  margin-top: var(--padding--half);
+}
 
 .quantity__inputs-wrapper {
   display: flex;
