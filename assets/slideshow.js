@@ -47,3 +47,16 @@ function updateSelectedThumbnail(thumbnail) {
   document.querySelector(`.${thumbnailClass}`).classList.toggle(thumbnailClass);
   thumbnail.classList.add(thumbnailClass);
 }
+
+// used when variant with featured media selected
+// hacky way - go about it like a left click happened by adding +1 offset to index and updating data attributes
+function setSelectedMedia(position, divisor) {
+  const parent = document.querySelector(".quickview__slideshow");
+  const newValues = [
+    { key: "slideshowCurrent", value: position },
+    { key: "slideshowLeft", value: normalizeIndex(position - 1, divisor) },
+    { key: "slideshowRight", value: normalizeIndex(position + 1, divisor) },
+  ];
+  newValues.forEach((pair) => (parent.dataset[pair.key] = pair.value));
+  updateSelectedMedia(true);
+}

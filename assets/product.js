@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
       const variant = getVariant();
       console.log(variant);
       updatePrice(variant.price);
+      //update media if variant has media
+      const mediaPosition = variant.featured_media.position; //position is index +1
+      console.log("trying to update to variant media");
+      if (mediaPosition)
+        setSelectedMedia(mediaPosition, Camellia.quickviewProduct.media.length);
     })
   );
 });
