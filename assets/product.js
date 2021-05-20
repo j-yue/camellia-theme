@@ -77,6 +77,8 @@ function updateQuantityRange(id) {
   Object.entries(changes).forEach(([key, value]) =>
     quantity.setAttribute(key, value)
   );
+
+  changeCartBtnState(changes.value < 1);
 }
 
 // -1 (decrement) or 1(increment)
@@ -89,12 +91,29 @@ function updateQuantity(change) {
     parseInt(quantity.getAttribute("max")),
   ];
 
-  console.log(typeof min);
-
   let newQuantity = value + change;
 
   if (change < 0 && newQuantity < min) newQuantity = value;
   if (change > 0 && newQuantity > max) newQuantity = value;
 
   quantity.setAttribute("value", newQuantity);
+
+  changeCartBtnState(newQuantity < 1);
+}
+
+// copied from collection.js
+// need to refactor these utility functions
+function changeCartBtnState(isDisabled) {
+  const btn = document.querySelector(".quickview__cart");
+  if (isDisabled) {
+    btn.classList.remove("btn--default");
+    btn.classList.add("btn--disabled");
+  }
+
+  if (!isDisabled) {
+    btn.classList.remove("btn--disabled");
+    btn.classList.add("btn--default");
+  }
+
+  btn.disabled = isDisabled;
 }
