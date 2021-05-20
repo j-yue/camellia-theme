@@ -15,9 +15,8 @@
         margin-bottom: var(--padding--half)
 
     &__option-container
+        background: #fff
         position: relative
-        &:hover
-            cursor: pointer
 
     &__option-label
         padding-bottom: var(--padding--quarter)
@@ -28,12 +27,18 @@
         border-radius: 0
         -webkit-appearance: none
         width: 100%
+        background: transparent
+        position: relative
+        z-index: 1
+        &:hover
+            cursor: pointer
 
     &__caret-wrapper
         @include mixins.icon
         position: absolute
         top: var(--padding--quarter)
         right: var(--padding--quarter)
+        z-index: 0
 
     &__cart
         width: 100%

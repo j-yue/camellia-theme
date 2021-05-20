@@ -985,10 +985,8 @@ p {
   margin-bottom: var(--padding--half);
 }
 .quickview__option-container {
+  background: #fff;
   position: relative;
-}
-.quickview__option-container:hover {
-  cursor: pointer;
 }
 .quickview__option-label {
   padding-bottom: var(--padding--quarter);
@@ -999,6 +997,12 @@ p {
   border-radius: 0;
   -webkit-appearance: none;
   width: 100%;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+.quickview__option-dropdown:hover {
+  cursor: pointer;
 }
 .quickview__caret-wrapper {
   width: var(--padding);
@@ -1006,6 +1010,7 @@ p {
   position: absolute;
   top: var(--padding--quarter);
   right: var(--padding--quarter);
+  z-index: 0;
 }
 .quickview__cart {
   width: 100%;
