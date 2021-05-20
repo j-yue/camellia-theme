@@ -25,6 +25,7 @@ Usage:
                     <label for="{{id}}" class="quickview__option-label">{{option.name}}</label>
                     <div class="quickview__option-container">
                         <select id="{{id}}" class="quickview__option-dropdown" data-option-number="{{id}}">
+                            <option value="">Select {{option.name | capitalize}}</option>
                             {% for value in option.values %}
                                 <option value='{{value}}'>{{value}}</option>
                             {% endfor %}
