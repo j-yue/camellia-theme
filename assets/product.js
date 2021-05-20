@@ -9,15 +9,30 @@ document.addEventListener("DOMContentLoaded", (e) => {
       const mediaPosition = variant.featured_media.position; //position is index +1
       console.log("trying to update to variant media");
       if (mediaPosition)
-        setSelectedMedia(mediaPosition, Camellia.quickviewProduct.media.length);
+        setSelectedMedia(
+          mediaPosition,
+          Camellia.quickview.product.media.length
+        );
+
+      // udpdate max quantity availble
+      updateMaxQuantity(variant.id);
     })
   );
+
+  //   const quantity = document.querySelector(".quantity");
+  //   quantity.addEventListener("click", (e) => {
+  //     const targetName = e.target.className;
+
+  //     if (targetName.includes("decrement")) {
+  //       console.log("trying to decrease");
+  //     }
+  //   });
 });
 
 function getVariant() {
   const dropdowns = document.querySelectorAll(".quickview__option-dropdown");
   const options = [...dropdowns].map((dropdown) => dropdown.value);
-  const variants = Camellia.quickviewProduct.variants;
+  const variants = Camellia.quickview.product.variants;
   const matches = variants.filter((variant) =>
     isMatch(options, variant.options)
   );
@@ -35,4 +50,10 @@ function isMatch(options, variantOptions) {
 function updatePrice(newPrice) {
   const convertedPrice = `$${(parseInt(newPrice) / 100).toFixed(2)}`;
   document.querySelector(".quickview__price").innerText = convertedPrice;
+}
+
+function updateMaxQuantity(id) {
+  document
+    .querySelector(".quantity__input")
+    .setAttribute("max", Camellia.quickview.quantities[id]);
 }

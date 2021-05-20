@@ -47,8 +47,16 @@ Usage:
 
 {% render 'modal', type: 'quickview', content: content %}
 
+
 <script>
     document.addEventListener('DOMContentLoaded', e => {
-        Camellia['quickviewProduct'] = {{product | json}};
-    })
+        Camellia['quickview'] = {
+            product: {{product | json}},
+            quantities: {}
+        };
+        
+        {% for variant in product.variants %}
+            Camellia.quickview.quantities[{{variant.id}}] = {{variant.inventory_quantity}}
+        {% endfor %}
+    });
 </script>
