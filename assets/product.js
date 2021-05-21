@@ -108,11 +108,13 @@ function changeCartBtnState(isDisabled) {
   if (isDisabled) {
     btn.classList.remove("btn--default");
     btn.classList.add("btn--disabled");
+    btn.innerText = "Sold out";
   }
 
   if (!isDisabled) {
     btn.classList.remove("btn--disabled");
     btn.classList.add("btn--default");
+    btn.innerText = "Add to cart";
   }
 
   btn.disabled = isDisabled;
