@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "watch-theme": "theme watch --allow-live",
+        "watch-sass": "sass assets/styles/main.sass assets/main.css --watch"
+    }
+}
