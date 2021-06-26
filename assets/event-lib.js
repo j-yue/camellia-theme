@@ -20,26 +20,26 @@ class EventDelegator {
     this.watchlist[type].push({ className, callback });
   }
 
-  shouldFire(target, className) {
-    return [...target.classList].includes(className);
+  shouldFire(type, e, className) {
+    if (type === "DOMContentLoaded" || type === "load") return true;
+    return [...e.target.classList].includes(className);
   }
 
   handler(type, e) {
     const pairs = this.watchlist[type];
-    const target = e.target;
 
     pairs.map(({ className, callback }) => {
-      if (this.shouldFire(target, className)) callback(e);
+      if (this.shouldFire(type, e, className)) callback(e);
     });
   }
 
   delegate() {
-    if (!this.watchlist) return;
-
     Object.keys(this.watchlist).map((type) => {
       window.addEventListener(type, (e) => this.handler(type, e), true);
     });
   }
 }
 
-export const delegator = new EventDelegator();
+const delegator = new EventDelegator();
+
+export { delegator };
