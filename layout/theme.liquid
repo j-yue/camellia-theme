@@ -18,12 +18,17 @@
   {{ content_for_header }} <!-- Header hook for plugins -->
   {{ 'application.scss.css' | asset_url | stylesheet_tag }}
   {{ 'main.css' | asset_url | stylesheet_tag }}
-  {{ 'application.js' | asset_url | script_tag }}
+  {% comment %} {{ 'application.js' | asset_url | script_tag }} {% endcomment %}
   {{ 'lazysizes.min.js' | asset_url | script_tag }}
   {{ 'search.js' | asset_url | script_tag}}
   {{ 'cart.js' | asset_url | script_tag}}
   {{ 'slideshow.js' | asset_url | script_tag}}
   {{ 'product.js' | asset_url | script_tag}}
+
+  {% comment %} {{ 'events.js' | asset_url | script_tag }} {% endcomment %}
+  
+  <script type="module" src="{{'events.js' | asset_url}}"></script>
+  <script type="module" src="{{'application.js' | asset_url}}"></script>
 
   {% if template contains 'collection' %}
     {{ 'loadmore.js' | asset_url | script_tag}}
@@ -39,7 +44,7 @@
 <body>
   
   {% comment %} {% render 'modal', type: 'quickview' %} {% endcomment %}
-  {% render 'quickview', handle: '' %}
+  {% comment %} {% render 'quickview', handle: '' %} {% endcomment %}
 
   {% section 'header' %}
 
