@@ -4,12 +4,15 @@ import { delegator } from "./events.js";
 console.log("application.js");
 
 const CamelliaTheme = (() => {
-  console.log(delegator);
+  //   console.log(delegator);
+
+  window.addEventListener("DOMContentLoaded", () => delegator.delegate());
 
   const state = {
     collection: {
       tags: {},
       products: {},
+      url: {},
     },
     quickview: {},
     product: {},
@@ -28,3 +31,5 @@ const CamelliaTheme = (() => {
     },
   };
 })();
+
+Shopify.CamelliaTheme = CamelliaTheme;
