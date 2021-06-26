@@ -27,8 +27,6 @@
 
   {% comment %} {{ 'events.js' | asset_url | script_tag }} {% endcomment %}
   
-  <script type="module" src="{{'events.js' | asset_url}}"></script>
-  <script type="module" src="{{'application.js' | asset_url}}"></script>
 
   {% if template contains 'collection' %}
     {{ 'loadmore.js' | asset_url | script_tag}}
@@ -60,6 +58,10 @@
   {% section 'footer' %}
 
   {% render 'css-variables' %}
+
+  <script type="module" src="{{'event-lib.js' | asset_url}}"></script>
+  <script type="module" src="{{'application.js' | asset_url}}"></script>
+
 
   <script>
     document.querySelector('.fab__scroll-up').addEventListener('click', () => {
