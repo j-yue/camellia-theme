@@ -1,12 +1,10 @@
 // Put your application javascript here
-import { delegator } from "./events.js";
+import { delegator } from "./event-lib.js";
 
 console.log("application.js");
 
 const CamelliaTheme = (() => {
-  //   console.log(delegator);
-
-  window.addEventListener("DOMContentLoaded", () => delegator.delegate());
+  delegator.delegate();
 
   const state = {
     collection: {
