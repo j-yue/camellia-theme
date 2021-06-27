@@ -24,6 +24,9 @@ const EventDelegator = (() => {
     const allClasses = watchlist[type].map(({ className: cn }) => cn);
 
     for (let i = 0; i < path.length; i++) {
+      //skip nodes with no classnames
+      if (!path[i].classList) break;
+
       const intersection = findIntersection(path[i], allClasses);
 
       if (intersection.length > 0) {
