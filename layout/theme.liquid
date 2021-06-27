@@ -62,14 +62,8 @@
 
 
   <script>
-    document.querySelector('.fab__scroll-up').addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-      })
-    })
 
+    EventDelegator.updateWatchlist('click', 'fab__scroll-up', () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'}));
     EventDelegator.delegate();
   </script>
 
