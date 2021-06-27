@@ -7,9 +7,27 @@ const EventDelegator = (() => {
     watchlist[type].push({ className, callback });
   };
 
+  const findIntersection = (el, allClasses) => {
+    return [...el.classList].filter((cn) => allClasses.includes(cn));
+  };
+
   const shouldFire = (type, e, className) => {
     if (type === "DOMContentLoaded" || type === "load") return true;
-    return [...e.target.classList].includes(className);
+
+    const path = e.path;
+
+    const allClasses = watchlist[type].map(({ className: cn }) => cn);
+
+    for (let i = 0; i < path.length; i++) {
+      const intersection = findIntersection(path[i], allClasses);
+
+      if (intersection.length > 0) {
+        if (intersection.includes(className)) return true;
+        return false;
+      }
+    }
+
+    return false;
   };
 
   const handler = (type, e) => {
