@@ -15,10 +15,18 @@
 
   <link rel="stylesheet" href="{{'animate.min.css' | asset_url}}">
 
+
+  {{'eventDelegator.js' | asset_url | script_tag}}
+  <script>
+    console.log(EventDelegator);
+    EventDelegator.updateWatchlist('DOMContentLoaded', 'product-card', () => console.log('dom content loaded'));
+    
+    EventDelegator.delegate();
+  </script>
+
   {{ content_for_header }} <!-- Header hook for plugins -->
   {{ 'application.scss.css' | asset_url | stylesheet_tag }}
   {{ 'main.css' | asset_url | stylesheet_tag }}
-  {% comment %} {{ 'application.js' | asset_url | script_tag }} {% endcomment %}
   {{ 'lazysizes.min.js' | asset_url | script_tag }}
   {{ 'search.js' | asset_url | script_tag}}
   {{ 'cart.js' | asset_url | script_tag}}
@@ -58,9 +66,6 @@
   {% section 'footer' %}
 
   {% render 'css-variables' %}
-
-  <script type="module" src="{{'event-lib.js' | asset_url}}"></script>
-  <script type="module" src="{{'application.js' | asset_url}}"></script>
 
 
   <script>
