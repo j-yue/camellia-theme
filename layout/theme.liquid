@@ -16,13 +16,9 @@
   <link rel="stylesheet" href="{{'animate.min.css' | asset_url}}">
 
 
+
   {{'eventDelegator.js' | asset_url | script_tag}}
-  <script>
-    console.log(EventDelegator);
-    EventDelegator.updateWatchlist('DOMContentLoaded', 'product-card', () => console.log('dom content loaded'));
-    
-    EventDelegator.delegate();
-  </script>
+
 
   {{ content_for_header }} <!-- Header hook for plugins -->
   {{ 'application.scss.css' | asset_url | stylesheet_tag }}
@@ -33,12 +29,13 @@
   {{ 'slideshow.js' | asset_url | script_tag}}
   {{ 'product.js' | asset_url | script_tag}}
 
-  {% comment %} {{ 'events.js' | asset_url | script_tag }} {% endcomment %}
-  
 
   {% if template contains 'collection' %}
     {{ 'loadmore.js' | asset_url | script_tag}}
     {{ 'collection.js' | asset_url | script_tag}}
+    <script>
+      EventDelegator.updateWatchlist('DOMContentLoaded', 'product-card__price', () => initializeEverything({{collection.all_products | json}}, '.collection__filter-wrapper--desktop form', '.collection__filter-wrapper--mobile form' , '{{collection.url}}'))
+    </script>
   {% endif %}
 
 <style>
@@ -77,7 +74,9 @@
       })
     })
 
-    Camellia = {};
+    EventDelegator.delegate();
   </script>
+
+  
 </body>
 </html>

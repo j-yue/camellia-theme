@@ -16,12 +16,10 @@ function initializeEverything(
   mobileForm,
   collectionPath
 ) {
-  document.addEventListener("DOMContentLoaded", (e) => {
-    initializeEmptyElements(allProducts);
-    addFormHandlers(desktopForm, collectionPath);
-    addFormHandlers(mobileForm, collectionPath);
-    handleMobileFormToggle();
-  });
+  initializeEmptyElements(allProducts);
+  addFormHandlers(desktopForm, collectionPath);
+  addFormHandlers(mobileForm, collectionPath);
+  handleMobileFormToggle();
 }
 
 // =====================================================
