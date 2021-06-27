@@ -7,6 +7,11 @@ const EventDelegator = (() => {
     watchlist[type].push({ className, callback });
   };
 
+  //2d array
+  const batchUpdateWatchlist = (batch) => {
+    batch.map((entry) => updateWatchlist(...entry));
+  };
+
   const findIntersection = (el, allClasses) => {
     return [...el.classList].filter((cn) => allClasses.includes(cn));
   };
@@ -46,6 +51,7 @@ const EventDelegator = (() => {
 
   return {
     updateWatchlist,
+    batchUpdateWatchlist,
     delegate,
   };
 })();
