@@ -45,6 +45,10 @@
 
   {% render 'css-variables' %}
 
+  <script>
+    Shopify.CamelliaTheme = {};
+  </script>
+
   {{ 'eventDelegator.js' | asset_url | script_tag }}  
   {{ 'lazysizes.min.js' | asset_url | script_tag }}
   {{ 'search.js' | asset_url | script_tag }}
@@ -53,16 +57,21 @@
   {{ 'product.js' | asset_url | script_tag }}
 
   {% if template contains 'collection' %}
+    <script>
+      Shopify.CamelliaTheme.collection = {
+        products: {{collection.all_products | json}},
+        tags: {{collection.tags | json}},
+        url: '{{collection.url}}'
+      }
+    </script>
+    
     {{ 'loadmore.js' | asset_url | script_tag }}
     {{ 'collection.js' | asset_url | script_tag }}
-    <script>
-      EventDelegator.updateWatchlist('DOMContentLoaded', 'product-card__price', () => initializeEverything({{collection.all_products | json}}, '.collection__filter-wrapper--desktop form', '.collection__filter-wrapper--mobile form' , '{{collection.url}}'))
-    </script>
+
   {% endif %}
 
 
   <script>
-
     EventDelegator.updateWatchlist('click', 'fab__scroll-up', () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'}));
     EventDelegator.delegate();
   </script>
