@@ -6,12 +6,14 @@
 // register events via Event Delegator
 // dependencies: EventDelegator and Shopify.CamelliaTheme
 // =====================================================
-updateFormUI(document.querySelector(".filter__form"));
+
 EventDelegator.batchUpdateWatchlist([
   ["DOMContentLoaded", "collection__product-total", initializeProductTotal],
   ["DOMContentLoaded", "category__tag-count", initializeTagCounts],
+  ["DOMContentLoaded", "filter__form", saveInitialFormState],
   ["click", "collection__filter-btn", toggleOpen],
   ["click", "collection__filter-close", toggleClose],
+  ["change", "filter__form", (e) => updateFormUI(e)],
 ]);
 
 /**
@@ -81,17 +83,16 @@ function addFormHandlers(formSelector, collectionPath) {
  * Not disabled - initial and current select input values don't match
  * @param {Node} form - The form element
  */
-function updateFormUI(form) {
+function updateFormUI(e) {
+  const form = e.path.filter((ancestor) => ancestor.tagName === "FORM")[0];
   const submitBtn = form.querySelector(".filter__submit");
-  const initialState = getState(form);
 
-  form.addEventListener("change", (e) => {
-    const newState = getState(form);
-    const hasChanged = hasFormChanged(initialState, newState);
-    hasChanged
-      ? changeSubmitBtnState(submitBtn, "btn--disabled", "btn--default", false)
-      : changeSubmitBtnState(submitBtn, "btn--default", "btn--disabled", true);
-  });
+  const newState = getState(form);
+  const hasChanged = hasFormChanged(newState);
+
+  hasChanged
+    ? changeSubmitBtnState(submitBtn, "btn--disabled", "btn--default", false)
+    : changeSubmitBtnState(submitBtn, "btn--default", "btn--disabled", true);
 }
 
 /**
@@ -106,14 +107,20 @@ function getState(form) {
   };
 }
 
+function saveInitialFormState() {
+  const form = document.querySelector(".filter__form");
+  Shopify.CamelliaTheme.collection.initialFormState = getState(form);
+}
+
 /**
  * Check if form values have changed
- * @param {Object} initialState - Selected sort and tags when page loaded
  * @param {Object} newState - Selected sort and tags when form submitted
  * @returns {Boolean} - newState does not match initialState
  */
-function hasFormChanged(initialState, newState) {
-  if (initialState.sort !== newState.sort) return true;
+function hasFormChanged(newState) {
+  const initialState = Shopify.CamelliaTheme.collection.initialFormState;
+
+  if (initialState.sort.value !== newState.sort.value) return true;
 
   const [initialTags, newTags] = [initialState.tags, newState.tags];
   if (initialTags.length !== newTags.length) return true;
@@ -144,10 +151,10 @@ function changeSubmitBtnState(submitBtn, oldState, newState, disabledState) {
 /**
  * Toggle visibility of mobile filter
  */
-function handleMobileFormToggle() {
-  toggleOpen();
-  toggleClose();
-}
+// function handleMobileFormToggle() {
+//   toggleOpen();
+//   toggleClose();
+// }
 
 /**
  * Toggle filter open
