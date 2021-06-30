@@ -1,7 +1,17 @@
 // =====================================================
 // initialize empty product total and tag count elements
+// handle and update changes made to form
+// handle form submit
 // add event listeners to desktop and mobile filter forms
+// register events via Event Delegator
+// dependencies: EventDelegator and Shopify.CamelliaTheme
 // =====================================================
+updateFormUI(document.querySelector(".filter__form"));
+EventDelegator.batchUpdateWatchlist([
+  ["DOMContentLoaded", "collection__product-total", initializeProductTotal],
+  ["DOMContentLoaded", "category__tag-count", initializeTagCounts],
+]);
+
 /**
  * Initialize empty elements (product total count and tag product counts)
  * Initialize handlers for form
@@ -22,49 +32,27 @@ function initializeEverything(
   handleMobileFormToggle();
 }
 
-// =====================================================
-// initialize empty product total and tag count elements
-// =====================================================
-/**
- * Populate product total and tag count
- * @param {String} allProducts - Stringified JSON of collection's products
- */
-function initializeEmptyElements(allProducts) {
-  initializeProductTotal();
-  initializeTagCounts(allProducts);
-}
-
-/**
- * Set an element's inner text
- * @param {Node} el - Element
- * @param {String} text - inner text
- */
-function initializeElement(el, text) {
-  el.innerText = text;
-}
-
 /**
  * Initialize product total
  */
 function initializeProductTotal() {
-  initializeElement(
-    document.querySelector(".collection__product-total"),
-    `${document.querySelectorAll(".product-card").length} products`
-  );
+  document.querySelector(".collection__product-total").innerText = `${
+    document.querySelectorAll(".product-card").length
+  } products`;
 }
 
 /**
  * For each tag, initialize the number of products containing that tag
- * @param {String} allProducts -Stringified JSON of collection's product
  */
-function initializeTagCounts(allProducts) {
+function initializeTagCounts() {
   const tagCounts = document.querySelectorAll(".category__tag-count");
+  const allProducts = Shopify.CamelliaTheme.collection.products;
 
   tagCounts.forEach((tag) => {
     const matchingProducts = allProducts.filter((product) =>
       product.tags.includes(tag.dataset.tag)
     );
-    initializeElement(tag, `(${matchingProducts.length})`);
+    tag.innerText = `(${matchingProducts.length})`;
   });
 }
 
