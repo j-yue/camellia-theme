@@ -10,6 +10,8 @@ updateFormUI(document.querySelector(".filter__form"));
 EventDelegator.batchUpdateWatchlist([
   ["DOMContentLoaded", "collection__product-total", initializeProductTotal],
   ["DOMContentLoaded", "category__tag-count", initializeTagCounts],
+  ["click", "collection__filter-btn", toggleOpen],
+  ["click", "collection__filter-close", toggleClose],
 ]);
 
 /**
@@ -151,28 +153,18 @@ function handleMobileFormToggle() {
  * Toggle filter open
  */
 function toggleOpen() {
-  const filterBtn = document.querySelector(".collection__filter-btn");
-  filterBtn.addEventListener("click", () => {
-    const filter = document.querySelector(
-      ".collection__filter-wrapper--mobile"
-    );
-    filter.style.zIndex = 2;
-    filter.style.visibility = "visible";
-  });
+  const filter = document.querySelector(".collection__filter-wrapper--mobile");
+  filter.style.zIndex = 2;
+  filter.style.visibility = "visible";
 }
 
 /**
  * Toggle filter closed
  */
 function toggleClose() {
-  const close = document.querySelector(".collection__filter-close");
-  close.addEventListener("click", () => {
-    const filter = document.querySelector(
-      ".collection__filter-wrapper--mobile"
-    );
-    filter.style.zIndex = -1;
-    filter.style.visibility = "hidden";
-  });
+  const filter = document.querySelector(".collection__filter-wrapper--mobile");
+  filter.style.zIndex = -1;
+  filter.style.visibility = "hidden";
 }
 
 // =====================================================
