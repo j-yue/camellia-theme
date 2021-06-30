@@ -22,26 +22,6 @@ EventDelegator.batchUpdateWatchlist([
 ]);
 
 /**
- * Initialize empty elements (product total count and tag product counts)
- * Initialize handlers for form
- * @param {String} allProducts - Stringified JSON of list of collection's products given by {{collection.all_products | json}} from liquid
- * @param {String} desktopForm - Selector for desktop form
- * @param {String} mobileForm - Selector for mobile form
- * @param {String} collectionPath - Path of collection
- */
-function initializeEverything(
-  allProducts,
-  desktopForm,
-  mobileForm,
-  collectionPath
-) {
-  initializeEmptyElements(allProducts);
-  addFormHandlers(desktopForm, collectionPath);
-  addFormHandlers(mobileForm, collectionPath);
-  handleMobileFormToggle();
-}
-
-/**
  * Initialize product total
  */
 function initializeProductTotal() {
@@ -63,20 +43,6 @@ function initializeTagCounts() {
     );
     tag.innerText = `(${matchingProducts.length})`;
   });
-}
-
-// =====================================================
-// add handlers to form
-// =====================================================
-/**
- *
- * @param {String} formSelector -Selector for form
- * @param {String} collectionPath - Path of collection
- */
-function addFormHandlers(formSelector, collectionPath) {
-  const form = document.querySelector(formSelector);
-  updateFormUI(form);
-  handleSubmit(form, collectionPath);
 }
 
 // =====================================================
@@ -153,13 +119,6 @@ function changeSubmitBtnState(submitBtn, oldState, newState, disabledState) {
 // =====================================================
 // Handle visibility of mobile filter form
 // =====================================================
-/**
- * Toggle visibility of mobile filter
- */
-// function handleMobileFormToggle() {
-//   toggleOpen();
-//   toggleClose();
-// }
 
 /**
  * Toggle filter open
