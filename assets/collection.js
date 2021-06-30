@@ -14,6 +14,11 @@ EventDelegator.batchUpdateWatchlist([
   ["click", "collection__filter-btn", toggleOpen],
   ["click", "collection__filter-close", toggleClose],
   ["change", "filter__form", (e) => updateFormUI(e)],
+  [
+    "submit",
+    "filter__form",
+    (e) => handleSubmit(e, Shopify.CamelliaTheme.collection.url),
+  ],
 ]);
 
 /**
@@ -192,12 +197,10 @@ function generatePath(form, collectionPath) {
 
 /**
  * Navigate user to path generated from selected inputs
- * @param {Node} form - Form element
+ * @param {Event} e - Event
  * @param {String} collectionPath - Path of collection
  */
-function handleSubmit(form, collectionPath) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    window.location.href = generatePath(form, collectionPath);
-  });
+function handleSubmit(e, collectionPath) {
+  e.preventDefault();
+  window.location.href = generatePath(e.target, collectionPath);
 }
